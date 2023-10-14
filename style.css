@@ -1,0 +1,86 @@
+/* IMPORT */ 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+
+
+/* VARIABLES */
+:root{
+    --maroon-ara: #A3958F;
+    --white-ara: #F6F5F4;
+    --black-ara: #0D0B08;
+    --light-blue-ara: #9FB0D6;
+    --duck-blue-ara: #086788;
+    --icons-size: 30px;
+    --font-hero-size: 20px;
+    --font-small-size: 12px
+}
+
+/* ALL */
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+/* HEADER */
+.header__title h1{
+    display: none;
+}
+.header__title img{
+    width: 15vw;
+}
+.navbar-toggle-icon{
+    background-image: url('./images/icons/menu-50px.png');
+}
+.header__products__actions a img{
+    width: var(--icons-size) ;
+}
+
+/* HERO SECTION */
+.header__hero-section{
+    padding: 0;
+
+}
+.header__hero-section--promotion{
+    background-image: url(./images/hero-bg.png);
+    height:9vh;
+    width: 100%;
+}
+.header__hero-section--promotion p {
+    font-family: Inter;
+    font-size: var(--font-hero-size);
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+/* CARDS */
+.main__product__card  {
+    max-width: 540px;
+}
+.main__product__card__bg{
+    /* width: 50vw; */
+}
+.main__product__card__infos h5 span{
+    font-size: var(--font-small-size);
+}
+
+.main__product__card__infos .card-text{
+    font-size: var(--font-small-size)
+}
+.main__card__product-actions .icon-link img{
+    width: var(--icons-size) ;
+}
+
+/* Newsletter */
+.main__aside__newsletter{
+    background-color: var(--duck-blue-ara);
+}
+.main__aside__newsletter form img {
+    position: relative;
+    width: var(--icons-size);
+    top: -45px;
+    right: -85%;
+}
+
+/* FOOTER */
+.footer__hero img{
+    width: var(--icons-size);
+}

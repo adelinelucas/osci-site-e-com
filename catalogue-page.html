@@ -9,94 +9,167 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <!-- bootstrap -->
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <header>
-        <div class="header">
-            <nav class="header__nav">
-                <ul>
-                    <li><a href="#">Cleansers</a>Cleansers</li>
-                    <li><a href="#">Moisturizes</a></li>
-                    <li><a href="#">Masks</a></li>
-                    <li><a href="#">Suncare</a></li>
-                    <li><a href="#">Men's</a></li>
-                </ul>
-                <div class="header__nav--search">
-                    search 
+    <header class="header container" style="border: 2px solid red;">
+        <div class="header row row-cols-3">
+            <nav class="navbar navbar-expand-lg bg-white">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Cleansers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Moisturizes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Suncare</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Men's</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">
+                                <img src="./images/icons/search-icon-50px.png" alt="serch button to find your perfect product" width="50">
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </nav>
             <div class="header__title">
                 <h1>ARA - Beauty</h1>
                 <img src="./images/logo-transparent-bg.png" alt="ARA, cosmetic brand for all skins.">
             </div>
-            <div class="header__products__actions">
-                <button>
+            <div class="header__products__actions row row-cols-2">
+                <a class="icon-link icon-link-hover link--maroon-ara">
                     <img src="./images/icons/favoris-50px.png" alt="Button to visualize all favorits products">
-                </button>
-                <button>
+                </a>
+                <a class="icon-link icon-link-hover">
                     <img src="./images/icons/shopping-bag-50px.png" alt="Button to go to the cart section">
-                </button>
+                </a>
             </div>
-        </div>
-        <div class="header__hero-section">
-            <div class="header__hero-section--promotion">
-                <p>-20 % on makeup</p>
-            </div>
-        </div>
-        
+        </div>        
     </header>
     <main class="main">
-        <article class="main__card">
-            <div class="main__card__bg">
-                image bg
+        <!-- Hero section -->
+        <div class="header__hero-section container">
+            <div class="header__hero-section--promotion  d-flex align-items-center justify-content-center">
+                <p class="text-light text-center">- 20% on makeup</p>
             </div>
-            <div class="main__card__products-infos">
-                <h2>COSRX</h2><h3>- Advanced Snail Radiance Dual Essence 80ml</h3>
-                <p>This revitalizing essence enriched with 74.3% Triple Snail Complex. 
-                    <br>To provide a glowing, plumped-up and youthful-looking finish to aging skin. 
-                    <br>2 in 1 Elasticity & Radiance in One Pump, High efficacy snail essence mixes with the radiance essence upon pumping to create a refreshing combination of plumping and brightening care.
-                </p>
-            </div>
-            <div class="main__card__prices-infos">
-                <p><span class="current-price">22$</span><span class="promotion-price"></span></p>
-            </div>
-            <div class="main__card__product-actions">
-                <div>
-                    <button>1</button>
+        </div>
+        <!-- Product cards -->
+        <div class="container ">
+            <article class="main__product__card card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-4 main__product__card__bg">
+                        <img src="./images/products/advanced-snail-96-mucin-power-essence 1.png" class="card-img-top" alt="illustration of the COSRX product">                
+                    </div>
+                    <div class="col-8 main__product__card__infos">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bolder">COSRX <span>- Advanced Snail Radiance Dual Essence 80ml</span></h5>
+                            <p class="card-text">This revitalizing essence enriched with 74.3% Triple Snail Complex. 
+                                <br>To provide a glowing, plumped-up and youthful-looking finish to aging skin. 
+                                <br>2 in 1 Elasticity & Radiance in One Pump, High efficacy snail essence mixes with the radiance essence upon pumping to create a refreshing combination of plumping and brightening care.
+                            </p>
+                        </div>
+                        <div class="main__card__prices-infos card-body row row-cols-2 w-75">
+                            <p><span class="current-price text-decoration-line-through">22$</span></p>
+                            <p><span class="promotion-price text-danger">15$</span></p>
+                        </div>
+                        <div class="main__card__product-actions card-body row">
+                            <div class="col-8">
+                                <div class="row row-cols-3">
+                                    <button class="btn btn-light bg-white">1</button>
+                                    <button class="btn btn-light bg-white">+</button>
+                                    <button class="btn btn-light bg-white">-</button>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div>
+                                    <a class="icon-link icon-link-hover link--maroon-ara">
+                                        <img src="./images/icons/favoris-50px.png" alt="Button to visualize all favorits products">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <button>+</button>
-                    <button>-</button>
-                </div>
-                <div>
-                    <button>
-                        <img src="./images/icons/favoris-50px.png" alt="Button to add the product to your favorits products.">
-                    </button>
-                </div>
+            </article>
+        </div>
+        <!-- End Product cards -->
+        <!-- Best sellers cards -->
+        <div class="main__best-sellers">
+            <div  class="main__best-sellers__title">
+                <h2>Best sellers</h2>
             </div>
-        </article>
-        <aside class="main__aside__newsletter">
-            <h4>Let's keep in touch ! <span>Newsletter inscription</span></h4>
-            <form action="" class="main__aside__newsletter__form">
-                <label for=""></label>
-                <input type="email" name="" id="" placeholder="myemail@gmail.com">
-                <i>
+            <article class="main__product__card card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-4 main__product__card__bg">
+                        <img src="./images/products/cleanser e com 1.png" class="card-img-top" alt="illustration of cleanser de folie">                
+                    </div>
+                    <div class="col-8 main__product__card__infos">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bolder">COSRX <span>- Advanced Snail Radiance Dual Essence 80ml</span></h5>
+                            <p class="card-text">This revitalizing essence enriched with 74.3% Triple Snail Complex. 
+                                <br>To provide a glowing, plumped-up and youthful-looking finish to aging skin. 
+                                <br>2 in 1 Elasticity & Radiance in One Pump, High efficacy snail essence mixes with the radiance essence upon pumping to create a refreshing combination of plumping and brightening care.
+                            </p>
+                        </div>
+                        <div class="main__card__prices-infos card-body row row-cols-2 w-75">
+                            <p><span class="current-price text-decoration-line-through">22$</span></p>
+                            <p><span class="promotion-price text-danger">15$</span></p>
+                        </div>
+                        <div class="main__card__product-actions card-body row">
+                            <div class="col-8">
+                                <div class="row row-cols-3">
+                                    <button class="btn btn-light bg-white">1</button>
+                                    <button class="btn btn-light bg-white">+</button>
+                                    <button class="btn btn-light bg-white">-</button>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div>
+                                    <a class="icon-link icon-link-hover link--maroon-ara">
+                                        <img src="./images/icons/favoris-50px.png" alt="Button to visualize all favorits products">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <!-- End Best sellers cards -->
+        <!-- Newsletter -->
+        <aside class="main__aside__newsletter container">
+            <h4 class="text-light">Let's keep in touch ! <span>Newsletter inscription</span></h4>
+            <form action="#" class="main__aside__newsletter__form">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="myemail@gmail.com">
+                    <label for="floatingInput">Email address</label>
                     <img src="./images/icons/blue-email-50px.png" alt="Mail icon">
-                </i>
+                </div>
             </form>
         </aside>
     </main>
-    <footer class="footer">
-        <div class="footer__hero">
+    <footer class="footer py-3 my-4 bg-dark text-light">
+        <div class="footer__hero d-flex justify-content-center">
             <img src="./images/logo-transparent-bg.png" alt="ARA Beauty - a cosmetic brand.">
         </div>
         <div class="footer__categories">
             <nav>
-                <ul>
-                    <li><a href="#">Our policy</a></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Company</a></li>
-                    <li><a href="#">Newsletter</a></li>
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Our policy</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-light">About us</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Company</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Newsletter</a></li>
                 </ul>
             </nav>
         </div>
@@ -202,6 +275,5 @@
             </div>
         </div>
     </footer>
-    
 </body>
 </html>
