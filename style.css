@@ -9,11 +9,17 @@
     --black-ara: #0D0B08;
     --light-blue-ara: #9FB0D6;
     --duck-blue-ara: #086788;
-    --logo-size: 50px;
+    /* --logo-size: 50px; */
+    --logo-size: 10vw;
     --icons-size: 30px;
-    --font-hero-size: 20px;
-    --font-light-size: 15px;
-    --font-small-size: 12px
+    /* --font-large-size: 30px;
+    --font-medium-size: 20px;
+    --font-light-size: 15px; */
+    /* --font-small-size: 12px; */
+    --font-large-size: 1.5rem;
+    --font-medium-size: 1.3rem;
+    --font-light-size: 1.1rem;
+    --font-small-size: 0.9rem;
 }
 
 /* ALL */
@@ -32,7 +38,7 @@
     width: 15vw;
 }
 .navbar-toggle-icon{
-    background-image: url('./images/icons/menu-50px.png');
+    width: var(--icons-size);
 }
 .header__products__actions a img{
     width: var(--icons-size) ;
@@ -50,7 +56,7 @@
 }
 .header__hero-section--promotion p {
     font-family: Inter;
-    font-size: var(--font-hero-size);
+    font-size: var(--font-medium-size);
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -108,4 +114,48 @@
 .footer-socials-icons svg,
 .footer__secured-payments svg{
     margin: 0 5px;
+}
+
+/* RESPONSIVE */
+
+@media only screen and (min-width: 576px) {
+    body{
+        overflow-y: visible;
+    }
+    .header__hero-section--promotion{
+        background-image: url('./images/hero-bg-md.jpg');
+        background-size: cover;
+        width: 100%;
+        background-position: bottom 40% right 0%;
+        height:10vh;
+    }
+
+    .header__hero-section--promotion p{
+        font-size: var(--font-large-size);
+    }
+    .main__product__card__bg{
+        justify-content: center;
+        height: fit-content !important;
+    }
+    .main__product__card__bg img{
+        width: 25vw;
+    }
+    .main__product__card__infos.card-body{
+        padding-bottom: 0;
+    }
+    .main__product__card__infos.row > p {
+        margin-bottom: 0;
+    }
+
+    .main__aside__newsletter h4{
+        font-size: var(--font-medium-size); 
+    }
+    .main__aside__newsletter form img{
+        right: -90%;
+    }
+}
+@media only screen and (min-width: 992px){
+    #navbarSupportedContent{
+        flex-direction: row-reverse;
+    }
 }
