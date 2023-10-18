@@ -158,4 +158,8 @@
     #navbarSupportedContent{
         flex-direction: row-reverse;
     }
+
+    .header__hero-section--promotion{
+        height:15vh;
+    }
 }
