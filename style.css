@@ -1,4 +1,4 @@
-/* IMPORT */ 
+/* IMPORT */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 
 
@@ -137,13 +137,13 @@ button:hover i{
     background-color: var(--duck-blue-ara);
 }
 .main__aside__newsletter h4{
-   font-size: var(--font-light-size); 
+   font-size: var(--font-light-size);
 }
 .main__aside__newsletter__form {
     height: 5rem;
 }
 .main__aside__newsletter form label{
-    font-size: var(--font-light-size); 
+    font-size: var(--font-light-size);
     color: var(--maroon-ara);
  }
 .main__aside__newsletter form img {
