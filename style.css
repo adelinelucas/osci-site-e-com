@@ -10,7 +10,8 @@
     --light-blue-ara: #9FB0D6;
     --duck-blue-ara: #086788;
     /* --logo-size: 50px; */
-    --logo-size: 10vw;
+    --logo-size-header: 15vw;
+    --logo-size-footer: 10vw;
     --icons-size: 30px;
     /* --font-large-size: 30px;
     --font-medium-size: 20px;
@@ -28,7 +29,7 @@
     font-family: 'Inter', sans-serif;
 }
 
-/* CANCEL BOOTSTRAP CSS  */
+/* OVERWRITE BOOTSTRAP CSS  */
 .icon-link-hover:hover>.bi{
     transform: none !important;
 }
@@ -41,6 +42,16 @@
 .icon-link .bi-heart:hover{
     color: var(--duck-blue-ara)
 }
+
+.offcanvas {
+    background-color: #ffffffe3;
+    height: fit-content;
+    width: 100vw;
+}
+.offcanvas-header .btn-close{
+    margin-top: calc(-1.5 * var(--bs-offcanvas-padding-y));
+    margin-right: calc(0.5 * var(--bs-offcanvas-padding-x));
+}
 /* HEADER */
 .header{
     margin:auto;
@@ -49,13 +60,17 @@
     display: none;
 }
 .header__title img{
-    width: 15vw;
+    width: var(--logo-size-header);
 }
 .navbar-toggle-icon{
     width: var(--icons-size);
 }
 .header__products__actions a img{
     width: var(--icons-size) ;
+}
+
+.header .offcanvas-header .offcanvas-logo{
+    width: var(--logo-size-header);
 }
 
 /* HERO SECTION */
