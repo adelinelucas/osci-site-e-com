@@ -18,12 +18,12 @@
         <nav class="navbar navbar-expand-md bg-white">
             <div class="container-lg flex-row-reverse">
                 <div class="header__products__actions row row-cols-2">
-                    <a class="icon-link icon-link-hover link--maroon-ara">
+                    <button class="icon-link icon-link-hover link--maroon-ara">
                         <i class="bi bi-heart"></i>
-                    </a>
-                    <a class="icon-link icon-link-hover ">
+                    </button>
+                    <button class="icon-link icon-link-hover" data-bs-toggle="offcanvas" href="#offproductbasket" role="button" aria-controls="offproductbasket">
                         <i class="bi bi-bag-fill"></i>
-                    </a>
+                    </button>
                 </div>
                 <div class="header__title d-flex align-items-center navbar-brand">
                     <h1>ARA - Beauty</h1>
@@ -390,5 +390,70 @@
             </div>
         </div>
     </footer>
+
+    <!-- OFF CANVA PRODUCT BASKET -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offproductbasket" aria-labelledby="offproductbasket">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title m-auto" id="navbarSupportedContent">
+                <img class="offcanvas-logo" src="./images/logo-transparent-bg.png" alt="ARA, cosmetic brand for all skins.">
+            </h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="offcanvas-head">
+                <h5 class="text-decoration-underline">My Cart</h5>
+            </div>
+            <div class="row mb-2">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col-2"></th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <th scope="row">
+                                <img src="./images/products/advanced-snail-96-mucin-power-essence 1.png" class="card-img-top" alt="illustration of the COSRX product">
+                            </th>
+                            <td>COSRX</td>
+                            <td><span>15</span>$</td>
+                            <td>
+                                1
+                            </td>
+                            <td><span>15</span>$</td>
+                            <td>
+                                <button type="button" class="btn btn-danger">X</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <img src="./images/products/inisfree.png" class="card-img-top" alt="illustration of the COSRX product">
+                            </th>
+                            <td>COSRX</td>
+                            <td><span>15</span>$</td>
+                            <td>2</td>
+                            <td><span>30</span>$</td>
+                            <td>
+                                <button type="button" class="btn btn-danger">X</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="offproductbasket__backetcart-total row row-cols-1 justify-content-end ">
+                <h5 class="text-end text-decoration-underline">Total</h5>
+                <p class="text-end">45<span>$</span></p>
+            </div>
+            <div class="row row-cols-1 row-cols-md-2 offproductbasket__backetcart-actions justify-content-between flex-md-row-reverse align-items-center">
+                <button type="button" class="btn text-light">Valid my cart</button>
+                <button type="button" class="btn text-light" type="button" data-bs-dismiss="offcanvas" aria-label="Close">Back to my shopping</button>
+            </div>
+        </div>
+      </div>
 </body>
 </html>

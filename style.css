@@ -13,6 +13,7 @@
     --logo-size-header: 15vw;
     --logo-size-footer: 10vw;
     --icons-size: 30px;
+    --miniature-size:50px;
     /* --font-large-size: 30px;
     --font-medium-size: 20px;
     --font-light-size: 15px; */
@@ -43,7 +44,7 @@
     color: var(--duck-blue-ara)
 }
 
-.offcanvas {
+.header .offcanvas {
     background-color: #ffffffe3;
     height: fit-content;
     width: 100vw;
@@ -73,6 +74,13 @@
     width: var(--logo-size-header);
 }
 
+button {
+    background-color: transparent;
+    border:none;
+}
+button:hover i{
+    color: var(--duck-blue-ara) ;
+}
 /* HERO SECTION */
 .header__hero-section{
     padding: 0;
@@ -163,6 +171,43 @@
     margin: 0 5px;
 }
 
+/* OFF CANVAS PRODUCT BASKET */
+.offcanvas.offcanvas-end{
+    width: 100vw;
+    left: 0;
+}
+
+#offproductbasket .offcanvas-header img{
+    width: var(--logo-size-footer);
+    margin: auto;
+}
+
+.offproductbasket__backetcart-total{
+
+}
+
+#offproductbasket .offproductbasket__backetcart-actions{
+    position: relative;
+    bottom: -20rem;
+    padding: 0 30px;
+    height: 6rem;
+    flex-direction: column-reverse;
+}
+
+#offproductbasket .offproductbasket__backetcart-actions button{
+    width: 15rem;
+}
+
+#offproductbasket .offproductbasket__backetcart-actions button:first-of-type{
+    background-color: var(--maroon-ara);
+}
+#offproductbasket .offproductbasket__backetcart-actions button:nth-child(2){
+    background-color: var(--duck-blue-ara);
+}
+
+#offproductbasket table img {
+    width: var(--miniature-size);
+}
 /* RESPONSIVE */
 
 @media only screen and (min-width: 576px) {
@@ -208,5 +253,12 @@
 
     .header__hero-section--promotion{
         height:15vh;
+    }
+    #offproductbasket{
+        width: 50vw;
+    }
+
+    #offproductbasket .offproductbasket__backetcart-actions{
+        bottom: -22rem;
     }
 }
