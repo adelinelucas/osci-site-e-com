@@ -16,10 +16,11 @@
     --font-medium-size: 20px;
     --font-light-size: 15px; */
     /* --font-small-size: 12px; */
-    --font-large-size: 1.5rem;
+    --font-large-size: 1.8rem;
     --font-medium-size: 1.3rem;
     --font-light-size: 1.1rem;
     --font-small-size: 0.9rem;
+    --letter-spacing-regular: 1.1px
 }
 
 /* ALL */
@@ -27,6 +28,19 @@
     font-family: 'Inter', sans-serif;
 }
 
+/* CANCEL BOOTSTRAP CSS  */
+.icon-link-hover:hover>.bi{
+    transform: none !important;
+}
+.icon-link{
+    color: var(--maroon-ara);
+    font-size: var(--font-large-size);
+    font-weight: 600;
+}
+
+.icon-link .bi-heart:hover{
+    color: var(--duck-blue-ara)
+}
 /* HEADER */
 .header{
     margin:auto;
@@ -55,16 +69,19 @@
     width: 100%;
 }
 .header__hero-section--promotion p {
-    font-family: Inter;
+    font-family: Inter, Arial, Helvetica, sans-serif;
     font-size: var(--font-medium-size);
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    letter-spacing: var(--letter-spacing-regular);
+    text-shadow: 1px 1px 2px var(--black-ara);
 }
 
 /* CARDS */
 .main__product__card  {
     max-width: 540px;
+    cursor: pointer;
 }
 .main__product__card__bg{
     /* width: 50vw; */
@@ -74,18 +91,33 @@
 }
 
 .main__product__card__infos .card-text{
-    font-size: var(--font-small-size)
+    font-size: var(--font-small-size);
 }
 .main__card__product-actions .icon-link img{
     width: var(--icons-size) ;
 }
 
+.main__product__card:hover{
+    /* box-shadow: 10px 5px 5px var(--black-ara); */
+}
+.main__product__card:hover .main__product__card__bg img {
+    scale: 1.01;
+    /* box-shadow: 10px 5px 5px var(--maroon-ara); */
+}
+.main__product__card:hover .main__card__product-actions .add-product{
+    color: var(--duck-blue-ara);
+    scale: 1.1;
+    border: 1px solid var(--duck-blue-ara);
+}
 /* Newsletter */
 .main__aside__newsletter{
     background-color: var(--duck-blue-ara);
 }
 .main__aside__newsletter h4{
    font-size: var(--font-light-size); 
+}
+.main__aside__newsletter__form {
+    height: 5rem;
 }
 .main__aside__newsletter form label{
     font-size: var(--font-light-size); 
