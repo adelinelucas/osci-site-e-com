@@ -10,8 +10,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <!-- bootstrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body class="container-fluid px-0">
@@ -59,53 +59,51 @@
                 </a>
             </div>
         </div>
-        <div id="accordion">
-          <div class="card">
-            <div class="card-header" id="headingOne">
-              <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Your items
-                </button>
-              </h5>
-            </div>
 
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-              <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accu
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="headingTwo">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Delivery options
-                </button>
-              </h5>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-              <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accu
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="headingThree">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  Promo code
-                </button>
-              </h5>
-            </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-              <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accu
-              </div>
-            </div>
-          </div>
+        <h3 class="checkout_title m-3" style="text-align: center; font-weight: bold;">Checkout</h3>
+        <button style= "width: 100%;text-align: left;box-shadow: 10px 5px 5px #ecf0f4;"class="btn mb-3 p-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Your items  :
+        </button>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body mb-3"style="border: none;">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
         </div>
+      </div>
 
-        <div class="d-grid gap-2 pt-3">
-          <button class="btn btn-dark" type="button">Place Order</button>
+      <button style= "width: 100%;text-align: left;border-radius: 0; box-shadow: 10px 5px 5px #ecf0f4;" class="btn mb-3" type="button" data-toggle="collapse" data-target="#collapsebutton2" aria-expanded="false" aria-controls="collapsebutton2">
+        Promo code :
+        <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/chevron-down.png" alt="chevron-down"/>
+      </button>
+    <div class="collapse" id="collapsebutton2">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control mb-3" placeholder="Enter your promo code" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">submit</button>
         </div>
+      </div>
+    </div>
+
+    <button style= "width: 100%;text-align: left;box-shadow: 10px 5px 5px #ecf0f4;" class="btn mb-3" type="button" data-toggle="collapse" data-target="#collapsebutton3" aria-expanded="false" aria-controls="collapsebutton3">
+      Delivery options :
+    </button>
+  <div class="collapse" id="collapsebutton3">
+    <div class="card card-body mb-2"style="border: none;">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+    </div>
+  </div>
+
+  <button style= "width: 100%; text-align: left;box-shadow: 10px 5px 5px #ecf0f4;" class="btn mb-3" type="button" data-toggle="collapse" data-target="#collapsebutton4" aria-expanded="false" aria-controls="collapsebutton4">
+    Blablibla :
+  </button>
+<div class="collapse" id="collapsebutton4">
+  <div class="card card-body mb-2" style="border: none;">
+    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+  </div>
+</div>
+
+<div class="d-grid gap-2 pt-3">
+  <button class="btn btn-dark" type="button" style="font-weight: 600;">Place Order</button>
+</div>
+
+
     </header>
