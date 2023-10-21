@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <!-- bootstrap icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <!-- bootstrap -->
+    <!-- end bootstrap -->
     <link rel="stylesheet" href="./style.css">
 </head>
 <body class="">
@@ -21,7 +21,7 @@
                     <button class="icon-link icon-link-hover link--maroon-ara">
                         <i class="bi bi-heart"></i>
                     </button>
-                    <button class="icon-link icon-link-hover" data-bs-toggle="offcanvas" href="#offproductbasket" role="button" aria-controls="offproductbasket">
+                    <button class="icon-link icon-link-hover" data-bs-toggle="offcanvas" href="#offproductorder" role="button" aria-controls="offproductorder">
                         <i class="bi bi-bag-fill"></i>
                     </button>
                 </div>
@@ -29,9 +29,23 @@
                     <h1>ARA - Beauty</h1>
                     <img src="./images/logo-transparent-bg.png" alt="ARA, cosmetic brand for all skins.">
                 </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <div>
+
+            <div class="header__menu__and__search row row-cols-2 flex-md-row-reverse">
+                <div class="header__menu__and__search buttons">
+                    <!-- BUTTON TARGET NAVBAR -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!-- END BUTTON TARGET NAVBAR -->
+                    <!-- BUTTON TARGET SEARCH BAR -->
+                    <button class="search-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchBarContent" aria-controls="searchBarContent" aria-expanded="false" aria-label="Toggle search bar"
+                    >
+                        <i class="bi bi-search"></i>
+                    </button>
+                    <!-- END BUTTON TARGET SEARCH BAR -->
+                </div>
+                <!-- NAVBAR CONTENT-->
                 <div class="offcanvas offcanvas-start flex-md-column align-items-md-start flex-md-grow-0" id="navbarSupportedContent" aria-labelledby="offcanvasNavbarLabel" tabindex="-1">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title m-auto" id="navbarSupportedContent">
@@ -41,27 +55,48 @@
                     </div>
                     <div class="offcanvas-body flex-md-row-reverse">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Cleansers</a>
+                            <li class="nav-item my-3 ml-1">
+                                <a class="nav-link active" aria-current="page" href="#">All products</a>
+                                <div class="separator"></div>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item my-3 ms-1">
+                                <a class="nav-link" href="#">Cleansers</a>
+                                <div class="separator"></div>
+                            </li>
+                            <li class="nav-item my-3 ms-1 ms-md-2">
                                 <a class="nav-link" href="#">Moisturizes</a>
+                                <div class="separator"></div>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item my-3 ms-1 ms-md-2">
                                 <a class="nav-link" href="#">Suncare</a>
+                                <div class="separator"></div>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item my-3 ms-1 ms-md-2">
                                 <a class="nav-link" href="#">Men's</a>
+                                <div class="separator"></div>
                             </li>
                         </ul>
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-secondary" type="submit">
-                                <img src="./images/icons/search-icon-50px.png" alt="serch button to find your perfect product" class="navbar-toggle-icon">
-                            </button>
-                        </form>
                     </div>  
                 </div>
+                <!-- NAVBAR CONTENT -->
+                <!-- SEARCH BAR CONTENT -->
+                <div class="offcanvas offcanvas-search-bar offcanvas-start justify-content-center" tabindex="-1" id="searchBarContent" aria-labelledby="Toggle navigation">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title m-auto" id="searchBarContentTitle">
+                            <img class="offcanvas-logo" src="./images/logo-transparent-bg.png" alt="ARA, cosmetic brand for all skins.">
+                        </h5>                          
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Looking for a products" aria-label="Search">
+                            <button class="btn btn-outline-light text-light" type="submit">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <!-- SEARCH BAR CONTENT -->
             </div>
         </nav>
     </header>
@@ -89,8 +124,8 @@
                                 </p>
                             </div>
                             <div class="main__card__prices-infos card-body row row-cols-2 justify-content-end p-0 ">
-                                <p class="text-end"><span class="current-price text-decoration-line-through">22$</span></p>
-                                <p><span class="promotion-price text-danger">15$</span></p>
+                                <p class="text-end w-auto"><span class="current-price text-decoration-line-through">22$</span></p>
+                                <p class="w-auto"><span class="promotion-price text-danger">15$</span></p>
                             </div>
                             <div class="main__card__product-actions card-body row p-1">
                                 <div class="col-8">
@@ -132,8 +167,8 @@
                                 </p>
                             </div>
                             <div class="main__card__prices-infos card-body row row-cols-2 justify-content-end p-0 ">
-                                <p class="text-end"><span class="current-price text-decoration-line-through">22$</span></p>
-                                <p><span class="promotion-price text-danger">15$</span></p>
+                                <p class="text-end w-auto"><span class="current-price text-decoration-line-through">22$</span></p>
+                                <p class="w-auto"><span class="promotion-price text-danger">15$</span></p>
                             </div>
                             <div class="main__card__product-actions card-body row p-1">
                                 <div class="col-8">
@@ -183,8 +218,8 @@
                                 </p>
                             </div>
                             <div class="main__card__prices-infos card-body row row-cols-2 justify-content-end p-0 ">
-                                <p class="text-end"><span class="current-price text-decoration-line-through">22$</span></p>
-                                <p><span class="promotion-price text-danger">15$</span></p>
+                                <p class="text-end w-auto"><span class="current-price text-decoration-line-through">22$</span></p>
+                                <p class="w-auto"><span class="promotion-price text-danger">15$</span></p>
                             </div>
                             <div class="main__card__product-actions card-body row p-1">
                                 <div class="col-8">
@@ -225,8 +260,8 @@
                                 </p>
                             </div>
                             <div class="main__card__prices-infos card-body row row-cols-2 justify-content-end p-0 ">
-                                <p class="text-end"><span class="current-price text-decoration-line-through">22$</span></p>
-                                <p><span class="promotion-price text-danger">15$</span></p>
+                                <p class="text-end w-auto"><span class="current-price text-decoration-line-through">22$</span></p>
+                                <p class="w-auto"><span class="promotion-price text-danger">15$</span></p>
                             </div>
                             <div class="main__card__product-actions card-body row p-1">
                                 <div class="col-8">
@@ -258,7 +293,7 @@
         <!-- End Best sellers cards -->
         <!-- Newsletter -->
         <div class="container my-4 py-2 row  m-auto">
-            <aside class="main__aside__newsletter py-3 px-2 rounded col-12 col-md-7 m-auto ms-md-0">
+            <aside class="main__aside__newsletter py-3 px-2 rounded col-12 col-md-7 m-auto">
                 <h4 class="text-light">Let's keep in touch ! <span>Newsletter inscription</span></h4>
                 <form action="#" class="main__aside__newsletter__form">
                     <div class="form-floating">
@@ -391,69 +426,105 @@
         </div>
     </footer>
 
-    <!-- OFF CANVA PRODUCT BASKET -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offproductbasket" aria-labelledby="offproductbasket">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title m-auto" id="navbarSupportedContent">
-                <img class="offcanvas-logo" src="./images/logo-transparent-bg.png" alt="ARA, cosmetic brand for all skins.">
-            </h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <!-- OFF CANVA PRODUCT ORDER -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offproductorder" aria-labelledby="offproductorder">
+        <div class="offcanvascontainer container">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title m-auto" id="navbarSupportedContent">
+                    <img class="offcanvas-logo" src="./images/logo-transparent-bg.png" alt="ARA, cosmetic brand for all skins.">
+                </h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body px-4 py2 w-100">
+                <div class="offcanvas-head mb-3">
+                    <h5 class="">My Cart</h5>
+                    <div class="separator"></div>
+                </div>
+                <div class="row mb-2 table-responsive">
+                    <table class="table">
+                        <thead class="pb-3">
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <!-- Product Infos-->
+                            <tr class="" >
+                                <td rowspan="2" class="row-underline">
+                                    <img src="./images/products/advanced-snail-96-mucin-power-essence 1.png" class="card-img-top" alt="illustration of the COSRX product">
+                                </td>
+                                <td rowspan="2" class="row-underline">COSRX</td>
+                                <td rowspan="2" class="row-underline" >
+                                    <span>15</span>$
+                                </td>
+                                <td rowspan="2" class="row-underline">
+                                    1
+                                </td>
+                                <td rowspan="1" class="no-underline">
+                                    <span>15</span>$
+                                </td>
+                            </tr>
+                            <tr >
+                                <td rowspan="1" class="d-flex justify-content-end row-underline">
+                                    <button type="button">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>  
+                            </tr>                          
+                            <!-- END Product Infos-->
+                            <!-- Product Infos-->
+                            <tr class="" >
+                                <td rowspan="2" class="row-underline">
+                                    <img src="./images/products/inisfree.png" class="card-img-top" alt="illustration of the COSRX product">
+                                </td>
+                                <td rowspan="2" class="row-underline">COSRX</td>
+                                <td rowspan="2" class="row-underline" >
+                                    <span>15</span>$
+                                </td>
+                                <td rowspan="2" class="row-underline">
+                                    2
+                                </td>
+                                <td rowspan="1" class="no-underline">
+                                    <span>30</span>$
+                                </td>
+                            </tr>
+                            <tr >
+                                <td rowspan="1" class="d-flex justify-content-end row-underline">
+                                    <button type="button">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>  
+                            </tr>
+                            <!-- END Product Infos-->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="offproductorder__ordercart-total justify-content-end  row row-cols-2 align-items-center my-4 w-100">
+                    <div class="offproductorder__ordercart-total-price-infos col-4 col-md-2">
+                        <h5 class="text-end">Total :</h5>
+                        <div class="separator"></div>
+                    </div>
+                    <div class="d-flex align-items-center col-1">
+                        <p class="text-end ">45<span class="money_unit">$</span></p>
+                    </div>
+                </div>
+                <div class="offproductorder__orderdetails row row-cols-1 justify-content-start my-4">
+                    <a href="./junior.html" class="link-order-details d-flex align-items-center">
+                        See order details
+                        <i class="bi bi-binoculars-fill"></i>
+
+                    </a>
+                </div>
+                <div class="row row-cols-1 row-cols-md-2 offproductorder__backetcart-actions justify-content-between flex-md-row-reverse align-items-center my-4">
+                    <button type="button" class="btn text-light m-auto">Valid my cart</button>
+                    <button type="button" class="btn text-light m-auto" type="button" data-bs-dismiss="offcanvas" aria-label="Close">Back to my shopping</button>
+                </div>
+            </div>
         </div>
-        <div class="offcanvas-body">
-            <div class="offcanvas-head">
-                <h5 class="text-decoration-underline">My Cart</h5>
-            </div>
-            <div class="row mb-2">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col-2"></th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Total</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody class="table-group-divider">
-                        <tr>
-                            <th scope="row">
-                                <img src="./images/products/advanced-snail-96-mucin-power-essence 1.png" class="card-img-top" alt="illustration of the COSRX product">
-                            </th>
-                            <td>COSRX</td>
-                            <td><span>15</span>$</td>
-                            <td>
-                                1
-                            </td>
-                            <td><span>15</span>$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">X</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <img src="./images/products/inisfree.png" class="card-img-top" alt="illustration of the COSRX product">
-                            </th>
-                            <td>COSRX</td>
-                            <td><span>15</span>$</td>
-                            <td>2</td>
-                            <td><span>30</span>$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">X</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="offproductbasket__backetcart-total row row-cols-1 justify-content-end ">
-                <h5 class="text-end text-decoration-underline">Total</h5>
-                <p class="text-end">45<span>$</span></p>
-            </div>
-            <div class="row row-cols-1 row-cols-md-2 offproductbasket__backetcart-actions justify-content-between flex-md-row-reverse align-items-center">
-                <button type="button" class="btn text-light">Valid my cart</button>
-                <button type="button" class="btn text-light" type="button" data-bs-dismiss="offcanvas" aria-label="Close">Back to my shopping</button>
-            </div>
-        </div>
-      </div>
+    </div>
 </body>
 </html>
