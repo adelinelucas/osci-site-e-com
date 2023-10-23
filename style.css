@@ -211,6 +211,11 @@ button:hover i{
     left: 0;
 }
 
+#offproductorder .offcanvas-header .btn-close{
+    margin-top: calc(-0.5 * var(--bs-offcanvas-padding-y));
+    margin-right: calc(-0.5 * var(--bs-offcanvas-padding-x));
+}
+
 #offproductorder .offcanvascontainer {
     height: 100vh;
     position: relative;
@@ -357,14 +362,13 @@ tr .row-underline button{
     .main__aside__newsletter form img{
         right: -90%;
     }
+    .search-toggler{
+        display: none;
+    }
 }
 @media only screen and (min-width: 992px){
     #navbarSupportedContent{
         flex-direction: row-reverse;
-    }
-
-    .search-toggler{
-        display: none;
     }
 
     .header__hero-section--promotion{
