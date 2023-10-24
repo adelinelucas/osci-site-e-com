@@ -106,43 +106,59 @@ const generateCatalogueArticleHTMLEl = (data) => {
 }
 
 const getSearchedProducts = (searchInput, containerElement, productsArray) =>{
-    let event = ''
-    let elToListen = ''
+    let event = '';
+    let searchedValue ;
+    let elToListen = searchInput
     let searchModal = document.querySelector('#searchBarContent');
     let closeModalBtn = document.querySelector('#searchBarContent button');
-    console.log(closeModalBtn)
+    console.log(searchInput)
+    let inputEl; 
     if(searchInput.dataset.type === 'input'){
         event = 'keyup';
-        elToListen = searchInput
-    }else{
+    }
+    if(searchInput.dataset.type === 'btn'){
         event = 'click';
         let parentEl = searchInput.parentElement;
-        elToListen = parentEl.querySelector('input')
+        inputEl = parentEl.querySelector('input')
     }
+
+    // LISTENING EVENT
     elToListen.addEventListener(event, (e)=>{
         let matchProducts = []
         containerElement.innerHTML = '';
         e.preventDefault();
-        let searchedValue = e.target.value;
+        // get input value
+        if(event === 'keyup'){
+            searchedValue = e.target.value;
+        }
+        if(event === 'click'){
+            searchedValue = inputEl.value;
+        }
+        // 
+
         productsArray.filter((product) =>{
             if((product.title).toLowerCase().includes(searchedValue) || (product.resume).toLowerCase().includes(searchedValue)){
                 matchProducts.push(product)
             }
         })
-        matchProducts.forEach((product) =>{
-            containerElement.innerHTML += generateCatalogueArticleHTMLEl(product)
-        })
-        console.log(elToListen)
-        console.log(event)
+        if(matchProducts.length === 0){
+            containerElement.innerHTML += `<div>
+                <p>Oops, no product available ! </p>
+            </div>`
+        }else{
+            matchProducts.forEach((product) =>{
+                containerElement.innerHTML += generateCatalogueArticleHTMLEl(product)
+            })
+        }
+        if(e.code ==='Enter' ){
+            closeModalBtn.click();
+            elToListen.value= ''
+        }
         if(event === 'click'){
-            closeModalBtn.click()
-            }
-        // if(searchModal){
-        //     console.log(searchModal)
-        //     let isModaleDisplayed = searchModal.getAttribute('aria-modal')
-        //     console.log(isModaleDisplayed)
-        //     if(isModaleDisplayed) 
-        // }
+            closeModalBtn.click();
+            // empty input value
+            inputEl.value = ''
+        }
     })
 }
 
@@ -173,7 +189,7 @@ document.addEventListener('DOMContentLoaded', async()=>{
     // search bar
     const searchbar = document.getElementById('search-input');
     const searchbutton = document.getElementById('search-button');
-    console.log(searchbar)
+
     getSearchedProducts(searchbar, articlesContainer, myProductsSanitized)
     getSearchedProducts(searchbutton, articlesContainer, myProductsSanitized)
 
