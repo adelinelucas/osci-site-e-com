@@ -6,3 +6,9 @@
 
 NB: To install json-server on your machine do the following command : 
     >> npm install -g json-server
+
+## PRINT CATALOGUE PAGE
+Catalogue page get products from products.json. 
+To allow the page to work: 
+    1. start json server on products.json file. 
+    2. open catalogue-page.html with a live serve programm.

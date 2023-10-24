@@ -110,6 +110,7 @@ const getSearchedProducts = (searchInput, containerElement, productsArray) =>{
     let elToListen = ''
     let searchModal = document.querySelector('#searchBarContent');
     let closeModalBtn = document.querySelector('#searchBarContent button');
+    console.log(closeModalBtn)
     if(searchInput.dataset.type === 'input'){
         event = 'keyup';
         elToListen = searchInput
@@ -133,7 +134,9 @@ const getSearchedProducts = (searchInput, containerElement, productsArray) =>{
         })
         console.log(elToListen)
         console.log(event)
-        // if(event === 'click') {closeModalBtn.click()}
+        if(event === 'click'){
+            closeModalBtn.click()
+            }
         // if(searchModal){
         //     console.log(searchModal)
         //     let isModaleDisplayed = searchModal.getAttribute('aria-modal')
