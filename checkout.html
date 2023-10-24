@@ -149,6 +149,7 @@
                               <select class="custom-select d-block w-100" id="country" required="">
                                   <option value="">Choose...</option>
                                   <option>United States</option>
+                                  <option>France</option>
                               </select>
                               <div class="invalid-feedback"> Please select a valid country. </div>
                           </div>
@@ -157,6 +158,7 @@
                               <select class="custom-select d-block w-100" id="state" required="">
                                   <option value="">Choose...</option>
                                   <option>California</option>
+                                  <option>Ile de France</option>
                               </select>
                               <div class="invalid-feedback"> Please provide a valid state. </div>
                           </div>
@@ -169,18 +171,19 @@
                       <hr class="mb-4">
                       <div class="custom-control custom-checkbox">
                           <input type="checkbox" class="custom-control-input" id="same-address">
-                          <label class="custom-control-label" for="same-address">Delivery address is the same as billing address</label>
+                          <label class="custom-control-label" for="same-address">Delivery address same as billing address</label>
                       </div>
                       <div class="custom-control custom-checkbox">
                           <input type="checkbox" class="custom-control-input" id="save-info">
                           <label class="custom-control-label" for="save-info">Save this information</label>
                       </div>
-                      <hr class="mb-4">
-                      <h4 class="mb-3">Payment</h4>
+                      <hr class="mb">
+                      <h4 class="mb-2">Payment Options</h4>
                       <div class="d-block my-3">
                           <div class="buttons-payment p-4">
                             <button class="button-google"></button>
-                            <button class="button-paypal">Paypal</button>
+                            <button class="button-paypal m-3">Paypal</button>
+                            <button class="button-apple">Apple Pay</button>
                           </div>
                           <div class="custom-control custom-radio">
                             <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
