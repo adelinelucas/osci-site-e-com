@@ -16,7 +16,7 @@
     <!-- CSS PERSONNALISE-->
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./cardpage.css" />
-    <script src="cardepage.js" defer></script>
+    <script src="./cardpage.js" defer ></script>
 
     <!-- END CSS PERSONNALISE-->
   </head>
@@ -166,7 +166,7 @@
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                           <button class="btn btn-link px-2"
-                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                            onclick="this.parentNode.querySelectorall('input[type=number]').stepDown()">
                             <i class="fas fa-minus"></i>
                           </button>
           
@@ -174,7 +174,7 @@
                             class="form-control form-control-sm" />
           
                           <button class="btn btn-link px-2"
-                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                            onclick="this.parentNode.querySelectorall('input[type=number]').stepUp()">
                             <i class="fas fa-plus"></i>
                           </button>
                         </div>
@@ -182,7 +182,7 @@
                           <h5 class="mb-0">$15.00</h5>
                         </div>
                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                          <a href="#!" class="text-danger"><i class="bi bi-trash red"></i></a>
+                          <a href="#!" class="text-danger deletebtn"><i class="bi bi-trash red"></i></a>
                         </div>
                       </div>
                     </div>
@@ -202,7 +202,7 @@
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                           <button class="btn btn-link px-2"
-                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                            onclick="this.parentNode.querySelectorall('input[type=number]').stepDown()">
                             <i class="fas fa-minus"></i>
                           </button>
           
@@ -210,7 +210,7 @@
                             class="form-control form-control-sm" />
           
                           <button class="btn btn-link px-2"
-                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                            onclick="this.parentNode.querySelectorall('input[type=number]').stepUp()">
                             <i class="fas fa-plus"></i>
                           </button>
                         </div>
@@ -218,7 +218,7 @@
                           <h5 class="mb-0">$15.00</h5>
                         </div>
                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                          <a href="#!" class="text-danger"><i class="bi bi-trash red"></i></a>
+                          <a href="#!" class="text-danger  deletebtn"><i class="bi bi-trash red"></i></a>
                         </div>
                       </div>
                     </div>
@@ -360,5 +360,7 @@
                 </div>
             </footer>
         </section> 
+  
+        
         </body>
         </html>
