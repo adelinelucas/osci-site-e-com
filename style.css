@@ -113,6 +113,14 @@ button:hover i{
 .header__menu__and__search .offcanvas-body li:hover>.separator{
     height: 3px;
 }
+
+#numCartItems{
+    position: relative;
+    font-size: var(--font-xsmall-size);
+    top: 10px;
+    left: 25px;
+    color: white;
+}
 /* HERO SECTION */
 .header__hero-section{
     padding: 0;
