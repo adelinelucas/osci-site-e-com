@@ -1,3 +1,4 @@
+
 const isCategoryError = (product) =>{
     let isIndexString = product.category.filter((idx) => typeof idx !== 'string')
     const condition_erreur = [
@@ -61,4 +62,5 @@ export const sanitizedProductsList = (productsArray) =>{
     })
     return sanitizedProductsArray;
 }
+
 
