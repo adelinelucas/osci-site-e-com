@@ -17,30 +17,32 @@
     <script src="./catalogue-app.js"  type="module" defer></script>
 </head>
 <body class="">
-    <header class="header container-xxl">
-        <nav class="navbar navbar-expand-md bg-white">
-            <div class="container-lg flex-row-reverse">
-                <div class="header__products__actions row row-cols-2">
-                    <div class="col"><button class="icon-link icon-link-hover link--maroon-ara">
-                        <i class="bi bi-heart"></i>
-                    </button></div>
-                    <div class="col"> 
-                        <button class="icon-link icon-link-hover position-relative" data-bs-toggle="offcanvas" href="#offproductorder" role="button" aria-controls="offproductorder">
-                            <div class="" id="numCartItems"></div>
-                            <i class="bi bi-bag-fill"></i>
-                        </button></div>
-                   
-                </div>
+    <header class="header container">
+        <nav class="navbar navbar-expand-md bg-white row flex-row-reverse w-100 m-auto">
+            <div class="col-6 d-flex align-items-center justify-content-md-between">
                 <div class="header__title d-flex align-items-center navbar-brand">
                     <h1>ARA - Beauty</h1>
                     <img src="./images/logo-transparent-bg.png" alt="ARA, cosmetic brand for all skins.">
                 </div>
-            <div>
+                <div class="header__products__actions row row-cols-2">
+                    <div class="col">
+                        <button class="icon-link icon-link-hover link--maroon-ara">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                    </div>
+                    <div class="col"> 
+                        <button class="icon-link icon-link-hover position-relative" data-bs-toggle="offcanvas" href="#offproductorder" role="button" aria-controls="offproductorder">
+                            <div class="" id="numCartItems"></div>
+                            <i class="bi bi-bag-fill"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-            <div class="header__menu__and__search">
+            <div class="header__menu__and__search col-3 col-md-6">
                 <div class="header__menu__and__search buttons row row-cols-2 flex-md-row-reverse">
                     <!-- BUTTON TARGET NAVBAR -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler d-flex" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <!-- END BUTTON TARGET NAVBAR -->

@@ -119,6 +119,10 @@ button:hover i{
 .header__products__actions button:nth-child(2):hover div i{
     color: var(--white-ara);
 }
+
+.header__menu__and__search #navbarSupportedContent li{
+    min-width: fit-content;
+}
 #numCartItems{
     position: absolute;
     font-size: var(--font-xsmall-size);
@@ -205,6 +209,10 @@ button:hover i{
 }
 
 /* FOOTER */
+
+/* .footer__socials{
+    width: fit-content;
+} */
 .footer__hero img{
     width: var(--logo-size-footer);
 }
