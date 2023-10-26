@@ -42,6 +42,21 @@ const displayBestSellerTitle = (param) =>{
     }
 }
 
+const addToFavouriteMessage = () =>{
+    console.log('add to favourite message')
+    let addToFavouriteContainer = document.getElementById('alert-favourite-message')
+    let addToFavouriteEL = document.createElement('div');
+    let favouriteMessage = `<button type="button" class="btn favourite-alert-message" id="liveAlertBtn">Product add to your favourite ! </button>
+    `
+    addToFavouriteEL.innerHTML = favouriteMessage;
+    addToFavouriteContainer.append(addToFavouriteEL) 
+
+    setTimeout(()=>{
+        addToFavouriteEL.innerHTML = ''
+    }, '3500')
+
+}
+
 const addProductToFavourite = () =>{
     let favouritesBtns = document.querySelectorAll('.main__articles_container .add-product-to-favorite')
     let favouriteCountNav = document.querySelector('.header__products__actions .bi-heart')
@@ -59,6 +74,7 @@ const addProductToFavourite = () =>{
                 countFavouriteItem += 1;
                 btn.classList.add('bi-heart-fill')
                 btn.classList.remove('bi-heart')
+                addToFavouriteMessage()
             }
             favouriteEl.innerHTML = countFavouriteItem;
             
@@ -215,6 +231,7 @@ const displayProductsInDOM = (containerElement, categoriesTypes, productsArray) 
         })
     })
 }
+
 
 const displayBestSellerInDOM = (containerElement, productsArray) =>{
     let bestsellersproducts = productsArray.filter((product) => product.isBestSeller)

@@ -437,6 +437,18 @@ tr .row-underline button{
 .offproductorder__ordercart-total-price-infos div {
     width: fit-content;
 }
+
+/* Alert favourite message */
+
+#alert-favourite-message{
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
+
 /* RESPONSIVE */
 
 @media only screen and (min-width: 576px) {
