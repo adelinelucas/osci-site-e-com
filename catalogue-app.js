@@ -18,6 +18,7 @@ const getProductsData = async(url) =>{
 // GOBLALES
 // update number of items in cart 
 let numberCartItem = 0
+let countFavouriteItem  = 0
 let numberCartItemEl = document.getElementById('numCartItems')
 
 const loaderEl = () =>{
@@ -41,6 +42,67 @@ const displayBestSellerTitle = (param) =>{
     }
 }
 
+const addProductToFavourite = () =>{
+    let favouritesBtns = document.querySelectorAll('.main__articles_container .add-product-to-favorite')
+    let favouriteCountNav = document.querySelector('.header__products__actions .bi-heart')
+    let favouriteEl = document.getElementById('numFavouriteItems')
+    
+    favouritesBtns.forEach((btn) =>{
+        let listenAddFavourite = btn.addEventListener('click', ()=>{
+            console.log(btn)
+            
+            if(btn.classList.contains('bi-heart-fill')){
+                countFavouriteItem -= 1;
+                btn.classList.remove('bi-heart-fill')
+                btn.classList.add('bi-heart')
+            }else{
+                countFavouriteItem += 1;
+                btn.classList.add('bi-heart-fill')
+                btn.classList.remove('bi-heart')
+            }
+            favouriteEl.innerHTML = countFavouriteItem;
+            
+            if(countFavouriteItem > 0 ){
+                favouriteCountNav.classList.add('bi-heart-fill')
+                favouriteCountNav.classList.remove('bi-heart')
+            }else{
+                favouriteCountNav.classList.remove('bi-heart-fill')
+                favouriteCountNav.classList.add('bi-heart')
+            }
+        })
+        removeEventListener('click', listenAddFavourite)
+    }) 
+}
+
+const addBestSellerToFavourite = () =>{
+    let favouritesBtns = document.querySelectorAll('.main__best-sellers .add-product-to-favorite')
+    let favouriteCountNav = document.querySelector('.header__products__actions .bi-heart')
+    let favouriteEl = document.getElementById('numFavouriteItems')
+    
+    favouritesBtns.forEach((btn) =>{
+        let listenAddFavourite = btn.addEventListener('click', ()=>{           
+            if(btn.classList.contains('bi-heart-fill')){
+                countFavouriteItem -= 1;
+                btn.classList.remove('bi-heart-fill')
+                btn.classList.add('bi-heart')
+            }else{
+                countFavouriteItem += 1;
+                btn.classList.add('bi-heart-fill')
+                btn.classList.remove('bi-heart')
+            }
+            favouriteEl.innerHTML = countFavouriteItem;
+            
+            if(countFavouriteItem > 0 ){
+                favouriteCountNav.classList.add('bi-heart-fill')
+                favouriteCountNav.classList.remove('bi-heart')
+            }else{
+                favouriteCountNav.classList.remove('bi-heart-fill')
+                favouriteCountNav.classList.add('bi-heart')
+            }
+        })
+        removeEventListener('click', listenAddFavourite)
+    }) 
+}
 const displayJS = (productsList) =>{
     let myProductsSanitized = sanitizedProductsList(productsList)
 
@@ -67,7 +129,10 @@ const displayJS = (productsList) =>{
         }
         getSearchedProductsV2(e.target.value, articlesContainer, myProductsSanitized)
         manageCartItemCatalogue()
+        // manage favourite feature
+        addProductToFavourite()
     })
+    
 
     // manage click on search button
     searchbutton.addEventListener('click', (e) =>{
@@ -76,9 +141,13 @@ const displayJS = (productsList) =>{
         closeSearchModal()
         searchbar.value = ''
         manageCartItemCatalogue()
+        // manage favourite feature
+        addProductToFavourite()
     })
     manageCartItemCatalogue()    
     manageCartItemBestSeller()
+    // manage favourite feature
+    addProductToFavourite()
 }
 // GET DATA ON PAGE LOAD
 document.addEventListener('DOMContentLoaded', async()=>{
@@ -140,6 +209,8 @@ const displayProductsInDOM = (containerElement, categoriesTypes, productsArray) 
 
             })
             manageCartItemCatalogue()
+            // manage favourite feature
+            addProductToFavourite()
             return filteredProducts;
         })
     })
@@ -150,6 +221,7 @@ const displayBestSellerInDOM = (containerElement, productsArray) =>{
     bestsellersproducts.forEach(( product) =>{
         containerElement.innerHTML += generateCatalogueArticleHTMLEl(product)
     })
+    addBestSellerToFavourite()
 }
 
 // Add an item in cart on click on "+" element of the card

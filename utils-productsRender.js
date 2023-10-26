@@ -30,7 +30,7 @@ export const generateCatalogueArticleHTMLEl = (data) => {
                 <div class="col-4">
                     <div>
                         <a class="icon-link icon-link-hover link--maroon-ara">
-                            <i class="bi bi-heart" id="add-product-to-favorite"></i>
+                            <i class="bi bi-heart add-product-to-favorite"></i>
                         </a>
                     </div>
                 </div>
