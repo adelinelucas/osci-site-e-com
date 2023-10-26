@@ -5,15 +5,192 @@
 */
 
 // IMPORTS
-import {sanitizedProductsList} from './utils.js';
+import {sanitizedProductsList} from './utils-sanitizeProducts.js';
+import {generateCatalogueArticleHTMLEl,renderCartItemsInNav} from './utils-productsRender.js';
 
 // FUNCTIONS
 const getProductsData = async(url) =>{
     let response = await fetch(url);
-    console.log(response)
-        let data = await response.json();
-        return data;
+    let data = await response.json();
+    return data;
 }
+
+// GOBLALES
+// update number of items in cart 
+let numberCartItem = 0
+let countFavouriteItem  = 0
+let numberCartItemEl = document.getElementById('numCartItems')
+
+const loaderEl = () =>{
+    let loadingEl = document.createElement('div');
+    loadingEl.classList.add("loading-container", "d-flex", "justify-content-center")
+    loadingEl.innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`
+    let heroContainer = document.querySelector('.header__hero-section')
+    heroContainer.append(loadingEl)
+}
+const remove_loaderEl = () =>{
+    let loadingEl = document.querySelector('.loading-container')
+    loadingEl.remove()
+}
+
+const displayBestSellerTitle = (param) =>{
+    let bestSellerTitle = document.querySelector('.main__best-sellers__title')
+    if (param){
+        bestSellerTitle.style.display = "block"
+    }else{
+        bestSellerTitle.style.display= 'none'
+    }
+}
+
+const addToFavouriteMessage = () =>{
+    console.log('add to favourite message')
+    let addToFavouriteContainer = document.getElementById('alert-favourite-message')
+    let addToFavouriteEL = document.createElement('div');
+    let favouriteMessage = `<button type="button" class="btn favourite-alert-message" id="liveAlertBtn">Product add to your favourite ! </button>
+    `
+    addToFavouriteEL.innerHTML = favouriteMessage;
+    addToFavouriteContainer.append(addToFavouriteEL) 
+
+    setTimeout(()=>{
+        addToFavouriteEL.innerHTML = ''
+    }, '3500')
+
+}
+
+const addProductToFavourite = () =>{
+    let favouritesBtns = document.querySelectorAll('.main__articles_container .add-product-to-favorite')
+    let favouriteCountNav = document.querySelector('.header__products__actions .bi-heart')
+    let favouriteEl = document.getElementById('numFavouriteItems')
+    
+    favouritesBtns.forEach((btn) =>{
+        let listenAddFavourite = btn.addEventListener('click', ()=>{
+            console.log(btn)
+            
+            if(btn.classList.contains('bi-heart-fill')){
+                countFavouriteItem -= 1;
+                btn.classList.remove('bi-heart-fill')
+                btn.classList.add('bi-heart')
+            }else{
+                countFavouriteItem += 1;
+                btn.classList.add('bi-heart-fill')
+                btn.classList.remove('bi-heart')
+                addToFavouriteMessage()
+            }
+            favouriteEl.innerHTML = countFavouriteItem;
+            
+            if(countFavouriteItem > 0 ){
+                favouriteCountNav.classList.add('bi-heart-fill')
+                favouriteCountNav.classList.remove('bi-heart')
+            }else{
+                favouriteCountNav.classList.remove('bi-heart-fill')
+                favouriteCountNav.classList.add('bi-heart')
+            }
+        })
+        removeEventListener('click', listenAddFavourite)
+    }) 
+}
+
+const addBestSellerToFavourite = () =>{
+    let favouritesBtns = document.querySelectorAll('.main__best-sellers .add-product-to-favorite')
+    let favouriteCountNav = document.querySelector('.header__products__actions .bi-heart')
+    let favouriteEl = document.getElementById('numFavouriteItems')
+    
+    favouritesBtns.forEach((btn) =>{
+        let listenAddFavourite = btn.addEventListener('click', ()=>{           
+            if(btn.classList.contains('bi-heart-fill')){
+                countFavouriteItem -= 1;
+                btn.classList.remove('bi-heart-fill')
+                btn.classList.add('bi-heart')
+            }else{
+                countFavouriteItem += 1;
+                btn.classList.add('bi-heart-fill')
+                btn.classList.remove('bi-heart')
+            }
+            favouriteEl.innerHTML = countFavouriteItem;
+            
+            if(countFavouriteItem > 0 ){
+                favouriteCountNav.classList.add('bi-heart-fill')
+                favouriteCountNav.classList.remove('bi-heart')
+            }else{
+                favouriteCountNav.classList.remove('bi-heart-fill')
+                favouriteCountNav.classList.add('bi-heart')
+            }
+        })
+        removeEventListener('click', listenAddFavourite)
+    }) 
+}
+const displayJS = (productsList) =>{
+    let myProductsSanitized = sanitizedProductsList(productsList)
+
+    // display products
+    let categoriesTypes = document.querySelectorAll('.offcanvas-body ul li a')
+    const articlesContainer = document.getElementById('articles-container')
+    displayProductsInDOM(articlesContainer, categoriesTypes,myProductsSanitized)
+
+    // display bestSeller products
+    const bestSellerContainer = document.getElementById('bestseller-container')
+    displayBestSellerInDOM(bestSellerContainer, myProductsSanitized)
+
+    // search products
+    const searchbar = document.getElementById('search-input');
+    const searchbutton = document.getElementById('search-button');
+
+    // manage shearch bar
+    searchbar.addEventListener('keyup', (e)=>{
+        e.preventDefault();
+        if(e.code ==='Enter' ){
+            closeSearchModal()
+            searchbar.blur()
+            return
+        }
+        getSearchedProductsV2(e.target.value, articlesContainer, myProductsSanitized)
+        manageCartItemCatalogue()
+        // manage favourite feature
+        addProductToFavourite()
+    })
+    
+
+    // manage click on search button
+    searchbutton.addEventListener('click', (e) =>{
+        e.preventDefault();
+        getSearchedProductsV2(searchbar.value, articlesContainer, myProductsSanitized)
+        closeSearchModal()
+        searchbar.value = ''
+        manageCartItemCatalogue()
+        // manage favourite feature
+        addProductToFavourite()
+    })
+    manageCartItemCatalogue()    
+    manageCartItemBestSeller()
+    // manage favourite feature
+    addProductToFavourite()
+}
+// GET DATA ON PAGE LOAD
+document.addEventListener('DOMContentLoaded', async()=>{
+    const url = 'http://localhost:3000/products';
+    /*
+    errors products test
+    const urlTestProducts = 'http://localhost:3004/products';
+    let errorproductsList = await getProductsData(urlTestProducts)
+    let myProducts = sanitizedProductsList(errorproductsList)
+    */
+
+    let productsList = await getProductsData(url)
+    let catagoriesNames = getCategoriesNames()
+
+    // loading of spinner timer while fetching data from json file
+    loaderEl()
+    displayBestSellerTitle(false)
+    let loadingProducts = setTimeout(()=>{
+        remove_loaderEl() 
+        displayJS(productsList)
+        displayBestSellerTitle(true)
+    },"1500")
+
+    
+})
+/////
+//////
 
 // GET CATEGORY NAME USING DATA ATTRIBUT
 const getCategoriesNames = () =>{
@@ -25,16 +202,16 @@ const getCategoriesNames = () =>{
     return categoriesList
 }
 
-const filterProductsByCategories = (containerElement, categoriesTypes, productsArray) =>{
+// 
+const displayProductsInDOM = (containerElement, categoriesTypes, productsArray) =>{
     let filteredProducts = productsArray;
+    // generate products loading the page
     filteredProducts.forEach((product) =>{
         containerElement.innerHTML += generateCatalogueArticleHTMLEl(product)
-
     })
+    // generate products if filtering by categories
     categoriesTypes.forEach((category) =>{
         category.addEventListener('click', ()=>{
-            // console.log(category.dataset.category)
-            // console.log('line34', category)
             containerElement.innerHTML = ''
             filteredProducts = productsArray.filter((product) => {
                 if(category.dataset.category === 'all' ){
@@ -43,136 +220,94 @@ const filterProductsByCategories = (containerElement, categoriesTypes, productsA
                     return product.category.includes(category.dataset.category)
                 }
             })
-            console.log(filteredProducts)
             filteredProducts.forEach((product) =>{
                 containerElement.innerHTML += generateCatalogueArticleHTMLEl(product)
 
             })
+            manageCartItemCatalogue()
+            // manage favourite feature
+            addProductToFavourite()
             return filteredProducts;
         })
     })
 }
 
-const generateBestSellerArticles = (containerElement, productsArray) =>{
+
+const displayBestSellerInDOM = (containerElement, productsArray) =>{
     let bestsellersproducts = productsArray.filter((product) => product.isBestSeller)
-    console.log(bestsellersproducts)
     bestsellersproducts.forEach(( product) =>{
         containerElement.innerHTML += generateCatalogueArticleHTMLEl(product)
     })
+    addBestSellerToFavourite()
 }
 
-
-const generateCatalogueArticleHTMLEl = (data) => {
-    return `<article class="main__product__card card mb-md-5 mb-3 mt-3 border-0" style="max-width: 540px;">
-    <div class="row row-cols-2 g-0">
-        <div class="col-5 main__product__card__bg d-flex align-items-center h-75">
-            <img src=${data.img} class="card-img-top" alt="${data.title} - ${data.resume}">                
-        </div>
-        <div class="col-7 main__product__card__infos">
-            <div class="card-body">
-                <h5 class="card-title fw-bolder">${data.title}<span> - ${data.resume}</span></h5>
-                <p class="card-text">${(data.description).slice(0,50)}...</p>
-            </div>
-            <div class="main__card__prices-infos card-body row row-cols-2 justify-content-end p-0 ">
-                <p class="text-end w-auto"><span class="current-price text-decoration-line-through">${data.price}</span>$</p>
-                <p class="w-auto"><span class="promotion-price text-danger">${data.oldPrice}$</span></p>
-            </div>
-            <div class="main__card__product-actions card-body row p-1">
-                <div class="col-8">
-                    <div class="row justify-content-evenly">
-                        <div class="col-2">
-                            <button class="btn btn-light bg-white rounded-pill border-dark">1</button>
-                        </div>
-                        <div class=" col-2">
-                            <button class="btn btn-light bg-white add-product" id="add-product-to-cart">+</button>
-                        </div>
-                        <div class=" col-2">
-                            <button class="btn btn-light bg-white text-dark remove-product" id="remove-product-to-cart">-</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div>
-                        <a class="icon-link icon-link-hover link--maroon-ara">
-                            <i class="bi bi-heart" id="add-product-to-favorite"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</article>`;
-    
-}
-
-const getSearchedProducts = (searchInput, containerElement, productsArray) =>{
-    let event = ''
-    let elToListen = ''
-    let searchModal = document.querySelector('#searchBarContent');
-    let closeModalBtn = document.querySelector('#searchBarContent button');
-    if(searchInput.dataset.type === 'input'){
-        event = 'keyup';
-        elToListen = searchInput
-    }else{
-        event = 'click';
-        let parentEl = searchInput.parentElement;
-        elToListen = parentEl.querySelector('input')
-    }
-    elToListen.addEventListener(event, (e)=>{
-        let matchProducts = []
-        containerElement.innerHTML = '';
-        e.preventDefault();
-        let searchedValue = e.target.value;
-        productsArray.filter((product) =>{
-            if((product.title).toLowerCase().includes(searchedValue) || (product.resume).toLowerCase().includes(searchedValue)){
-                matchProducts.push(product)
-            }
+// Add an item in cart on click on "+" element of the card
+const addItemsInCart =(btns) =>{
+    btns.forEach((btn)=>{
+        let addItem = btn.addEventListener('click', ()=>{
+            numberCartItem += 1
+            renderCartItemsInNav(numberCartItemEl, numberCartItem)
         })
-        matchProducts.forEach((product) =>{
-            containerElement.innerHTML += generateCatalogueArticleHTMLEl(product)
-        })
-        console.log(elToListen)
-        console.log(event)
-        // if(event === 'click') {closeModalBtn.click()}
-        // if(searchModal){
-        //     console.log(searchModal)
-        //     let isModaleDisplayed = searchModal.getAttribute('aria-modal')
-        //     console.log(isModaleDisplayed)
-        //     if(isModaleDisplayed) 
-        // }
+        btn.removeEventListener('click', addItem)
     })
 }
 
-// GET DATA ON PAGE LOAD
-document.addEventListener('DOMContentLoaded', async()=>{
-    const url = 'http://localhost:3000/products';
-    /*
-    errors products test
-    const urlTestProducts = 'http://localhost:3004/products';
-    let errorproductsList = await getProductsData(urlTestProducts)
-    let myProducts = sanitizedProductsList(errorproductsList)
-    */
-    let productsList = await getProductsData(url)
-    let catagoriesNames = getCategoriesNames()
-    let myProductsSanitized = sanitizedProductsList(productsList)
-    console.log(myProductsSanitized)
+// Remove an item in cart on click on "+" element of the card
+const removeItemsInCart =( btnsEl) => {
+    btnsEl.forEach((btn)=>{
+        let removeItem=  btn.addEventListener('click', ()=>{
+            if(numberCartItem <= 0) {
+                numberCartItem = 0
+            }else{
+                numberCartItem -= 1
+            }
+            renderCartItemsInNav(numberCartItemEl, numberCartItem)
+        })
+        btn.removeEventListener('click', removeItem)
+    })
+}
 
-    // filter products
-    let categoriesTypes = document.querySelectorAll('.offcanvas-body ul li a')
-    const articlesContainer = document.getElementById('articles-container')
+// manage Cart Item 
+const manageCartItemCatalogue = () =>{
+    let addItemToCartBtns = document.querySelectorAll('#articles-container .add-product-to-cart')
+    let removeItemToCartBtns = document.querySelectorAll(' #articles-container .remove-product-to-cart')
+    addItemsInCart(addItemToCartBtns)
+    removeItemsInCart(removeItemToCartBtns)
+}
+const manageCartItemBestSeller = () =>{
+    let addItemToCartBtns = document.querySelectorAll('#bestseller-container .add-product-to-cart')
+    let removeItemToCartBtns = document.querySelectorAll(' #bestseller-container .remove-product-to-cart')
+    addItemsInCart(addItemToCartBtns)
+    removeItemsInCart(removeItemToCartBtns)
+}
 
-    let productFilter = filterProductsByCategories(articlesContainer, categoriesTypes,myProductsSanitized)
-
-    // bestSeller products
-    const bestSellerContainer = document.getElementById('bestseller-container')
-    generateBestSellerArticles(bestSellerContainer, myProductsSanitized)
-
-    // search bar
+const closeSearchModal = () =>{
+    const closeModalBtn = document.querySelector('#searchBarContent button');
+    let closeModaleContainer = closeModalBtn.parentElement.parentElement
     const searchbar = document.getElementById('search-input');
-    const searchbutton = document.getElementById('search-button');
-    console.log(searchbar)
-    getSearchedProducts(searchbar, articlesContainer, myProductsSanitized)
-    getSearchedProducts(searchbutton, articlesContainer, myProductsSanitized)
 
-})
+    if(closeModaleContainer.classList.contains('show')){
+        closeModalBtn.click();
+        searchbar.value = ''
+    }
+}
+const getSearchedProductsV2 = (searchedValue, containerElement, productsArray) =>{
+    let matchProducts = []
+    containerElement.innerHTML = '';
+    productsArray.filter((product) =>{
+        if((product.title).toLowerCase().includes(searchedValue) || (product.resume).toLowerCase().includes(searchedValue)){
+            matchProducts.push(product)
+        }
+    })
+    if(matchProducts.length === 0){
+        containerElement.innerHTML += `<div class="no-product-found">
+            <p>Oops, no product available ! e</p>
+        </div>`
+    }else{
+        matchProducts.forEach((product) =>{
+            containerElement.innerHTML += generateCatalogueArticleHTMLEl(product)
+        })
+    }
+}
+
 
