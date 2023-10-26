@@ -1,21 +1,19 @@
+/**BUTTONS**/
 .button-paypal {
   background-color: rgb(241, 187, 49);
   color: blue;
   width: 30%;
   border: none;
   border-radius: 4px;
-  font-weight: bolder;
   box-shadow: 0px 1px 3px 0px #6d6d6d;
-  background-image: url('https://icones8.fr/icon/hoRdvfFbBt2g/paypal-an-online-payments-system-operating-worldwide');
   height: 40px;
+  background-image: url("https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/24/external-paypal-an-online-payments-system-operating-worldwide-logo-shadow-tal-revivo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-origin: content-box;
+  position: relative;
 }
-
-.btn-checkout {
-  background-color: black;
-  color: white;
-  border-radius: 4px;
-}
-
 
 .button-google {
   background-color: #fff;
@@ -41,12 +39,15 @@
   border-radius: 4px;
   height: 40px;
   box-shadow: 0px 1px 3px 0px #6d6d6d;
-  background-image: url('https://icones8.fr/icon/SuYRJWCg1Sdz/apple-pay');
   background-origin: content-box;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   border: none;
+}
+
+.button-apple p {
+ margin: 0;
 }
 
 .btn-order {
@@ -116,19 +117,20 @@
 
 .card-product {
   overflow: hidden;
-  height: 120px;
+  height: 100px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
   border-radius: 10px;
-  width: 50%;
+  width: 100%;
+  margin-bottom: 2%;
 }
 
 .card-product img {
   height: 100%;
   width: 120px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .card-product h2 {
@@ -141,10 +143,31 @@
   font-size: 12px;
   line-height: 1.4;
   opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
+  margin-top: 8px;width: 100%;
+  margin-bottom: 5%;
 }
 
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .delivery-container {
+    margin: 5%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .card-product {
+    width: 100%;
+    margin-bottom: 5%;
+  }
+}
+
+.delivery-container {
+  margin: 2%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
