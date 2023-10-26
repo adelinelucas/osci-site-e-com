@@ -42,18 +42,34 @@ const displayBestSellerTitle = (param) =>{
     }
 }
 
-const addToFavouriteMessage = () =>{
-    console.log('add to favourite message')
+const displayFilters = () =>{
+    let filtersEl = document.querySelector('.header__filter-section')
+    filtersEl.style.display = "block"
+}
+
+const addAlertMessage = (alertType) =>{
+    console.log('test')
+    let icon = ''
+    let message = ''
+    if(alertType === "add-favourite"){
+        icon = '<i class="bi bi-bag-heart-fill"></i>'
+        message = "Product added to your favourite !"
+    }
+    if(alertType === 'add-product'){
+       icon = '<i class="bi bi-bag-heart-fill"></i>' 
+       message = "Product added to your cart !"
+    }
     let addToFavouriteContainer = document.getElementById('alert-favourite-message')
     let addToFavouriteEL = document.createElement('div');
-    let favouriteMessage = `<button type="button" class="btn favourite-alert-message" id="liveAlertBtn">Product add to your favourite ! </button>
-    `
+    let favouriteMessage = `<div class="alert alert-dismissible fade show" role="alert">
+    <strong> ${icon} ${message}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>`
     addToFavouriteEL.innerHTML = favouriteMessage;
     addToFavouriteContainer.append(addToFavouriteEL) 
-    // test commit 
     setTimeout(()=>{
         addToFavouriteEL.innerHTML = ''
-    }, '3500')
+    }, '2000')
 
 }
 
@@ -74,7 +90,7 @@ const addProductToFavourite = () =>{
                 countFavouriteItem += 1;
                 btn.classList.add('bi-heart-fill')
                 btn.classList.remove('bi-heart')
-                addToFavouriteMessage()
+                addAlertMessage("add-favourite")
             }
             favouriteEl.innerHTML = countFavouriteItem;
             
@@ -105,6 +121,7 @@ const addBestSellerToFavourite = () =>{
                 countFavouriteItem += 1;
                 btn.classList.add('bi-heart-fill')
                 btn.classList.remove('bi-heart')
+                addAlertMessage("add-favourite")
             }
             favouriteEl.innerHTML = countFavouriteItem;
             
@@ -120,6 +137,8 @@ const addBestSellerToFavourite = () =>{
     }) 
 }
 const displayJS = (productsList) =>{
+    displayFilters()
+
     let myProductsSanitized = sanitizedProductsList(productsList)
 
     // display products
@@ -134,7 +153,23 @@ const displayJS = (productsList) =>{
     // search products
     const searchbar = document.getElementById('search-input');
     const searchbutton = document.getElementById('search-button');
+    // filter element
+    const filterLowestPrice = document.getElementById('filter-lowest-price');
+    console.log(filterLowestPrice)
+    const filterHighestPrice = document.getElementById('filter-highest-price')
 
+    filterLowestPrice.addEventListener('click', ()=>{
+        filterByLowestPrice(myProductsSanitized, articlesContainer )
+        manageCartItemCatalogue()
+        addProductToFavourite()
+    })
+
+    filterHighestPrice.addEventListener('click', ()=>{
+        console.log('click')
+        filterByHighesttPrice(myProductsSanitized, articlesContainer )
+        manageCartItemCatalogue()
+        addProductToFavourite()
+    })
     // manage shearch bar
     searchbar.addEventListener('keyup', (e)=>{
         e.preventDefault();
@@ -181,6 +216,7 @@ document.addEventListener('DOMContentLoaded', async()=>{
     // loading of spinner timer while fetching data from json file
     loaderEl()
     displayBestSellerTitle(false)
+    
     let loadingProducts = setTimeout(()=>{
         remove_loaderEl() 
         displayJS(productsList)
@@ -232,6 +268,26 @@ const displayProductsInDOM = (containerElement, categoriesTypes, productsArray) 
     })
 }
 
+const filterByLowestPrice = (productsList, containerElement) =>{
+    let filteredProduct = []
+    containerElement.innerHTML =''
+    filteredProduct = productsList.sort((a,b)=> a.price - b.price)
+    
+    filteredProduct.forEach((product)=>{
+        containerElement.innerHTML += generateCatalogueArticleHTMLEl(product)
+    })
+    return containerElement
+}
+
+const filterByHighesttPrice = (productsList, containerElement) =>{
+    let filteredProduct = []
+    containerElement.innerHTML =''
+    filteredProduct = productsList.sort((a,b)=> b.price - a.price)
+    filteredProduct.forEach((product)=>{
+        containerElement.innerHTML += generateCatalogueArticleHTMLEl(product)
+    })
+    return containerElement
+}
 
 const displayBestSellerInDOM = (containerElement, productsArray) =>{
     let bestsellersproducts = productsArray.filter((product) => product.isBestSeller)
@@ -247,6 +303,7 @@ const addItemsInCart =(btns) =>{
         let addItem = btn.addEventListener('click', ()=>{
             numberCartItem += 1
             renderCartItemsInNav(numberCartItemEl, numberCartItem)
+            addAlertMessage("add-product")
         })
         btn.removeEventListener('click', addItem)
     })
