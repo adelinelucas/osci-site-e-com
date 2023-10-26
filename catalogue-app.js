@@ -42,6 +42,11 @@ const displayBestSellerTitle = (param) =>{
     }
 }
 
+const displayFilters = () =>{
+    let filtersEl = document.querySelector('.header__filter-section')
+    filtersEl.style.display = "block"
+}
+
 const addAlertMessage = (alertType) =>{
     console.log('test')
     let icon = ''
@@ -132,6 +137,8 @@ const addBestSellerToFavourite = () =>{
     }) 
 }
 const displayJS = (productsList) =>{
+    displayFilters()
+
     let myProductsSanitized = sanitizedProductsList(productsList)
 
     // display products
@@ -146,7 +153,23 @@ const displayJS = (productsList) =>{
     // search products
     const searchbar = document.getElementById('search-input');
     const searchbutton = document.getElementById('search-button');
+    // filter element
+    const filterLowestPrice = document.getElementById('filter-lowest-price');
+    console.log(filterLowestPrice)
+    const filterHighestPrice = document.getElementById('filter-highest-price')
 
+    filterLowestPrice.addEventListener('click', ()=>{
+        filterByLowestPrice(myProductsSanitized, articlesContainer )
+        manageCartItemCatalogue()
+        addProductToFavourite()
+    })
+
+    filterHighestPrice.addEventListener('click', ()=>{
+        console.log('click')
+        filterByHighesttPrice(myProductsSanitized, articlesContainer )
+        manageCartItemCatalogue()
+        addProductToFavourite()
+    })
     // manage shearch bar
     searchbar.addEventListener('keyup', (e)=>{
         e.preventDefault();
@@ -193,6 +216,7 @@ document.addEventListener('DOMContentLoaded', async()=>{
     // loading of spinner timer while fetching data from json file
     loaderEl()
     displayBestSellerTitle(false)
+    
     let loadingProducts = setTimeout(()=>{
         remove_loaderEl() 
         displayJS(productsList)
@@ -244,6 +268,26 @@ const displayProductsInDOM = (containerElement, categoriesTypes, productsArray) 
     })
 }
 
+const filterByLowestPrice = (productsList, containerElement) =>{
+    let filteredProduct = []
+    containerElement.innerHTML =''
+    filteredProduct = productsList.sort((a,b)=> a.price - b.price)
+    
+    filteredProduct.forEach((product)=>{
+        containerElement.innerHTML += generateCatalogueArticleHTMLEl(product)
+    })
+    return containerElement
+}
+
+const filterByHighesttPrice = (productsList, containerElement) =>{
+    let filteredProduct = []
+    containerElement.innerHTML =''
+    filteredProduct = productsList.sort((a,b)=> b.price - a.price)
+    filteredProduct.forEach((product)=>{
+        containerElement.innerHTML += generateCatalogueArticleHTMLEl(product)
+    })
+    return containerElement
+}
 
 const displayBestSellerInDOM = (containerElement, productsArray) =>{
     let bestsellersproducts = productsArray.filter((product) => product.isBestSeller)

@@ -216,6 +216,23 @@ button:hover i{
     right: -85%;
 }
 
+/* Filter section */
+.header__filter-section{
+    display: none;
+}
+.header__filter-section>div>button {
+    width: fit-content;
+    color: var(--maroon-ara);
+    font-size: var(--font-small-size);
+    letter-spacing: var(--letter-spacing-small);
+    font-weight: 200;
+    cursor: pointer;
+
+}
+
+.header__filter-section>div>button:hover p{
+    border-bottom: 1px solid var(--maroon-ara);
+}
 /* BESTSELLER */
 .main__best-sellers__title{
     display: none;

@@ -41,10 +41,10 @@
             </div>
 
             <div class="header__menu__and__search col-3 col-md-6">
-                <div class="header__menu__and__search buttons row row-cols-2 flex-md-row-reverse">
+                <div class="header__menu__and__search buttons row row-cols-2 flex-lg-row-reverse">
                     <!-- BUTTON TARGET NAVBAR -->
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <div class="d-flex">
+                        <div class="d-flex justify-content-center">
                             <span class="navbar-toggler-icon"></span>
                         </div>
                     </button>
@@ -118,6 +118,14 @@
                 <p class="text-light text-center">- 20% on makeup</p>
             </div>
         </div>
+        <!-- Filter by price -->
+        <div class="container header__filter-section mt-4">
+            <div class="row row-cols-2">
+                <button class="col" id="filter-lowest-price"><p>Lowest Price</p></button>
+                <button class="col" id="filter-highest-price"><p>Highest Price</p></button>
+            </div>
+        </div>
+        <!-- End filter by price -->
         <!-- Product cards -->
         <div class="main__articles_container container my-4 py-2">
             <div class="row row-cols-1 row-cols-sm-2 justify-content-md-between" id="articles-container">
@@ -146,7 +154,9 @@
                 </form>
             </aside>
         </div>
+        <!-- Filter by price -->
 
+        <!--End filter by price-->
         <!-- Alert favourite message-->
         <div id="alert-favourite-message"></div>
     </main>

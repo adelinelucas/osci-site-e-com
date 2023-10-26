@@ -7,11 +7,11 @@ export const generateCatalogueArticleHTMLEl = (data) => {
         <div class="col-7 main__product__card__infos">
             <div class="card-body">
                 <h5 class="card-title fw-bolder">${data.title}<span> - ${data.resume}</span></h5>
-                <p class="card-text">${(data.description).slice(0,50)}...</p>
+                <p class="card-text">${(data.description).slice(0,15)}...</p>
             </div>
             <div class="main__card__prices-infos card-body row row-cols-2 justify-content-end p-0 ">
-                <p class="text-end w-auto"><span class="current-price text-decoration-line-through">${data.price}</span>$</p>
-                <p class="w-auto"><span class="promotion-price text-danger">${data.oldPrice}$</span></p>
+                <p class="text-end w-auto"><span class="current-price text-decoration-line-through">${data.oldPrice}</span>$</p>
+                <p class="w-auto"><span class="promotion-price text-danger">${data.price}$</span></p>
             </div>
             <div class="main__card__product-actions card-body row p-1">
                 <div class="col-8">
