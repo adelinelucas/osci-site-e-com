@@ -436,23 +436,33 @@ tr .row-underline button{
     height: 15px;
     border: none;
     border-bottom: 1px solid var(--light-blue-ara);
+    margin-top:1px;
+    text-align: center;
 }
 
 #offproductorder .update-quantity-el .add-quantity,
 #offproductorder .update-quantity-el .remove-quantity {
-    background-color: var(--light-blue-ara);
+    color: var(--light-blue-ara);
     border-radius: 50%;
-    color: white;
+    background-color: white;
     width: 18px;
     height: 18px;
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 3px;
+    cursor: pointer;
+    /* border: 1px solid var(--light-blue-ara) */
 }
 
 .offproductorder__ordercart-total-price-infos div {
     width: fit-content;
+}
+
+#offproductorder .order-details .order-details-body .cart-product-title p{
+    font-weight: 600;
+    letter-spacing: var(--letter-spacing-small);
 }
 
 /* Alert favourite message */
