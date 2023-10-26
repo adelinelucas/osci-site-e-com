@@ -50,7 +50,7 @@ const addToFavouriteMessage = () =>{
     `
     addToFavouriteEL.innerHTML = favouriteMessage;
     addToFavouriteContainer.append(addToFavouriteEL) 
-
+    // test commit 
     setTimeout(()=>{
         addToFavouriteEL.innerHTML = ''
     }, '3500')
