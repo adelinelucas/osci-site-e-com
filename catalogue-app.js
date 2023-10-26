@@ -20,18 +20,28 @@ const getProductsData = async(url) =>{
 let numberCartItem = 0
 let numberCartItemEl = document.getElementById('numCartItems')
 
+const loaderEl = () =>{
+    let loadingEl = document.createElement('div');
+    loadingEl.classList.add("loading-container", "d-flex", "justify-content-center")
+    loadingEl.innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`
+    let heroContainer = document.querySelector('.header__hero-section')
+    heroContainer.append(loadingEl)
+}
+const remove_loaderEl = () =>{
+    let loadingEl = document.querySelector('.loading-container')
+    loadingEl.remove()
+}
 
-// GET DATA ON PAGE LOAD
-document.addEventListener('DOMContentLoaded', async()=>{
-    const url = 'http://localhost:3000/products';
-    /*
-    errors products test
-    const urlTestProducts = 'http://localhost:3004/products';
-    let errorproductsList = await getProductsData(urlTestProducts)
-    let myProducts = sanitizedProductsList(errorproductsList)
-    */
-    let productsList = await getProductsData(url)
-    let catagoriesNames = getCategoriesNames()
+const displayBestSellerTitle = (param) =>{
+    let bestSellerTitle = document.querySelector('.main__best-sellers__title')
+    if (param){
+        bestSellerTitle.style.display = "block"
+    }else{
+        bestSellerTitle.style.display= 'none'
+    }
+}
+
+const displayJS = (productsList) =>{
     let myProductsSanitized = sanitizedProductsList(productsList)
 
     // display products
@@ -69,6 +79,30 @@ document.addEventListener('DOMContentLoaded', async()=>{
     })
     manageCartItemCatalogue()    
     manageCartItemBestSeller()
+}
+// GET DATA ON PAGE LOAD
+document.addEventListener('DOMContentLoaded', async()=>{
+    const url = 'http://localhost:3000/products';
+    /*
+    errors products test
+    const urlTestProducts = 'http://localhost:3004/products';
+    let errorproductsList = await getProductsData(urlTestProducts)
+    let myProducts = sanitizedProductsList(errorproductsList)
+    */
+
+    let productsList = await getProductsData(url)
+    let catagoriesNames = getCategoriesNames()
+
+    // loading of spinner timer while fetching data from json file
+    loaderEl()
+    displayBestSellerTitle(false)
+    let loadingProducts = setTimeout(()=>{
+        remove_loaderEl() 
+        displayJS(productsList)
+        displayBestSellerTitle(true)
+    },"1500")
+
+    
 })
 /////
 //////
