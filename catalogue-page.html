@@ -41,10 +41,10 @@
             </div>
 
             <div class="header__menu__and__search col-3 col-md-6">
-                <div class="header__menu__and__search buttons row row-cols-2 flex-md-row-reverse">
+                <div class="header__menu__and__search buttons row row-cols-2 flex-lg-row-reverse">
                     <!-- BUTTON TARGET NAVBAR -->
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <div class="d-flex">
+                        <div class="d-flex justify-content-center">
                             <span class="navbar-toggler-icon"></span>
                         </div>
                     </button>
@@ -118,8 +118,16 @@
                 <p class="text-light text-center">- 20% on makeup</p>
             </div>
         </div>
+        <!-- Filter by price -->
+        <div class="container header__filter-section mt-4">
+            <div class="row row-cols-2">
+                <button class="col" id="filter-lowest-price"><p>Lowest Price</p></button>
+                <button class="col" id="filter-highest-price"><p>Highest Price</p></button>
+            </div>
+        </div>
+        <!-- End filter by price -->
         <!-- Product cards -->
-        <div class="main__articles_container container my-4 py-2">
+        <div class="main__articles_container container ">
             <div class="row row-cols-1 row-cols-sm-2 justify-content-md-between" id="articles-container">
             </div>
         </div>
@@ -146,7 +154,9 @@
                 </form>
             </aside>
         </div>
+        <!-- Filter by price -->
 
+        <!--End filter by price-->
         <!-- Alert favourite message-->
         <div id="alert-favourite-message"></div>
     </main>
@@ -289,10 +299,10 @@
                 <!-- ligne des titres -->
                 <div class="container order-details">
                     <div class="row mb-2 row-cols-1 order-details-header">
-                        <div class="col-4 d-flex justify-content-end">
+                        <div class="col-3 d-flex justify-content-end">
                             
                         </div>
-                        <div class="col-2 d-flex justify-content-center">
+                        <div class="col-3 d-flex justify-content-center">
                             <h4>Product</h4>
                         </div>
                         <div class="col-2 d-flex justify-content-center">
@@ -307,25 +317,30 @@
                     </div>
                     <div class="order-details-body">
                         <div class="row mb-2 row-cols-1 row-underline product-details" >
-                            <div class="col-4">
-                                <div class="row">
-                                    <div class="col-5 px-0">
+                            <div class="col-3 px-0">
+                                <div class="row row-cols-1">
+                                    <div class="pe-0">
                                         <img src="./images/products/advanced-snail-peptide.png" class="" alt="illustration of the COSRX product" width="50px">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-2 d-flex justify-content-center py-3">
-                                <p>COSRX</p>
+                            <div class="col-3 d-flex flex-column justify-content-center px-0 py-1 ">
+                                <div class="cart-product-title"><p class="mb-1">COSRX</p></div>
+                                <div><p class="mb-1">Advanced Snail Radiance Dual Essence 80ml</p></div>
                             </div>
-                            <div class="col-2 d-flex justify-content-center py-3">
-                                <p><span>15</span>$</p>
+                            <div class="col-2 d-flex justify-content-center py-1 px-1 ">
+                                <p><span>22</span>$</p>
                             </div>
-                            <div class="col-2 d-flex justify-content-center py-3">
-                                <p>1</p>
+                            <div class="col-2 d-flex justify-content-center py-1 ps-1 pe-2 update-quantity-el">
+                                <div class="d-flex align-items-start">
+                                    <div class="add-quantity">+</div>
+                                    <input type="text" name="update-quantitty" id="btn-update-quantity" min="1" value="1">
+                                    <div class="remove-quantity">-</div>
+                                </div> 
                             </div>
-                            <div class="col-2">
-                                <div class="row d-flex justify-content-start pt-3">
-                                    <p><span>15</span>$</p>
+                            <div class="col-2 px-2 py-1">
+                                <div class="row d-flex justify-content-start">
+                                    <p><span>22</span>$</p>
                                 </div>
                                 <div class="row d-flex justify-content-end">
                                     <button type="button">
@@ -335,31 +350,32 @@
                             </div>
                         </div>
                         <div class="row mb-2 row-cols-1 row-underline product-details" >
-                            <div class="col-4">
-                                <div class="row">
-                                    <div class="col-5 px-0">
-                                        <img src="./images/products/advanced-snail-peptide.png" class="" alt="illustration of the COSRX product" width="50px">
+                            <div class="col-3 px-0">
+                                <div class="row row-cols-1">
+                                    <div class="pe-0">
+                                        <img src="./images/products/menproduct.png" class="" alt="illustration of the COSRX product" width="50px">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-2 d-flex justify-content-center py-3">
-                                <p>COSRX</p>
+                            <div class="col-3 d-flex flex-column justify-content-center px-0 py-1 ">
+                                <div class="cart-product-title"><p class="mb-1">Men's Cure Cream</p></div>
+                                <div><p class="mb-1">Essence 150ml</p></div>
                             </div>
-                            <div class="col-2 d-flex justify-content-center py-3">
+                            <div class="col-2 d-flex justify-content-center py-1 px-1 ">
                                 <p><span>15</span>$</p>
                             </div>
-                            <div class="col-2 d-flex justify-content-center py-3 update-quantity-el">
+                            <div class="col-2 d-flex justify-content-center py-1 ps-1 pe-2 update-quantity-el">
                                 <div class="d-flex align-items-start">
                                     <div class="add-quantity">+</div>
-                                    <input type="text" name="update-quantitty" id="btn-update-quantity" min="1" value="1">
+                                    <input type="text" name="update-quantitty" id="btn-update-quantity" min="1" value="2">
                                     <div class="remove-quantity">-</div>
                                 </div> 
                             </div>
-                            <div class="col-2">
-                                <div class="row d-flex justify-content-start pt-3">
-                                    <p><span>15</span>$</p>
+                            <div class="col-2 px-2 py-1">
+                                <div class="row d-flex justify-content-start">
+                                    <p><span>30</span>$</p>
                                 </div>
-                                <div class="row d-flex justify-content-end px-2">
+                                <div class="row d-flex justify-content-end">
                                     <button type="button">
                                         <i class="bi bi-trash"></i>
                                     </button>
@@ -378,7 +394,7 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-center col-1">
-                        <p class="text-end ">45<span class="money_unit">$</span></p>
+                        <p class="text-end ">52<span class="money_unit">$</span></p>
                     </div>
                 </div>
                 <div class="offproductorder__orderdetails row row-cols-1 justify-content-start my-4">
