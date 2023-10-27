@@ -35,7 +35,7 @@
 }
 
 .button-apple p {
- margin: 0;
+  margin: 0;
 }
 
 .btn-order {
@@ -158,7 +158,23 @@
 
 .delivery-container {
   margin: 2%;
-  display: flex;
-  justify-content: center;
+  display: flex; justify-content: center;
   flex-direction: column;
+}
+
+.footer__hero img{
+  width: var(--logo-size);
+}
+.footer__categories ul li a,
+.footer__socials h5,
+.footer__secured-payments h5 {
+  font-size: var(--font-small-size);
+}
+.footer__categories__border{
+  margin-left: 8px;
+  border-right: 1px solid var(--white-ara);
+}
+.footer-socials-icons svg,
+.footer__secured-payments svg{
+  margin: 0 5px;
 }
