@@ -171,8 +171,9 @@ button:hover i{
 .main__product__card__bg{
     /* width: 50vw; */
 }
-.main__product__card__infos h5 span{
+.main__product__card__infos h5 .resume{
     font-size: var(--font-small-size);
+    font-weight: 500;
 }
 
 .main__product__card__infos .card-text{

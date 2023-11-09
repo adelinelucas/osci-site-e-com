@@ -1,17 +1,17 @@
 export const generateCatalogueArticleHTMLEl = (data) => {
-    return `<article class="main__product__card card mb-md-5 mb-3 mt-3 border-0" style="max-width: 540px;">
+    return `<article class="main__product__card card mb-md-5 mb-3 mt-3 border-0" style="max-width: 540px;" data-productid =${data.id}>
     <div class="row row-cols-2 g-0">
         <div class="col-5 main__product__card__bg d-flex align-items-center h-75">
             <img src=${data.img} class="card-img-top" alt="${data.title} - ${data.resume}">                
         </div>
         <div class="col-7 main__product__card__infos">
             <div class="card-body">
-                <h5 class="card-title fw-bolder">${data.title}<span> - ${data.resume}</span></h5>
-                <p class="card-text">${(data.description).slice(0,15)}...</p>
+                <h5 class="card-title fw-bolder"><span class="title">${data.title}</span><span class="resume"> - ${data.resume}</span></h5>
+                <p class="card-text">${(data.description).slice(0,50)}...</p>
             </div>
             <div class="main__card__prices-infos card-body row row-cols-2 justify-content-end p-0 ">
                 <p class="text-end w-auto"><span class="current-price text-decoration-line-through">${data.oldPrice}</span>$</p>
-                <p class="w-auto"><span class="promotion-price text-danger">${data.price}$</span></p>
+                <p class="w-auto"><span class="current-price text-danger">${data.price}$</span></p>
             </div>
             <div class="main__card__product-actions card-body row p-1">
                 <div class="col-8">
