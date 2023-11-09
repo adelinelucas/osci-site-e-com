@@ -20,6 +20,7 @@ const getProductsData = async(url) =>{
 let numberCartItem = 0
 let countFavouriteItem  = 0
 let numberCartItemEl = document.getElementById('numCartItems')
+let modalCart = [];
 
 const loaderEl = () =>{
     let loadingEl = document.createElement('div');
@@ -71,6 +72,125 @@ const addAlertMessage = (alertType) =>{
         addToFavouriteEL.innerHTML = ''
     }, '2000')
 
+}
+
+const manageModaleCart= () =>{
+    // écouter le click sur l'ajout d'un produit 
+    // ajouter dans le panier l'élement
+    // utiliser un setter pour déclencher l'actualisation du cart
+
+    let btnsAddProduct = document.querySelectorAll('.add-product-to-cart')
+    let btnsRemoveProduct = document.querySelectorAll('.remove-product-to-cart')
+    
+    btnsAddProduct.forEach((btn) =>{
+        btn.addEventListener('click', ()=>{
+            console.log('click in add prodcuts')
+            let myCurrentCart = modalCart;
+            let productInfoCard = btn.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement
+            let productId = productInfoCard.dataset.productid
+            let productTitle = productInfoCard.querySelector('.card-title .title').textContent
+            let productResume = productInfoCard.querySelector('.card-title .resume').textContent
+            let productPrice = productInfoCard.querySelector('.current-price').textContent
+            let quantity = 1
+            let productObject = {}
+            Object.assign(productObject,{id: productId}, {title: productTitle}, {resume: productResume}, {price: productPrice}, {quantity: quantity});
+            console.log(productId)
+            // add my product on my cart 
+            if(modalCart.length == 0){
+                myCurrentCart.push(productObject)
+            }else{
+                modalCart.forEach((index)=>{
+                    if(index.id === productId )
+                    {
+                        console.log(index.title)
+                        index.quantity += 1
+
+                    }else{
+                        myCurrentCart.push(productObject)
+                    }
+                })
+            }
+            console.log(modalCart)
+            modalCart = myCurrentCart
+            return modalCart
+        })
+    })
+
+    btnsRemoveProduct.forEach((btn) =>{
+        btn.addEventListener('click', ()=>{
+            let myCurrentCart = modalCart;
+            console.log('click in add prodcuts')
+            let productInfoCard = btn.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement
+            let productId = productInfoCard.dataset.productid
+            let productTitle = productInfoCard.querySelector('.card-title .title').textContent
+            let productResume = productInfoCard.querySelector('.card-title .resume').textContent
+            let productPrice = productInfoCard.querySelector('.current-price').textContent
+            let quantity = 1
+            let productObject = {}
+            Object.assign(productObject,{id: productId}, {title: productTitle}, {resume: productResume}, {price: productPrice}, {quantity: quantity});
+            // add my product on my cart 
+            
+            myCurrentCart.forEach((index)=>{
+                if(index.id === productId )
+                {
+                    console.log(index.title)
+                    index.quantity -= 1
+
+                    if(index.quantity <= 0){
+                        myCurrentCart = modalCart.filter((product) => product.id !== productId)
+                    }
+
+                }
+            })
+            console.log(modalCart)
+            modalCart = myCurrentCart
+            return modalCart
+        })
+    })
+
+    console.log(modalCart)
+}
+
+
+
+const modalProductInfoHTML = (data = {title:"faketitle", img:"fakeimage",price:51, resume:"fake resume" }) =>{
+    let orderDetailsEL = document.querySelector('.order-details-body')
+    let orderedProductDetail = `
+    <div class="row mb-2 row-cols-1 row-underline product-details" >
+        <div class="col-3 px-0">
+            <div class="row row-cols-1">
+                <div class="pe-0">
+                    <img src=${data.img} class="" alt="${data.title} added to cart" width="50px">
+                </div>
+            </div>
+        </div>
+        <div class="col-3 d-flex flex-column justify-content-center px-0 py-1 ">
+            <div class="cart-product-title"><p class="mb-1">${data.title}</p></div>
+            <div><p class="mb-1">${data.resume}</p></div>
+        </div>
+        <div class="col-2 d-flex justify-content-center py-1 px-1 ">
+            <p><span class="product-unit-price">${data.price}</span>$</p>
+        </div>
+        <div class="col-2 d-flex justify-content-center py-1 ps-1 pe-2 update-quantity-el">
+            <div class="d-flex align-items-start">
+                <div class="cart-add-quantity">+</div>
+                <input type="text" name="update-quantitty" id="btn-update-quantity" min="1" value="quantity of products">
+                <div class="cart-remove-quantity">-</div>
+            </div> 
+        </div>
+        <div class="col-2 px-2 py-1">
+            <div class="row d-flex justify-content-start">
+                <p><span>prix à calculer selon la quantité</span>$</p>
+            </div>
+            <div class="row d-flex justify-content-end">
+                <button type="button">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    `
+    orderDetailsEL.append(orderedProductDetail)
 }
 
 const addProductToFavourite = () =>{
@@ -221,6 +341,7 @@ document.addEventListener('DOMContentLoaded', async()=>{
         remove_loaderEl() 
         displayJS(productsList)
         displayBestSellerTitle(true)
+        manageModaleCart()
     },"1500")
 
     
