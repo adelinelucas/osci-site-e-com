@@ -27,5 +27,10 @@ export const updateProduct = async(req, res) =>{
 
 export const addProduct = async(req, res) =>{
     // création d'un produit dans la bdd
-    
+    const produit = new ProductModel(req.body)
+    await produit.save()
+    res.status(200).json({
+        success:true,
+        produit
+    })
 }
