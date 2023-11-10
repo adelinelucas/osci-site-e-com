@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from 'dotenv';
 import { connectBD } from "./config/connectDB.js";
 import cors from 'cors';
+import productPanierRouter from './routes/product_panier.js'
 
 // ==========
 // App initialization
@@ -30,14 +31,14 @@ app.use(cors({
 // ==========
 // Routes
 // ==========
-
-
+//routes riad 
+app.use('/panier',productPanierRouter )
 // a compléter
 
 // ==========
 // Start app
 // ==========
-console.log('hello ligne 40')
+
 const start = async() => {
     try{
         await connectBD(MONGO_URI);
