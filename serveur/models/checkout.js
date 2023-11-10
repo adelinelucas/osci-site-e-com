@@ -30,25 +30,6 @@ const checkoutSchema = new mongoose.Schema({
   // Additional fields like payment status, timestamps, etc. could be added here
 }, { timestamps: true });
 
-const Checkout = mongoose.model('Checkout', checkoutSchema);
 
-module.exports = Checkout;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const ProductModel = mongoose.model('Product', ProductSchema );
-export default ProductModel;
+const CheckoutModel = mongoose.model('Checkout', checkoutSchema);
+export default  CheckoutModel;
