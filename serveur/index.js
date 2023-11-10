@@ -2,8 +2,11 @@ import express from "express";
 import dotenv from 'dotenv';
 import { connectBD } from "./config/connectDB.js";
 import cors from 'cors';
+
 // import des routers
+import productPanierRouter from './routes/product_panier.js'
 import productsCatalogueRouter from './routes/product_catalogue.js'
+
 
 // ==========
 // App initialization
@@ -35,7 +38,7 @@ app.use(cors({
     // ==========
     // Routes Riad
     // ==========
-/// écrire les routes de Riad ici
+      app.use('/panier',productPanierRouter )
 
     // ==========
     // Routes Alexandre
@@ -46,12 +49,12 @@ app.use(cors({
     // ==========
     // Routes Adeline
     // ==========
-app.use('/catalogue', productsCatalogueRouter)
+      app.use('/catalogue', productsCatalogueRouter)
 
 // ==========
 // Start app
 // ==========
-console.log('hello ligne 40')
+
 const start = async() => {
     try{
         await connectBD(MONGO_URI);

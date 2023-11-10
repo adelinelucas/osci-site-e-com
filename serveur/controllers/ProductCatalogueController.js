@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 import ProductModel from "../models/Products.js";
 /// chargement du middleware multer pour le stockage des fichiers
 
+
+
 /*
 Create a product
 */
@@ -27,4 +29,5 @@ export const getProducts = async(req,res) =>{
     console.log('in get method')
     res.send('message reçu')
 }
+
 

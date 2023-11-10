@@ -1,4 +1,5 @@
 import Express from 'express';
+
 // instanciation du router d'express
 const router = Express.Router();
 
@@ -10,3 +11,4 @@ router.route('/products').get(getProducts)
 
 
 export default router; 
+
