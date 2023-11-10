@@ -2,7 +2,11 @@ import express from "express";
 import dotenv from 'dotenv';
 import { connectBD } from "./config/connectDB.js";
 import cors from 'cors';
+
+// import des routers
 import productPanierRouter from './routes/product_panier.js'
+import productsCatalogueRouter from './routes/product_catalogue.js'
+
 
 // ==========
 // App initialization
@@ -31,9 +35,21 @@ app.use(cors({
 // ==========
 // Routes
 // ==========
-//routes riad 
-app.use('/panier',productPanierRouter )
-// a compléter
+    // ==========
+    // Routes Riad
+    // ==========
+      app.use('/panier',productPanierRouter )
+
+    // ==========
+    // Routes Alexandre
+    // ==========
+
+/// écrire les routes de Alexandre ici
+
+    // ==========
+    // Routes Adeline
+    // ==========
+      app.use('/catalogue', productsCatalogueRouter)
 
 // ==========
 // Start app
