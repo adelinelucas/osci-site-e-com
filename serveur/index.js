@@ -2,6 +2,8 @@ import express from "express";
 import dotenv from 'dotenv';
 import { connectBD } from "./config/connectDB.js";
 import cors from 'cors';
+// import des routers
+import productsCatalogueRouter from './routes/product_catalogue.js'
 
 // ==========
 // App initialization
@@ -30,9 +32,21 @@ app.use(cors({
 // ==========
 // Routes
 // ==========
+    // ==========
+    // Routes Riad
+    // ==========
+/// écrire les routes de Riad ici
 
+    // ==========
+    // Routes Alexandre
+    // ==========
 
-// a compléter
+/// écrire les routes de Alexandre ici
+
+    // ==========
+    // Routes Adeline
+    // ==========
+app.use('/catalogue', productsCatalogueRouter)
 
 // ==========
 // Start app
