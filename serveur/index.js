@@ -23,6 +23,7 @@ const app = express();
 app.use(express.json());
 // pour pouvoir récupérer les éléments du body non en json
 app.use(express.urlencoded());
+app.use(express.static('public'));
 
 // ==========
 // Cors

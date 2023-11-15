@@ -4,11 +4,11 @@ import multer from "multer";
 const storage = multer.diskStorage({
 
     destination: function (req, file, cb) {
-        cb(null, 'public/planets')
+        cb(null, 'public/products')
     },
     filename: function (req, file, cb) {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        cb(null, 'planete' + '-' + uniqueSuffix + '.' + file.mimetype.split("/")[1])
+        cb(null, 'ara-product' + '-' + uniqueSuffix + '.' + file.mimetype.split("/")[1])
     }
 })
 
