@@ -1,0 +1,26 @@
+.image-slider {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Ajustez la largeur selon vos besoins */
+    margin: auto;
+  }
+  
+  .slider-image {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd; /* Ajoutez des styles supplémentaires selon vos besoins */
+  }
+  
+  button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    color: #333; /* Ajoutez des styles supplémentaires selon vos besoins */
+  }
