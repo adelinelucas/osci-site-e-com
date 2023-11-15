@@ -1,11 +1,11 @@
 import React from 'react';
-import Card from '../../components/Card/Card';
+import CardList from '../../components/CardList/CardList';
 
 const Catalogue = () => {
     return (
         <div>
             ceci est la page cataglogue produit
-            <Card/>
+            <CardList />
         </div>
     );
 };
