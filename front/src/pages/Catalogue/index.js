@@ -6,9 +6,7 @@ import Footer from '../../components/Footer/Footer';
 const Catalogue = () => {
     return (
         <div>
-            <Header/>
             <CardList />
-            <Footer />
         </div>
     );
 };
