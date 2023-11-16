@@ -3,9 +3,6 @@ import { useState } from "react";
 import "./Home.css";
 
 const Home = () => {
-  function test() {
-    console.log("test");
-  }
   const images = [
     "images/icons8-fedex-100.png",
     "images/icons8-fedex-100.png",
