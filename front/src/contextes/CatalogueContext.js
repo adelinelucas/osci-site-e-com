@@ -1,15 +1,20 @@
-import React, {useContext, useState} from'react';
+import React, {useContext, useState, useEffect} from'react';
+import { fetchAllProductsFromDB } from '../services/fetchAllProductsFromDB';
 
 const CatalogueContext = React.createContext();
 
 export const CatalogueProvider = ({children}) =>{
 
     const [products,setProducts] = useState({});
-    const [searchProducts, setSearchProducts] = useState(null)
-
+    // const [bestSellers, setBestSellers] = useState({});
+    const [searchProducts, setSearchProducts] = useState(null);
+    const [searchCategory, setSearchCategory] = useState(null);
     const [favouritesList, setFavouritesList] = useState({});
     const [popInModalDisplay, setPopInModalDisplay] = useState(false);
     const [popInModalMessage, setPopInModalMessage] = useState({});
+
+    // récupération des produits de l'application 
+    // URL pour récupérer tous les produits :
         // a gérer 
         // le filtre des produits par prix faire des fonctions pour mettre à jour products
         // le filtre des produits par categorie faire des fonctions pour mettre à jour products
@@ -20,6 +25,8 @@ export const CatalogueProvider = ({children}) =>{
             products, 
             setProducts,
             searchProducts,
+            searchCategory, 
+            setSearchCategory,
             setSearchProducts,
             favouritesList,
             setFavouritesList,
