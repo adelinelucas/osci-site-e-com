@@ -1,4 +1,5 @@
 import React from 'react';
+import CardList from '../../components/CardList/CardList';
 import Header from '../../components/Header/Header';
 import HeroSection from '../../components/HeroSection';
 import Newsletter from '../../components/Newsletter';

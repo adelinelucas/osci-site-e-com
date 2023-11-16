@@ -7,6 +7,10 @@ const Navbar = () => {
             <div className="container-fluid">
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        
+                    <li className="nav-item">
+                            <NavLink className="nav-link active" aria-current="page" to={'/home'}>Home</NavLink>
+                        </li>
                         <li className="nav-item">
                             <NavLink className="nav-link active" aria-current="page" to={'/catalogue'}>Catalogue</NavLink>
                         </li>
