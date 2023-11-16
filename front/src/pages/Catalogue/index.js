@@ -7,19 +7,26 @@ import BestSellersList from '../../components/BestSellersList';
 import CatalogueProductsList from '../../components/CatalogueProductsList';
 import FilterByPrice from '../../components/FilterByPrice';
 import PopInInfoModal from '../../components/PopInInfoModal';
+import { CatalogueProvider } from '../../contextes/CatalogueContext';
+import { CataloguePanierProvider } from '../../contextes/CataloguePanierContext';
+
 
 const Catalogue = () => {
     return (
-        <div>
-            <Header/>
+        <CatalogueProvider>
+            {/* <CataloguePanierProvider> */}
+                <Header/>
+            {/* </CataloguePanierProvider> */}
             <HeroSection/>
             <FilterByPrice/>
-            <CatalogueProductsList />
-            <BestSellersList />
+            {/* <CataloguePanierProvider> */}
+                <CatalogueProductsList />
+                <BestSellersList />
+            {/* </CataloguePanierProvider> */}
             <Newsletter/>
             <PopInInfoModal />
             <Footer />
-        </div>
+        </CatalogueProvider>
     );
 };
 
