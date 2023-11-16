@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
 import HeroSection from '../../components/HeroSection';
 import Newsletter from '../../components/Newsletter';
 import BestSellersList from '../../components/BestSellersList';
@@ -25,7 +24,6 @@ const Catalogue = () => {
             {/* </CataloguePanierProvider> */}
             <Newsletter/>
             <PopInInfoModal />
-            <Footer />
         </CatalogueProvider>
     );
 };

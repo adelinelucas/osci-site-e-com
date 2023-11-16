@@ -9,6 +9,7 @@ export const CatalogueProvider = ({children}) =>{
     // const [bestSellers, setBestSellers] = useState({});
     const [searchProducts, setSearchProducts] = useState(null);
     const [searchCategory, setSearchCategory] = useState(null);
+    const [filterByPrice, setFilterByPrice] = useState(null);
     const [favouritesList, setFavouritesList] = useState({});
     const [popInModalDisplay, setPopInModalDisplay] = useState(false);
     const [popInModalMessage, setPopInModalMessage] = useState({});
@@ -28,6 +29,7 @@ export const CatalogueProvider = ({children}) =>{
             searchCategory, 
             setSearchCategory,
             setSearchProducts,
+            setFilterByPrice,
             favouritesList,
             setFavouritesList,
             popInModalDisplay, 
