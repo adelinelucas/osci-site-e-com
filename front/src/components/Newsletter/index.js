@@ -9,7 +9,7 @@ const Newsletter = () => {
                 <form action="#" className="main__aside__newsletter__form">
                     <div className="form-floating">
                         <input type="email" className="form-control" id="floatingInput" placeholder="my-mail@gmail.com"/>
-                        <label for="floatingInput">myemail@gmail.com</label>
+                        <label htmlFor="floatingInput">myemail@gmail.com</label>
                         <img src="./images/icons/blue-email-50px.png" alt="Mail icon"/>
                     </div>
                 </form>

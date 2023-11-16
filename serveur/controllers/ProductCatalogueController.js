@@ -28,12 +28,12 @@ Get all procducts
 export const getProducts = async(req,res) =>{
     // récupérer les images
     // const imagePath = path.join(__dirname, 'uploads', filename);
-    console.log(dirname)
+    // console.log(dirname)
     try{
 
         const productsList = await ProductModel.find({})
 
-        if(productsList.length > 0){
+        if(productsList){
             res.status(200).json({message: productsList})
         }else{
             res.status(200).json({message: `No product found en the database`})
@@ -49,7 +49,7 @@ export const getProducts = async(req,res) =>{
 Get one product by id
 */
 export const getProductById = async(req, res) =>{
-    console.log(path)
+    // console.log(path)
     try{
         const {id:_id}= req.params;
         if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).json({message: 'An error occured, the ID given is not valid.'});
