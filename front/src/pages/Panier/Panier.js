@@ -9,11 +9,9 @@ const Panier = () => {
     navigate("/catalogue");
   }
   function clique() {
-    navigate("/catalogue");
+    navigate("/checkout");
   }
-  function cliquer() {
-    navigate("/catalogue");
-  }
+  
 
   const [cartItems, setCartItems] = useState([]);
 
@@ -27,7 +25,7 @@ const Panier = () => {
         <a id="chek" class="btn btn-primary btn-lg " onClick={clique}>
           Check Out ALL
         </a>
-        <a id="check" class="btn btn-primary btn-lg " onClick={cliquer}>
+        <a id="check" class="btn btn-primary btn-lg " onClick={clique}>
           Chek out Selected Item(s)
         </a>
       </div>

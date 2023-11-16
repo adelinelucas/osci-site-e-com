@@ -5,9 +5,9 @@ import "./Home.css"
 
 const Home = () => {
     const images = [
-        '',
-        'url_de_votre_image_2.jpg',
-        'url_de_votre_image_3.jpg',
+        '  images/icons8-fedex-100.png',
+        'images/icons8-fedex-100.png ',
+        'images/icons8-fedex-100.png',
       ];
     
       const [currentImageIndex, setCurrentImageIndex] = useState(0);
