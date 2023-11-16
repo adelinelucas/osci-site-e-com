@@ -4,10 +4,19 @@ const CataloguePanierContext = React.createContext();
 
 export const CataloguePanierProvider = ({children}) =>{
 
-    const [panier,setPanier] = useState();
+    const [productsList,setProductsList] = useState({});
+    const [totalProducts, setTotalProducts] = useState(0)
+    const [quantityProducts, setQuantityProducts] = useState(0)
 
     return (
-        <CataloguePanierProvider.Provider value={{panier, setPanier}}>
+        <CataloguePanierProvider.Provider value={{
+                productsList, 
+                setProductsList,
+                totalProducts,
+                setTotalProducts,
+                quantityProducts, 
+                setQuantityProducts
+                }}>
             {children}
         </CataloguePanierProvider.Provider>
     )
