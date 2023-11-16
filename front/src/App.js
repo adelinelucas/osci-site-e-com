@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/Navbar.js';
 import Catalogue from './pages/Catalogue';
 import Checkout from './pages/Checkout/Checkout';
 import Panier from './pages/Panier/Panier';
+import Footer from './components/Footer/Footer.js';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route exact path='/panier' element={<Panier/>} />
         <Route exact path='/checkout' element={<Checkout/>} />
       </Routes>
+      <Footer />
     </div>
   );
 }
