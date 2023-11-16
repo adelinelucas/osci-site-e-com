@@ -1,22 +1,27 @@
 /* FOOTER */
 
-/* .footer__socials{
-    width: fit-content;
-} */
-.footer__hero img{
-    width: var(--logo-size-footer);
+footer {
+  bottom: 0;
+  width: 100%;
+}
+
+.footer__socials {
+  width: fit-content;
+}
+.footer__hero img {
+  width: var(--logo-size-footer);
 }
 .footer__categories ul li a,
 .footer__socials h5,
 .footer__secured-payments h5 {
-    font-size: var(--font-small-size);
-    letter-spacing: var(--letter-spacing-small);
+  font-size: var(--font-small-size);
+  letter-spacing: var(--letter-spacing-small);
 }
-.footer__categories__border{
-    margin-left: 8px;
-    border-right: 1px solid var(--white-ara);
+.footer__categories__border {
+  margin-left: 8px;
+  border-right: 1px solid var(--white-ara);
 }
 .footer-socials-icons svg,
-.footer__secured-payments svg{
-    margin: 0 5px;
+.footer__secured-payments svg {
+  margin: 0 5px;
 }
