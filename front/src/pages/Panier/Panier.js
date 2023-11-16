@@ -1,49 +1,53 @@
-import React, { useState} from 'react';
+import React, { useState } from "react";
+import "./Panier.css";
+import { useNavigate } from "react-router-dom";
 
 const Panier = () => {
-     // État pour stocker les articles dans le panier
+  const navigate = useNavigate();
+
+  function cliquer() {
+    navigate("/catalogue");
+  }
+  function clique() {
+    navigate("/catalogue");
+  }
+  function cliquer() {
+    navigate("/catalogue");
+  }
+
   const [cartItems, setCartItems] = useState([]);
 
-  // Fonction pour ajouter un article au panier
-  const addToCart = (item) => {
-    setCartItems([...cartItems, item]);
-  };
-
-  // Fonction pour supprimer un article du panier
-  const removeFromCart = (itemId) => {
-    const updatedCart = cartItems.filter(item => item.id !== itemId);
-    setCartItems(updatedCart);
-  };
-
-  // Calcul du total du panier
-  const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + item.price, 0);
-  };
-
   return (
-    <div>
-      <h2>Shopping Cart</h2>
-
-      {/* Affichage des articles dans le panier */}
+    <div id="panier">
+      <h2>YOUR CART IS EMPTY.</h2>
+      <a class="btn btn-secondary btn-lg  " onClick={cliquer}>
+        Continue Shopping
+      </a>
+      <div id="shop">
+        <a id="chek" class="btn btn-primary btn-lg " onClick={clique}>
+          Check Out ALL
+        </a>
+        <a id="check" class="btn btn-primary btn-lg " onClick={cliquer}>
+          Chek out Selected Item(s)
+        </a>
+      </div>
       <ul>
-        {cartItems.map(item => (
+        {cartItems.map((item) => (
           <li key={item.id}>
             {item.name} - ${item.price}
-            <button onClick={() => removeFromCart(item.id)}>Remove</button>
+            {/* <button onClick={() => removeFromCart(item.id)}>Remove</button> */}
           </li>
         ))}
       </ul>
-
-      <p>Total: ${calculateTotal()}</p>
-
-      {/* Exemple de bouton d'ajout d'article au panier */}
-      <button onClick={() => addToCart({ id: 1, name: 'Example Item', price: 19.99 })}>
+      {/* <p>Total: ${calculateTotal()}</p> */}
+      {/* Exemple de bouton d'ajout d'article au panier */}{" "}
+      {/* <button
+        onClick={() => addToCart({ id: 1, name: "Example Item", price: 19.99 })}
+      >
         Add to Cart
-      </button>
-     
-            
-        </div>
-    );
+      </button> */}
+    </div>
+  );
 };
 
 export default Panier;
