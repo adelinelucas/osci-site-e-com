@@ -1,0 +1,22 @@
+#alert-favourite-message{
+    width: 300px;
+    height: 150px;
+    position: fixed;
+    bottom: 25px;
+    right: 50px;
+}
+#alert-favourite-message div{
+    color: var(--white-ara);
+    background-color: var(--duck-blue-ara);
+    letter-spacing: var(--letter-spacing-small);
+    box-shadow: 5px 5px 5px var(--maroon-ara);
+    font-size: var(--font-xsmall-size);
+    animation: alertFadeIn 1s ease 0s 1 normal none;
+}
+#alert-favourite-message div button{
+    color: var(--white-ara);
+    font-size: var(--font-xsmall-size)
+}
+#alert-favourite-message div .btn-close{
+    color: var(--white-ara) !important
+}
