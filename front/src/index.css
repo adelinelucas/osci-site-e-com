@@ -95,3 +95,76 @@ code {
 .table-responsive {
   overflow-x: none;
 }
+
+/* RESPONSIVE */
+
+@media only screen and (min-width: 576px) {
+  body{
+      overflow-y: visible;
+  }
+  .header__hero-section--promotion{
+      background-image: url(../public/images/hero-bg-md.jpg);
+      background-size: cover;
+      width: 100%;
+      background-position: bottom 40% right 0%;
+      height:10vh;
+  }
+
+  .header__hero-section--promotion p{
+      font-size: var(--font-large-size);
+  }
+  .main__product__card__bg{
+      justify-content: center;
+      height: fit-content !important;
+  }
+  .main__product__card__bg img{
+      width: 25vw;
+  }
+  .main__product__card__infos.card-body{
+      padding-bottom: 0;
+  }
+  .main__product__card__infos.row > p {
+      margin-bottom: 0;
+  }
+
+  .main__aside__newsletter h4{
+      font-size: var(--font-medium-size); 
+  }
+  .main__aside__newsletter form img{
+      right: -90%;
+  }
+  .search-toggler{
+      display: none;
+  }
+}
+@media only screen and (min-width: 992px){
+  #navbarSupportedContent{
+      flex-direction: row-reverse;
+  }
+
+  .header__hero-section--promotion{
+      height:15vh;
+  }
+
+  #offproductorder .offproductorder__backetcart-actions{
+      /* bottom: -22rem; */
+  }
+
+  .separator {
+      width: 85%;
+      margin: auto;
+  } 
+  
+  /* OFF CANVAS PRODUCT order */
+  .offcanvas.offcanvas-end{
+      left: inherit;
+      width: 40%;
+  }
+}
+
+@media only screen and (min-width: 1200px){
+  #offproductorder .order-details .order-details-header h4
+  {
+      font-size: var(--font-small-size);
+  }
+}

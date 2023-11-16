@@ -1,0 +1,20 @@
+.main__aside__newsletter{
+    background-color: var(--light-blue-ara);
+}
+.main__aside__newsletter h4{
+   font-size: var(--font-light-size);
+   letter-spacing: var(--letter-spacing-regular);
+}
+.main__aside__newsletter__form {
+    height: 5rem;
+}
+.main__aside__newsletter form label{
+    font-size: var(--font-light-size);
+    color: var(--maroon-ara);
+ }
+.main__aside__newsletter form img {
+    position: relative;
+    width: var(--icons-size);
+    top: -45px;
+    right: -85%;
+}

@@ -1,0 +1,20 @@
+.header__hero-section{
+    padding: 0;
+
+}
+.header__hero-section--promotion{
+    background-image: url(../../../public/images/hero-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:9vh;
+    width: 100%;
+}
+.header__hero-section--promotion p {
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-size: var(--font-medium-size);
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: var(--letter-spacing-regular);
+    text-shadow: 1px 1px 2px var(--black-ara);
+}
