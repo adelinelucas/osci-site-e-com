@@ -1,19 +1,21 @@
 import React, {useState, useEffect} from 'react';
-import products from "../../datas/products.json"
 import Card from '../Card/Card.js';
-import {useCatalogueContext} from '../../contextes/CatalogueContext'
+import {useCatalogueContext} from '../../contextes/CatalogueContext';
 import { fetchAllProductsFromDB } from '../../services/fetchAllProductsFromDB.js';
 
 const CatalogueProductsList = () => {
-// console.log(products.products)
-// const myProducts = products.products
-    const {searchProducts,searchCategory} = useCatalogueContext();
+    const {searchProducts,searchCategory,filterByPrice} = useCatalogueContext();
     const [products, setProducts] = useState(null);
     console.log('line12',products)
-    const urlAllProducts = 'http://localhost:3001/catalogue/products'; 
 
     const getProducts = async()=>{
+        const urlAllProducts = 'http://localhost:3001/catalogue/products'; 
         setProducts(await fetchAllProductsFromDB(urlAllProducts) )
+    }
+
+    const filterProduct = async() =>{
+        const urlFilterProductsByPrice = 'http://localhost:3001/catalogue/products'; 
+
     }
 
     useEffect(()=>{
