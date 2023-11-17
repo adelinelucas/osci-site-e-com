@@ -59,11 +59,6 @@
   justify-content: center;
 }
 
-.btn {
-  background-color: #086788;
-  color: white;
-  font-weight: bold;
-}
 
 .footer__hero img{
   width: var(--logo-size);
