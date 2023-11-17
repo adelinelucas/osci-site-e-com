@@ -7,10 +7,10 @@ export const CatalogueProvider = ({children}) =>{
 
     const [products,setProducts] = useState({});
     // const [bestSellers, setBestSellers] = useState({});
-    const [searchProducts, setSearchProducts] = useState(null);
+    const [searchProducts, setSearchProducts] = useState('');
     const [searchCategory, setSearchCategory] = useState(null);
     const [filterByPrice, setFilterByPrice] = useState(null);
-    const [favouritesList, setFavouritesList] = useState({});
+    const [favouritesList, setFavouritesList] = useState([]);
     const [popInModalDisplay, setPopInModalDisplay] = useState(false);
     const [popInModalMessage, setPopInModalMessage] = useState({});
 
@@ -29,6 +29,7 @@ export const CatalogueProvider = ({children}) =>{
             searchCategory, 
             setSearchCategory,
             setSearchProducts,
+            filterByPrice,
             setFilterByPrice,
             favouritesList,
             setFavouritesList,

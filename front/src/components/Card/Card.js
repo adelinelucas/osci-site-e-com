@@ -1,8 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import './style.css';
+import {useCatalogueContext} from '../../contextes/CatalogueContext';
+
 
 const Card = ({productInfos}) => {
+    const {favouritesList,setFavouritesList} = useCatalogueContext();
+    // console.log(productInfos)
+    const productID = productInfos._id;
+    const [favouriteCSS, setFavouriteCSS] = useState('bi bi-heart add-product-to-favorite')
 
-    console.log(productInfos)
+    
+    const handleFavourite =(e) =>{
+        // renvoyer un object avec l'id produit 
+        if(favouritesList.length ===0) setFavouritesList([...favouritesList, productID])
+        else{
+            favouritesList.map((favourite)=>{
+                if(favourite === productID){
+                    let favourtieListFiltered = favouritesList.filter((fav) =>fav !==productID)
+                    setFavouritesList(favourtieListFiltered)
+                    setFavouriteCSS('bi add-product-to-favorite bi-heart')
+                }else{
+                    setFavouritesList([...favouritesList, productID])
+                }
+            })
+        }
+        
+    }
+
+    // vérifier si le produit est dans la liste des favoris pour ajouter la couleur
+    const checkProductAddInFavourite=() =>{
+        favouritesList.map((favourite)=>{
+            if(favourite === productID) setFavouriteCSS('bi add-product-to-favorite bi-heart-fill')
+        })
+    }
+
+    useEffect(()=>{
+        checkProductAddInFavourite()
+    }, [favouritesList])
+
     return (
         <article className="main__product__card card mb-md-5 mb-3 mt-3 border-0" style={{maxWidth: '540px'}} data-productid="product_id">
             <div className="row row-cols-2 g-0">
@@ -12,7 +47,7 @@ const Card = ({productInfos}) => {
                 <div className="col-7 main__product__card__infos">
                     <div className="card-body">
                         <h5 className="card-title fw-bolder"><span className="title">{productInfos.title}</span><span className="resume"> - {productInfos.resume}</span></h5>
-                        <p className="card-text">{productInfos.description}</p>
+                        <p className="card-text">{productInfos.description.slice(0,350)}...</p>
                     </div>
                     <div className="main__card__prices-infos card-body row row-cols-2 justify-content-end p-0 ">
                         <p className="text-end w-auto"><span className="current-price text-decoration-line-through">{productInfos.price}</span>$</p>
@@ -34,9 +69,9 @@ const Card = ({productInfos}) => {
                         </div>
                         <div className="col-4">
                             <div>
-                                <a className="icon-link icon-link-hover link--maroon-ara">
-                                    <i className="bi bi-heart add-product-to-favorite"></i>
-                                </a>
+                                <button className="icon-link icon-link-hover link--maroon-ara" onClick={handleFavourite}>
+                                    <i className={favouriteCSS}></i>
+                                </button>
                             </div>
                         </div>
                     </div>

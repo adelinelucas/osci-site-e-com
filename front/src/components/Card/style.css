@@ -1,0 +1,40 @@
+.main__product__card  {
+    max-width: 540px;
+    cursor: pointer;
+}
+.main__product__card__bg{
+    /* width: 50vw; */
+}
+.main__product__card__infos h5 .resume{
+    font-size: var(--font-small-size);
+    font-weight: 500;
+}
+
+.main__product__card__infos .card-text{
+    font-size: var(--font-small-size);
+}
+.main__card__product-actions .icon-link img{
+    width: var(--icons-size) ;
+}
+
+.main__product__card:hover{
+    /* box-shadow: 10px 5px 5px var(--black-ara); */
+}
+.main__product__card:hover .main__product__card__bg img {
+    scale: 1.01;
+    /* box-shadow: 10px 5px 5px var(--maroon-ara); */
+}
+.main__product__card:hover .main__card__product-actions .add-product{
+    color: var(--duck-blue-ara);
+    scale: 1.1;
+    border: 1px solid var(--duck-blue-ara);
+}
+
+.main__product__card .main__card__product-actions button {
+    color: var(--maroon-ara);
+    border-color: var(--maroon-ara);
+}
+.main__product__card .main__card__product-actions .border-dark{
+    border-color: var(--maroon-ara) !important;
+    border-width: 1px;
+}
