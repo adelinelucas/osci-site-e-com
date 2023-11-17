@@ -1,8 +1,9 @@
 import React from 'react';
+import './style.css';
 
 const CatalogueCartModal = () => {
     return (
-        <div className="offcanvas offcanvas-end" tabindex="-1" id="offproductorder" aria-labelledby="offproductorder">
+        <div className="offcanvas offcanvas-end" tabIndex="-1" id="offproductorder" aria-labelledby="offproductorder">
         <div className="offcanvascontainer container">
             <div className="offcanvas-header">
                 <h5 className="offcanvas-title m-auto" id="navbarSupportedContent">

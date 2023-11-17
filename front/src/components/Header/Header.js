@@ -1,7 +1,18 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './style.css';
+import Categories from '../Categories';
+import {useCatalogueContext} from '../../contextes/CatalogueContext';
 
 const Header = () => {
+    const {setSearchProducts,searchProducts, favouritesList} = useCatalogueContext();
+    const [favouriteCSS, setFavouriteCSS] = useState('bi bi-heart add-product-to-favorite')
+    const [numFavouriteProduct,setNumFavouriteProduct ] = useState(0)
+
+    useEffect(()=>{
+        favouritesList.length > 0 ?  setFavouriteCSS('bi add-product-to-favorite bi-heart-fill') : setFavouriteCSS('bi bi-heart add-product-to-favorite');
+        setNumFavouriteProduct(favouritesList.length)
+        console.log(numFavouriteProduct)
+    }, [favouritesList])
     return (
     <header className="header container">
         <nav className="navbar navbar-expand-md bg-white row flex-row-reverse w-100 m-auto">
@@ -14,7 +25,9 @@ const Header = () => {
                     <div className="col">
                         <button className="icon-link icon-link-hover link--maroon-ara position-relative">
                             <div className="" id="numFavouriteItems"></div>
-                            <i className="bi bi-heart"></i>
+                            <i className={favouriteCSS}>
+                                <span className='header__products__actions_favourite_num'>{numFavouriteProduct >0 ? numFavouriteProduct : ''}</span>
+                            </i>
                         </button>
                     </div>
                     <div className="col"> 
@@ -43,7 +56,7 @@ const Header = () => {
                     {/* END BUTTON TARGET SEARCH BAR */}
                 </div>
                 {/* NAVBAR CONTENT */}
-                <div className="offcanvas offcanvas-start flex-md-column align-items-md-start flex-md-grow-0" id="navbarSupportedContent" aria-labelledby="offcanvasNavbarLabel" tabindex="-1">
+                <div className="offcanvas offcanvas-start flex-md-column align-items-md-start flex-md-grow-0" id="navbarSupportedContent" aria-labelledby="offcanvasNavbarLabel" tabIndex="-1">
                     <div className="offcanvas-header">
                         <h5 className="offcanvas-title m-auto" id="navbarSupportedContent">
                             <img className="offcanvas-logo" src="./images/logo-transparent-bg.png" alt="ARA, cosmetic brand for all skins."/>
@@ -51,33 +64,12 @@ const Header = () => {
                         <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div className="offcanvas-body flex-md-row-reverse">
-                        <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li className="nav-item my-3 ml-1">
-                                <a className="nav-link active" aria-current="page" href="#" data-category="all">All products</a>
-                                <div className="separator"></div>
-                            </li>
-                            <li className="nav-item my-3 ms-1">
-                                <a className="nav-link" href="#" data-category="cleansers">Cleansers</a>
-                                <div className="separator"></div>
-                            </li>
-                            <li className="nav-item my-3 ms-1 ms-md-2">
-                                <a className="nav-link" href="#" data-category="moisturizes">Moisturizes</a>
-                                <div className="separator"></div>
-                            </li>
-                            <li className="nav-item my-3 ms-1 ms-md-2">
-                                <a className="nav-link" href="#" data-category="suncare">Suncare</a>
-                                <div className="separator"></div>
-                            </li>
-                            <li className="nav-item my-3 ms-1 ms-md-2">
-                                <a className="nav-link" href="#" data-category="men">Men's</a>
-                                <div className="separator"></div>
-                            </li>
-                        </ul>
+                        <Categories />
                     </div>  
                 </div>
                 {/* NAVBAR CONTENT */}
                 {/* SEARCH BAR CONTENT */}
-                <div className="offcanvas offcanvas-search-bar offcanvas-start justify-content-center" tabindex="-1" id="searchBarContent" aria-labelledby="Toggle navigation">
+                <div className="offcanvas offcanvas-search-bar offcanvas-start justify-content-center" tabIndex="-1" id="searchBarContent" aria-labelledby="Toggle navigation">
                     <div className="offcanvas-header">
                         <h5 className="offcanvas-title m-auto" id="searchBarContentTitle">
                             <img className="offcanvas-logo" src="./images/logo-transparent-bg.png" alt="ARA, cosmetic brand for all skins."/>
@@ -86,8 +78,8 @@ const Header = () => {
                     </div>
                     <div className="offcanvas-body">
                         <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Looking for a products" aria-label="Search" id="search-input" data-type="input"/>
-                            <button className="btn btn-outline-light text-light" id="search-button" data-type="btn">
+                            <input className="form-control me-2" type="search" placeholder="Looking for a products" aria-label="Search" id="search-input" data-type="input" value={searchProducts} onChange={(e)=>setSearchProducts((e.target.value).toLowerCase())}/>
+                            <button className="btn btn-outline-light text-light" id="search-button" data-type="btn" >
                                 <i className="bi bi-search"></i>
                             </button>
                         </form>

@@ -1,5 +1,6 @@
 .header__filter-section{
     /* display: none; */
+    display: block;
 }
 .header__filter-section>div>button {
     width: fit-content;

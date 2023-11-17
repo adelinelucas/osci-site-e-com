@@ -11,7 +11,7 @@
     border: 1px solid #ddd; /* Ajoutez des styles supplémentaires selon vos besoins */
   }
   
-  button {
+  /* button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -20,7 +20,7 @@
     border: none;
     cursor: pointer;
   }
-  
-  button:hover {
+   */
+  /* button:hover {
     color: #333; /* Ajoutez des styles supplémentaires selon vos besoins */
-  }
+  /*} */
