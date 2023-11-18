@@ -9,22 +9,19 @@ const Card = ({productInfos}) => {
     const productID = productInfos._id;
     const [favouriteCSS, setFavouriteCSS] = useState('bi bi-heart add-product-to-favorite')
 
-    
     const handleFavourite =(e) =>{
         // renvoyer un object avec l'id produit 
-        if(favouritesList.length ===0) setFavouritesList([...favouritesList, productID])
+        if(favouritesList.length === 0) setFavouritesList([...favouritesList, productID])
         else{
-            favouritesList.map((favourite)=>{
-                if(favourite === productID){
-                    let favourtieListFiltered = favouritesList.filter((fav) =>fav !==productID)
-                    setFavouritesList(favourtieListFiltered)
-                    setFavouriteCSS('bi add-product-to-favorite bi-heart')
-                }else{
-                    setFavouritesList([...favouritesList, productID])
-                }
-            })
-        }
-        
+            if(favouritesList.includes(productID)){
+                let favourtieListFiltered = favouritesList.filter((fav) =>fav !==productID)
+                setFavouritesList(favourtieListFiltered)
+                setFavouriteCSS('bi add-product-to-favorite bi-heart')
+            }
+            else{
+                setFavouritesList([...favouritesList, productID])
+            }
+        }        
     }
 
     // vérifier si le produit est dans la liste des favoris pour ajouter la couleur
@@ -36,6 +33,7 @@ const Card = ({productInfos}) => {
 
     useEffect(()=>{
         checkProductAddInFavourite()
+        console.log('favourite list ==>' , favouritesList)
     }, [favouritesList])
 
     return (
