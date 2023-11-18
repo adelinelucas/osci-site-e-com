@@ -2,17 +2,28 @@ import React, {useState, useEffect} from 'react';
 import './style.css';
 import Categories from '../Categories';
 import {useCatalogueContext} from '../../contextes/CatalogueContext';
+import {useCartContext} from '../../contextes/CartContext';
 
 const Header = () => {
+    // import des contextes
     const {setSearchProducts,searchProducts, favouritesList} = useCatalogueContext();
+    const {quantityProducts} = useCartContext();
+    // 
+
     const [favouriteCSS, setFavouriteCSS] = useState('bi bi-heart add-product-to-favorite')
+    const [productsInCartCSS, setProductsInCartCSS] = useState('bi bi-bag-fill')
     const [numFavouriteProduct,setNumFavouriteProduct ] = useState(0)
 
     useEffect(()=>{
         favouritesList.length > 0 ?  setFavouriteCSS('bi add-product-to-favorite bi-heart-fill') : setFavouriteCSS('bi bi-heart add-product-to-favorite');
         setNumFavouriteProduct(favouritesList.length)
-        console.log(numFavouriteProduct)
     }, [favouritesList])
+
+    useEffect(()=>{
+        quantityProducts > 0 ?  setProductsInCartCSS('bi bi-bag-fill duck-blue') : setProductsInCartCSS('bi bi-bag-fill');
+        console.log(quantityProducts)
+    }, [quantityProducts])
+    
     return (
     <header className="header container">
         <nav className="navbar navbar-expand-md bg-white row flex-row-reverse w-100 m-auto">
@@ -33,7 +44,9 @@ const Header = () => {
                     <div className="col"> 
                         <button className="icon-link icon-link-hover position-relative" data-bs-toggle="offcanvas" href="#offproductorder" role="button" aria-controls="offproductorder">
                             <div className="" id="numCartItems"></div>
-                            <i className="bi bi-bag-fill"></i>
+                            <i className={productsInCartCSS}>
+                                <span>{quantityProducts > 0 ? quantityProducts : ''}</span>
+                            </i>
                         </button>
                     </div>
                 </div>

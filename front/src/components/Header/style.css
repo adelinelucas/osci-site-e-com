@@ -67,3 +67,15 @@ button:hover i{
     top:12px;
     left:17px;
 }
+
+.header__products__actions .duck-blue{
+    color: var(--duck-blue-ara);
+}
+
+.header__products__actions .duck-blue span{
+    color:var(--white-ara);
+    font-size:var(--font-small-size);
+    position: absolute;
+    top:15px;
+    right: 9px;
+}

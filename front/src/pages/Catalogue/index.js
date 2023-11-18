@@ -7,8 +7,6 @@ import BestSellersList from '../../components/BestSellersList';
 import CatalogueProductsList from '../../components/CatalogueProductsList';
 import FilterByPrice from '../../components/FilterByPrice';
 import PopInInfoModal from '../../components/PopInInfoModal';
-import { CataloguePanierProvider } from '../../contextes/CataloguePanierContext';
-
 
 const Catalogue = () => {
     return (
