@@ -1,15 +1,22 @@
-import React from "react";
-import "./Cantext.css";
+import React,{useContext, useState} from "react";
 
 
-function Cantext(props) {
-   
+const CartContext = React.createContext();
+
+
+export const CartProvider = ({children}) =>{
+    const [cart, setCart] = useState([]);
+
+
     return (
-        <div className="cantext">
-            <h2>{props.title}</h2>
-            
-        </div>
-    );
+        <CartProvider.Provider value={{cart, setCart}}>
+            {children}
+        </CartProvider.Provider>
+    )
 }
 
-export default Cantext;
+
+export const useCartContext = () =>{
+    return useContext(CartContext);
+}
+

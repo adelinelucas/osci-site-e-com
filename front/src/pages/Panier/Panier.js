@@ -1,6 +1,33 @@
-import React, { useState } from "react";
+import React, { Component, useState } from "react";
 import "./Panier.css";
 import { useNavigate } from "react-router-dom";
+
+
+
+// ComponentDidMount() {
+// fetch('http://jsonplaceholder.typicode.com/todos.1')
+// .then((res) => {
+//   return res.json();
+// })
+// .then((result) => {
+//   this.setState({post: result});
+// });
+
+// }
+// return ({this.state.post.title})
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const Panier = () => {
   const navigate = useNavigate();
