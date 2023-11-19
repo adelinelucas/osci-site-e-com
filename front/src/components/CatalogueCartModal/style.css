@@ -1,0 +1,176 @@
+/* OFF CANVAS PRODUCT order */
+/* .offcanvas.offcanvas-end{
+    width: 100vw;
+    left: 0;
+} */
+
+#offproductorder .offcanvas-header .btn-close{
+    margin-top: calc(-0.5 * var(--bs-offcanvas-padding-y));
+    margin-right: calc(-0.5 * var(--bs-offcanvas-padding-x));
+}
+
+#offproductorder .offcanvascontainer {
+    height: 100vh;
+    position: relative;
+}
+
+#offproductorder .offcanvas-header img{
+    width: var(--logo-size-footer);
+    margin: auto;
+}
+
+.offproductorder__backetcart-total{
+
+}
+
+#offproductorder .offproductorder__backetcart-actions{
+    position: relative;
+    bottom: -25%;
+    padding: 0 30px;
+    height: 6rem;
+    flex-direction: column-reverse;
+}
+
+#offproductorder .offproductorder__backetcart-actions button{
+    width: 15rem;
+    text-decoration: none;
+    letter-spacing: var(--letter-spacing-regular);
+    border-radius: 0.375rem;
+}
+
+#offproductorder .offproductorder__backetcart-actions button:hover{
+    box-shadow: 5px 3px 3px var(--maroon-ara);
+    scale: 1.01;
+}
+
+#offproductorder .offproductorder__backetcart-actions :first-of-type:hover{
+    box-shadow: 5px 3px 3px var(--maroon-ara);
+}
+
+#offproductorder .offproductorder__backetcart-actions button:first-of-type{
+    background-color: var(--maroon-ara);
+    border: 2px solid var(--maroon-ara);
+}
+#offproductorder .offproductorder__backetcart-actions button:nth-child(2){
+    background-color: var(--duck-blue-ara);
+    border: 2px solid var(--duck-blue-ara);
+}
+#offproductorder .offproductorder__backetcart-actions button:first-of-type a {
+    text-decoration: none;
+    color:var(--white-ara);
+}
+
+#offproductorder table img {
+    width: var(--miniature-size);
+}
+#offproductorder .offcanvas-head{
+    width: fit-content;
+}
+
+#offproductorder h5{
+    font-size: var(--font-medium-size);
+    letter-spacing: var(--letter-spacing-regular);
+    font-weight: 700;
+}
+#offproductorder .separator{
+    background-color: var(--light-blue-ara);
+    margin-top: 1.5px;
+    margin-left: 0;
+    width: 100%;
+    height: 2px;
+}
+
+.offproductorder__orderdetails a{
+    color: var(--light-blue-ara);
+    text-decoration: none;
+    width: fit-content;
+    letter-spacing: var(--letter-spacing-regular);
+    border: 2px solid var(--light-blue-ara);
+    border-radius: 0.375rem;
+}
+.offproductorder__orderdetails a:hover{
+    box-shadow: 5px 3px 3px var(--maroon-ara);
+    background-color: var(--light-blue-ara);
+    color:var(--white-ara);
+    scale:1.01
+}
+.offproductorder__orderdetails i {
+    font-size: var(--icons-size-small);
+    margin: 5px 10px;
+}
+
+.offproductorder__backetcart-total-price-infos{
+    width: fit-content;
+}
+
+.money_unit{
+    margin-left: 5px;
+}
+
+.offproductorder__backetcart-total{
+
+}
+/* Order details */
+#offproductorder .order-details .order-details-header {
+    border-bottom: 2px solid var(--light-blue-ara)
+}
+
+#offproductorder .order-details .order-details-header h4
+{
+    font-size: var(--font-xsmall-size);
+    font-weight: 800;
+    letter-spacing: 1.1px;
+}
+
+#offproductorder .order-details .order-details-body p
+{
+    font-size: var(--font-xsmall-size);
+    font-weight: 100;
+    letter-spacing: 1.1px;
+}
+
+#offproductorder .order-details .order-details-body .product-details {
+    border-bottom: 1px solid var(--maroon-ara);
+}
+#offproductorder .order-details .order-details-body .product-details button{
+    width: fit-content;
+}
+#offproductorder .order-details .order-details-body .product-details i{
+    color : var(--maroon-ara);
+    font-size: var(--font-small-size);
+}
+
+#offproductorder #btn-update-quantity{
+    width: 15px;
+    font-size: var(--font-xsmall-size);
+    height: 15px;
+    border: none;
+    border-bottom: 1px solid var(--light-blue-ara);
+    margin-top:1px;
+    text-align: center;
+}
+
+#offproductorder .update-quantity-el .add-quantity,
+#offproductorder .update-quantity-el .remove-quantity {
+    color: var(--light-blue-ara);
+    border-radius: 50%;
+    background-color: white;
+    width: 18px;
+    height: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 3px;
+    cursor: pointer;
+    /* border: 1px solid var(--light-blue-ara) */
+}
+
+.offproductorder__ordercart-total-price-infos div {
+    width: fit-content;
+}
+
+#offproductorder .order-details .order-details-body .cart-product-title p{
+    font-weight: 600;
+    letter-spacing: var(--letter-spacing-small);
+}

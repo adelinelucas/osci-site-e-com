@@ -90,7 +90,7 @@ const Card = ({productInfos}) => {
                     setTotalProducts( totalProducts + productInfos.price)
                     // mettre à jour la quantité total du panier
                     setQuantityProducts(quantityProducts + 1)
-                }
+            }
             
         }
 
