@@ -5,7 +5,7 @@ import {useCartContext} from '../../contextes/CartContext';
 
 const Card = ({productInfos}) => {
     // import des contextes
-    const {favouritesList,setFavouritesList} = useCatalogueContext();
+    const {favouritesList,setFavouritesList, setPopInModalMessage, setPopInModalDisplay} = useCatalogueContext();
     const {productsList,setProductsList, setTotalProducts, setQuantityProducts, totalProducts, quantityProducts} = useCartContext();
 
     //
@@ -15,7 +15,11 @@ const Card = ({productInfos}) => {
     // HANDLE FAVOURITE 
     const handleFavourite =(e) =>{
         // renvoyer un object avec l'id produit 
-        if(favouritesList.length === 0) setFavouritesList([...favouritesList, productID])
+        if(favouritesList.length === 0) {
+            setFavouritesList([...favouritesList, productID])
+            setPopInModalDisplay(true)
+            setPopInModalMessage({message:'Product added to your favourite !', icon:'bi bi-heart-fill'})
+        }
         else{
             if(favouritesList.includes(productID)){
                 let favourtieListFiltered = favouritesList.filter((fav) =>fav !==productID)
@@ -24,6 +28,9 @@ const Card = ({productInfos}) => {
             }
             else{
                 setFavouritesList([...favouritesList, productID])
+                setPopInModalDisplay(true)
+                setPopInModalMessage({message:'Product added to your favourite !', icon:'bi bi-heart-fill'})
+                
             }
         }        
     }
@@ -37,11 +44,11 @@ const Card = ({productInfos}) => {
     useEffect(()=>{
         checkProductAddInFavourite()
     }, [favouritesList])
+    
     // 
 
     // HANDLE ADD / REMOVE PRODUCT TO CART 
         const handleAddProductToCart= () =>{
-                        
             if(productsList.length > 0){
                 // check if id product is in productsList array
                 let isProductInCart = productsList.filter((product)=>product[0] === productID)
@@ -91,7 +98,8 @@ const Card = ({productInfos}) => {
                     // mettre à jour la quantité total du panier
                     setQuantityProducts(quantityProducts + 1)
             }
-            
+            setPopInModalDisplay(true)
+            setPopInModalMessage({message:'Product added to your cart !', icon:'bi bi-bag-heart-fill'})          
         }
 
         const handleRemoveProductToCart= () =>{
