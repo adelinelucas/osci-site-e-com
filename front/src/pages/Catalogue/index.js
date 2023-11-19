@@ -7,15 +7,11 @@ import BestSellersList from '../../components/BestSellersList';
 import CatalogueProductsList from '../../components/CatalogueProductsList';
 import FilterByPrice from '../../components/FilterByPrice';
 import PopInInfoModal from '../../components/PopInInfoModal';
-import { CatalogueProvider } from '../../contextes/CatalogueContext';
-import { CataloguePanierProvider } from '../../contextes/CataloguePanierContext';
-
 
 const Catalogue = () => {
     return (
-        <CatalogueProvider>
+        <>
             {/* <CataloguePanierProvider> */}
-                <Header/>
             {/* </CataloguePanierProvider> */}
             <HeroSection/>
             <FilterByPrice/>
@@ -25,7 +21,7 @@ const Catalogue = () => {
             {/* </CataloguePanierProvider> */}
             <Newsletter/>
             <PopInInfoModal />
-        </CatalogueProvider>
+        </>
     );
 };
 

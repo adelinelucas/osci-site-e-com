@@ -59,3 +59,23 @@ button:hover i{
 .main__best-sellers .bi-heart-fill{
     color: var(--duck-blue-ara)
 }
+
+.header__products__actions_favourite_num{
+    color: white;
+    font-size:var(--font-xsmall-size);
+    position: absolute;
+    top:12px;
+    left:17px;
+}
+
+.header__products__actions .duck-blue{
+    color: var(--duck-blue-ara);
+}
+
+.header__products__actions .duck-blue span{
+    color:var(--white-ara);
+    font-size:var(--font-small-size);
+    position: absolute;
+    top:15px;
+    right: 9px;
+}

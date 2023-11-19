@@ -1,7 +1,11 @@
-import React from 'react';
+import {React, useState} from 'react';
 import '../Checkout/checkout.css'
 
+
 const Checkout = () => {
+
+  const [selectedShipping, setSelectedShipping] = useState(null);
+
     return (
       <div className="container">
         <div className="py-5 text-center">
@@ -120,14 +124,14 @@ const Checkout = () => {
                 <label className="custom-control-label" htmlFor="save-info">Save this information for next purchase</label>
               </div>
               <div className="delivery-container">
-                <div className="card_product">
+                <div className={`card_product ${selectedShipping === 'DHL' ? 'selected' : ''}`} onClick={() => setSelectedShipping('DHL')}>
                   <img src="images/dhl-100.png" alt="external-dhl-dalsey-hillblom-and-lynn-international-which-is-international-courier-parcel-and-express-mail-company-industry-color-tal-revivo" />
                   <div className="card-product-infos">
                     <h2>Dhl delivery</h2>
                     <p>Delivery time: 3 days</p>
                   </div>
                 </div>
-                <div className="card_product">
+                <div className={`card_product ${selectedShipping === 'FedEx' ? 'selected' : ''}`} onClick={() => setSelectedShipping('FedEx')}>
                   <img src="images/icons8-fedex-100.png" alt="DHL" />
                   <div className="card-product-infos">
                     <h2>Fedex delivery</h2>

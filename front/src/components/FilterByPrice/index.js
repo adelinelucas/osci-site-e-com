@@ -8,9 +8,9 @@ const FilterByPrice = () => {
 
     return (
         <div className="container header__filter-section mt-4">
-            <div className="row row-cols-2">
-                <button className="col" id="filter-lowest-price" onClick={()=> setFilterByPrice('desc')}><p>Lowest Price</p></button>
-                <button className="col" id="filter-highest-price" onClick={()=> setFilterByPrice('asc')}><p>Highest Price</p></button>
+            <div className="row row-cols-2 w-100">
+                <button className="col-6" id="filter-lowest-price" onClick={()=> setFilterByPrice('asc')}><p>Lowest Price</p></button>
+                <button className="col-6" id="filter-highest-price" onClick={()=> setFilterByPrice('desc')}><p>Highest Price</p></button>
             </div>
         </div>
     );
