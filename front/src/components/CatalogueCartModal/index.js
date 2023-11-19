@@ -1,9 +1,13 @@
 import React from 'react';
 import './style.css';
+import {CartProvider, useCartContext} from '../../contextes/CartContext';
+import CatalogueCartDetailProduct from '../CatalogueCartDetailProduct';
+
 
 const CatalogueCartModal = () => {
+    const {totalProducts, productsList} = useCartContext();
+
     return (
-        <div className="offcanvas offcanvas-end" tabIndex="-1" id="offproductorder" aria-labelledby="offproductorder">
         <div className="offcanvascontainer container">
             <div className="offcanvas-header">
                 <h5 className="offcanvas-title m-auto" id="navbarSupportedContent">
@@ -37,72 +41,16 @@ const CatalogueCartModal = () => {
                         </div>
                     </div>
                     <div className="order-details-body">
-                        <div className="row mb-2 row-cols-1 row-underline product-details" >
-                            <div className="col-3 px-0">
-                                <div className="row row-cols-1">
-                                    <div className="pe-0">
-                                        <img src="./images/products/advanced-snail-peptide.png" className="" alt="illustration of the COSRX product" width="50px"/>
-                                    </div>
+                        {
+                            productsList.length > 0 ? 
+                                productsList.map((product, idx)=>{
+                                    return <CatalogueCartDetailProduct productInfos={product} key={idx}/>
+                                })
+                                :
+                                <div>
+                                   Your cart is empty !  
                                 </div>
-                            </div>
-                            <div className="col-3 d-flex flex-column justify-content-center px-0 py-1 ">
-                                <div className="cart-product-title"><p className="mb-1">COSRX</p></div>
-                                <div><p className="mb-1">Advanced Snail Radiance Dual Essence 80ml</p></div>
-                            </div>
-                            <div className="col-2 d-flex justify-content-center py-1 px-1 ">
-                                <p><span>22</span>$</p>
-                            </div>
-                            <div className="col-2 d-flex justify-content-center py-1 ps-1 pe-2 update-quantity-el">
-                                <div className="d-flex align-items-start">
-                                    <div className="add-quantity">+</div>
-                                    <input type="text" name="update-quantitty" id="btn-update-quantity" min="1" value="1"/>
-                                    <div className="remove-quantity">-</div>
-                                </div> 
-                            </div>
-                            <div className="col-2 px-2 py-1">
-                                <div className="row d-flex justify-content-start">
-                                    <p><span>22</span>$</p>
-                                </div>
-                                <div className="row d-flex justify-content-end">
-                                    <button type="button">
-                                        <i className="bi bi-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row mb-2 row-cols-1 row-underline product-details" >
-                            <div className="col-3 px-0">
-                                <div className="row row-cols-1">
-                                    <div className="pe-0">
-                                        <img src="./images/products/menproduct.png" className="" alt="illustration of the COSRX product" width="50px"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-3 d-flex flex-column justify-content-center px-0 py-1 ">
-                                <div className="cart-product-title"><p className="mb-1">Men's Cure Cream</p></div>
-                                <div><p className="mb-1">Essence 150ml</p></div>
-                            </div>
-                            <div className="col-2 d-flex justify-content-center py-1 px-1 ">
-                                <p><span>15</span>$</p>
-                            </div>
-                            <div className="col-2 d-flex justify-content-center py-1 ps-1 pe-2 update-quantity-el">
-                                <div className="d-flex align-items-start">
-                                    <div className="add-quantity">+</div>
-                                    <input type="text" name="update-quantitty" id="btn-update-quantity" min="1" value="2"/>
-                                    <div className="remove-quantity">-</div>
-                                </div> 
-                            </div>
-                            <div className="col-2 px-2 py-1">
-                                <div className="row d-flex justify-content-start">
-                                    <p><span>30</span>$</p>
-                                </div>
-                                <div className="row d-flex justify-content-end">
-                                    <button type="button">
-                                        <i className="bi bi-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        }
                     </div>
                 </div>
                 {/* end ligne des titres */}
@@ -115,7 +63,7 @@ const CatalogueCartModal = () => {
                         </div>
                     </div>
                     <div className="d-flex align-items-center col-1">
-                        <p className="text-end ">52<span className="money_unit">$</span></p>
+                        <p className="text-end ">{totalProducts}<span className="money_unit">$</span></p>
                     </div>
                 </div>
                 <div className="offproductorder__orderdetails row row-cols-1 justify-content-start my-4">
@@ -133,7 +81,6 @@ const CatalogueCartModal = () => {
                 </div>
             </div>
         </div>
-    </div>
     );
 };
 

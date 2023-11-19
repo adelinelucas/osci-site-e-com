@@ -17,7 +17,6 @@ const BestSellersList = () => {
         getBestSellers()
     }, [])
 
-    console.log(bestSellers)
     return (
         <>
         <div className="main__best-sellers container my-4 py-2">

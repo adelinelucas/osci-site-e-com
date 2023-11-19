@@ -4,7 +4,6 @@ import {useCatalogueContext} from '../../contextes/CatalogueContext'
 const PopInInfoModal = () => {
     const {popInModalDisplay} = useCatalogueContext();
 
-    console.log(popInModalDisplay)
     return (
         
         <div id="alert-favourite-message">

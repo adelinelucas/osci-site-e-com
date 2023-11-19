@@ -1,15 +1,15 @@
 import React, {useContext, useState} from'react';
 
-const CataloguePanierContext = React.createContext();
+const CartContext = React.createContext();
 
-export const CataloguePanierProvider = ({children}) =>{
+export const CartProvider = ({children}) =>{
 
-    const [productsList,setProductsList] = useState({});
+    const [productsList,setProductsList] = useState([]);
     const [totalProducts, setTotalProducts] = useState(0)
     const [quantityProducts, setQuantityProducts] = useState(0)
 
     return (
-        <CataloguePanierProvider.Provider value={{
+        <CartContext.Provider value={{
                 productsList, 
                 setProductsList,
                 totalProducts,
@@ -18,10 +18,10 @@ export const CataloguePanierProvider = ({children}) =>{
                 setQuantityProducts
                 }}>
             {children}
-        </CataloguePanierProvider.Provider>
+        </CartContext.Provider>
     )
 }
 
-export const useCataloguePanierContext = () =>{
-    return useContext(CataloguePanierContext);
+export const useCartContext = () =>{
+    return useContext(CartContext);
 }
