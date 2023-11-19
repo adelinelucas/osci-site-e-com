@@ -1,39 +1,40 @@
-import React from "react";
-import { useState } from "react";
+import React,{useState, useEffect} from "react";
+
 import "./Home.css";
 
 const Home = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+
   const images = [
-    "images/icons8-fedex-100.png",
-    "images/icons8-fedex-100.png",
-    "images/icons8-fedex-100.png",
+ './images/ara1.jpg',
+ './images/ara2.jpg',
+ './images/ara3.jpg',
+
+    // Ajoutez autant de chemins d'images que nécessaire
   ];
 
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
-
-  return (
-    <div className="image-slider">
-      <button onClick={prevSlide}>&lt;</button>
-      <img
-        className="slider-image"
-        src={images[currentImageIndex]}
-        alt={`Slide ${currentImageIndex + 1}`}
-      />
-      <button onClick={nextSlide}>&gt;</button>
-    </div>
-  );
+  const nextImage = () => {
+  setCurrentImage((prevImage) => (prevImage === images.length - 1 ? 0 : prevImage + 1));
 };
 
+const prevImage = () => {
+  setCurrentImage((prevImage) => (prevImage === 0 ? images.length - 1 : prevImage - 1));
+};
+useEffect(() => {
+  const interval = setInterval(() => {
+    nextImage();
+  }, 5000);
+
+
+  return () => clearInterval(interval); // Nettoyer l'intervalle lors de la suppression du composant
+}, [currentImage]);
+
+return (
+  <div className="image-slider">
+    <button className="bouton-slider" onClick={prevImage}>&lt;</button>
+    <img src={images[currentImage]} alt={`Image ${currentImage + 1}`} />
+    <button onClick={nextImage}>&gt;</button>
+  </div>
+);
+};
 export default Home;
