@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './style.css';
-import {CartProvider, useCartContext} from '../../contextes/CartContext';
+import {useCartContext} from '../../contextes/CartContext';
 import CatalogueCartDetailProduct from '../CatalogueCartDetailProduct';
 
 
 const CatalogueCartModal = () => {
     const {totalProducts, productsList} = useCartContext();
+
+    useEffect(()=>{
+        console.log(productsList);
+    },[productsList])
 
     return (
         <div className="offcanvascontainer container">

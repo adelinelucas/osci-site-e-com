@@ -1,35 +1,20 @@
-import React, { Component, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Panier.css";
 import { useNavigate } from "react-router-dom";
-
-
-
-// ComponentDidMount() {
-// fetch('http://jsonplaceholder.typicode.com/todos.1')
-// .then((res) => {
-//   return res.json();
-// })
-// .then((result) => {
-//   this.setState({post: result});
-// });
-
-// }
-// return ({this.state.post.title})
-
-
-
-
-
-
-
-
-
-
-
-
-
+import {useCartContext} from '../../contextes/CartContext';
 
 const Panier = () => {
+  const [cartItems, setCartItems] = useState([]);
+
+  const {
+    totalProducts,
+    setTotalProducts, 
+    productsList,
+    setProductsList,
+    quantityProducts, 
+    setQuantityProducts
+  } = useCartContext();
+
   const navigate = useNavigate();
 
   function cliquer() {
@@ -38,10 +23,11 @@ const Panier = () => {
   function clique() {
     navigate("/checkout");
   }
+
+  useEffect(() => {
+    console.log(productsList);
+  },[productsList])
   
-
-  const [cartItems, setCartItems] = useState([]);
-
   return (
     <div id="panier">
       <h2>YOUR CART IS EMPTY.</h2>
@@ -57,14 +43,15 @@ const Panier = () => {
         </a>
       </div>
       <ul>
-        {cartItems.map((item) => (
-          <li key={item.id}>
-            {item.name} - ${item.price}
+        {productsList.map((product) => (
+          <li key={product[0]}>
+            {product[1]} - ${product[5]}
             {/* <button onClick={() => removeFromCart(item.id)}>Remove</button> */}
           </li>
         ))}
       </ul>
-      {/* <p>Total: ${calculateTotal()}</p> */}
+      <p>Quantité produit panier: {quantityProducts }</p>
+      <p>Total: {totalProducts } €</p>
       {/* Exemple de bouton d'ajout d'article au panier */}{" "}
       {/* <button
         onClick={() => addToCart({ id: 1, name: "Example Item", price: 19.99 })}
