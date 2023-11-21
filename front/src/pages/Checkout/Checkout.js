@@ -1,10 +1,47 @@
 import {React, useState} from 'react';
+import {useCartContext} from '../../contextes/CartContext';
 import '../Checkout/checkout.css'
 
 
 const Checkout = () => {
 
+  /* The line `const [selectedShipping, setSelectedShipping] = useState(null);` is
+  declaring a state variable `selectedShipping` and a function
+  `setSelectedShipping` to update its value. The initial value of
+  `selectedShipping` is set to `null`. This state variable is used to keep track
+  of the selected shipping option in the checkout form. */
   const [selectedShipping, setSelectedShipping] = useState(null);
+  /* The above code is using the `useCartContext` hook to access the `productsList`
+  variable from the cart context. */
+  const {productsList} = useCartContext();
+  /* The above code is written in JavaScript and it is using the useState hook from
+  React. It declares a state variable called promoCode and a function called
+  setPromoCode to update the value of promoCode. The initial value of promoCode
+  is an empty string. */
+  const [promoCode, setPromoCode] = useState('');
+  /* The above code is written in JavaScript and it is using the useState hook from
+  React. It declares a state variable called "discount" and a function called
+  "setDiscount" to update the value of the "discount" variable. The initial
+  value of the "discount" variable is set to 0. */
+  const [discount, setDiscount] = useState(0);
+
+
+
+/**
+ * The function handles the submission of a promo code and sets a discount based on
+ * the code entered.
+ * @param event - The event parameter is the event object that is passed when the
+ * handlePromoCodeSubmit function is called. It represents the event that triggered
+ * the function, such as a form submission.
+ */
+const handlePromoCodeSubmit = (event) => {
+  event.preventDefault();
+  if (promoCode === 'OCSI20') {
+    setDiscount(0.2);
+  } else {
+    setDiscount(0);
+  }
+};
 
     return (
       <div className="container">
@@ -15,49 +52,62 @@ const Checkout = () => {
           <div className="col-md-4 order-md-2 mb-4">
             <h4 className="d-flex justify-content-between align-items-center mb-3">
               <span className="text-muted">Your cart</span>
-              <span className="badge badge-secondary badge-pill">3</span>
             </h4>
             <ul className="list-group mb-3 sticky-top">
-              <li className="list-group-item d-flex justify-content-between lh-condensed">
+              <li style={{padding:'5%'}} className="list-group-item d-flex justify-content-between lh-condensed">
                 <div>
-                  <h6 className="my-0">Product name</h6>
-                  <small className="text-muted">Brief description</small>
+                  {productsList.length > 0 ? (
+                    productsList.map((product) => {
+                      return (
+                        <div key={product[0]} style={{ display: 'flex' }}>
+                          <img className="image-checkout" src={product[6]} alt="product image" />
+                          <div style={{ marginLeft: '5%', marginBottom: '10%' }}>
+                            <h6 className="my-0">{product[1]}</h6>
+                            <small className="text-muted">{product[2]}</small>
+                            <br />
+                            <small className="text-muted">{product[3]}$</small>
+                          </div>
+                          <div>
+                            <small style={{ textAlign: 'center', marginBottom: '5%' }} className="text-muted">
+                              {product[4]}
+                            </small>
+                          </div>
+                        </div>
+                      );
+                    })
+                  ) : (
+                    <div>Your cart is empty!</div>
+                  )}
                 </div>
-                <span className="text-muted">$12</span>
-              </li>
-              <li className="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                  <h6 className="my-0">Second product</h6>
-                  <small className="text-muted">Brief description</small>
-                </div>
-                <span className="text-muted">$8</span>
-              </li>
-              <li className="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                  <h6 className="my-0">Third item</h6>
-                  <small className="text-muted">Brief description</small>
-                </div>
-                <span className="text-muted">$5</span>
               </li>
               <li className="list-group-item d-flex justify-content-between bg-light">
-                <div className="text-success">
-                  <h6 className="my-0">Promo code</h6>
-                  <small>WELCOME20</small>
+                <div className="">
+                  <h6 className="my-0" style={{color: "#086788", fontWeight:"bold"}}> Promo code : "OCSI20"</h6>
                 </div>
-                <span className="text-success">-$5</span>
+                <span style={{color: "#086788", fontWeight:"bold"}}>
+                  -${(productsList.reduce((total, product) => total + product[3] * product[4], 0) * discount).toFixed(2)}
+                </span>
               </li>
               <li className="list-group-item d-flex justify-content-between">
-                <span>Total (USD)</span>
-                <strong>$20</strong>
+              <span>Total:</span>
+              <strong>
+                {(productsList.reduce((total, product) => total + product[3] * product[4], 0) * (1 - discount)).toFixed(2)}$
+              </strong>
               </li>
             </ul>
-            <form className="card p-2">
-              <div className="input-group">
-                <input type="text" className="form-control" placeholder="Promo code" />
-                <div className="input-group-append">
-                  <button type="submit" className="btn btn-secondary">Redeem</button>
-                </div>
-              </div>
+            <form className="card p-2" onSubmit={handlePromoCodeSubmit}>
+            <div className="input-group">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Promo code"
+              value={promoCode}
+              onChange={(e) => setPromoCode(e.target.value)}
+            />
+            <div className="input-group-append">
+            <button style={{backgroundColor:"#086788"}} type="submit" className="btn btn-secondary">Redeem</button>
+            </div>
+            </div>
             </form>
           </div>
           <div className="col-md-8 order-md-1">
@@ -66,28 +116,28 @@ const Checkout = () => {
               <div className="row">
                 <div className="col-md-6 mb-3">
                   <label htmlFor="firstName">First name</label>
-                  <input type="text" className="form-control" id="firstName" placeholder defaultValue="your first name" required />
+                  <input type="text" className="form-control" id="firstName" placeholder="ex: John" required />
                   <div className="invalid-feedback"> Valid first name is required. </div>
                 </div>
                 <div className="col-md-6 mb-3">
                   <label htmlFor="lastName">Last name</label>
-                  <input type="text" className="form-control" id="lastName" placeholder defaultValue="your last name" required />
+                  <input type="text" className="form-control" id="lastName" placeholder="ex: Doe" required />
                   <div className="invalid-feedback"> Valid last name is required. </div>
                 </div>
               </div>
               <div className="mb-3">
                 <label htmlFor="email">Email <span className="text-muted">(Optional)</span></label>
-                <input type="email" className="form-control" id="email" placeholder="you@example.com" />
+                <input type="email" className="form-control" id="email" placeholder="ex: you@example.com" />
                 <div className="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
               </div>
               <div className="mb-3">
                 <label htmlFor="address">Address</label>
-                <input type="text" className="form-control" id="address" placeholder="1234 Main St" required />
+                <input type="text" className="form-control" id="address" placeholder="ex: 1234 Main St" required />
                 <div className="invalid-feedback"> Please enter your shipping address. </div>
               </div>
               <div className="mb-3">
                 <label htmlFor="address2">Address 2 <span className="text-muted">(Optional)</span></label>
-                <input type="text" className="form-control" id="address2" placeholder="Apartment or suite" />
+                <input type="text" className="form-control" id="address2" placeholder="ex: Apartment or suite" />
               </div>
               <div className="row">
                 <div className="col-md-5 mb-3">
@@ -189,6 +239,7 @@ const Checkout = () => {
           </div>
         </div>
       </div>
+
     );
 };
 
