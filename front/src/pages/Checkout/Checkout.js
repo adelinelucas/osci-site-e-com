@@ -56,41 +56,40 @@ const handlePromoCodeSubmit = (event) => {
             <ul className="list-group mb-3 sticky-top">
               <li style={{padding:'5%'}} className="list-group-item d-flex justify-content-between lh-condensed">
                 <div>
-                {
-                   productsList.length > 0 ?
-                      productsList.map((product)=>{
-                          return (
-                            <div style={{ display: 'flex' }}>
-                            <img className="image-checkout" src={product[6]} alt="product image" />
-                            <div style={{ marginLeft: '5%', marginBottom:'10%'}}>
-                              <h6 className="my-0">{product[1]}</h6>
-                              <small className="text-muted">{product[2]}</small>
-                              <br />
-                              <small className="text-muted">{product[3]}$</small>
-                            </div>
-                            <div>
-                              <small style={{textAlign: 'center', marginBottom: '5%'}}className="text-muted"> {product[4]}</small>
-                            </div>
+                  {productsList.length > 0 ? (
+                    productsList.map((product) => {
+                      return (
+                        <div key={product[0]} style={{ display: 'flex' }}>
+                          <img className="image-checkout" src={product[6]} alt="product image" />
+                          <div style={{ marginLeft: '5%', marginBottom: '10%' }}>
+                            <h6 className="my-0">{product[1]}</h6>
+                            <small className="text-muted">{product[2]}</small>
+                            <br />
+                            <small className="text-muted">{product[3]}$</small>
                           </div>
-                          )
-                      })
-                      :
-                      <div>
-                          Your cart is empty !
-                      </div>
-                        }
+                          <div>
+                            <small style={{ textAlign: 'center', marginBottom: '5%' }} className="text-muted">
+                              {product[4]}
+                            </small>
+                          </div>
+                        </div>
+                      );
+                    })
+                  ) : (
+                    <div>Your cart is empty!</div>
+                  )}
                 </div>
               </li>
               <li className="list-group-item d-flex justify-content-between bg-light">
-                <div className="text-success">
-                  <h6 className="my-0"> Promo code : "OCSI20"</h6>
+                <div className="">
+                  <h6 className="my-0" style={{color: "#086788", fontWeight:"bold"}}> Promo code : "OCSI20"</h6>
                 </div>
-                <span className="text-success">
+                <span style={{color: "#086788", fontWeight:"bold"}}>
                   -${(productsList.reduce((total, product) => total + product[3] * product[4], 0) * discount).toFixed(2)}
                 </span>
               </li>
               <li className="list-group-item d-flex justify-content-between">
-              <span>Total (USD)</span>
+              <span>Total:</span>
               <strong>
                 {(productsList.reduce((total, product) => total + product[3] * product[4], 0) * (1 - discount)).toFixed(2)}$
               </strong>
