@@ -1,11 +1,14 @@
-import {React, useState} from 'react';
+import {React, useEffect, useState} from 'react';
+import {useCartContext} from '../../contextes/CartContext';
 import '../Checkout/checkout.css'
 
 
 const Checkout = () => {
 
   const [selectedShipping, setSelectedShipping] = useState(null);
+  const {productsList,quantityProducts} = useCartContext();
 
+  useEffect(()=>{console.log(productsList)},[productsList]);
     return (
       <div className="container">
         <div className="py-5 text-center">
@@ -20,24 +23,25 @@ const Checkout = () => {
             <ul className="list-group mb-3 sticky-top">
               <li className="list-group-item d-flex justify-content-between lh-condensed">
                 <div>
-                  <h6 className="my-0">Product name</h6>
-                  <small className="text-muted">Brief description</small>
+                {
+                   productsList.length > 0 ?
+                      productsList.map((product)=>{
+                          return (<div>
+                            <br/>
+                            <img src={product[6]} alt="ferdgrf" />
+                            <h6 className="my-0">{product[1]}</h6>
+                            <small className="text-muted">{product[2]}</small>
+                            <br/>
+                            <small className="text-muted">{product[3]}$</small>
+                            <br/>
+                          </div>)
+                      })
+                      :
+                      <div>
+                          Your cart is empty !
+                      </div>
+                        }
                 </div>
-                <span className="text-muted">$12</span>
-              </li>
-              <li className="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                  <h6 className="my-0">Second product</h6>
-                  <small className="text-muted">Brief description</small>
-                </div>
-                <span className="text-muted">$8</span>
-              </li>
-              <li className="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                  <h6 className="my-0">Third item</h6>
-                  <small className="text-muted">Brief description</small>
-                </div>
-                <span className="text-muted">$5</span>
               </li>
               <li className="list-group-item d-flex justify-content-between bg-light">
                 <div className="text-success">
@@ -47,8 +51,10 @@ const Checkout = () => {
                 <span className="text-success">-$5</span>
               </li>
               <li className="list-group-item d-flex justify-content-between">
-                <span>Total (USD)</span>
-                <strong>$20</strong>
+              <span>Total (USD)</span>
+              <strong>
+              {productsList.reduce((total, product) => total + product[3] * product[4], 0)}$
+              </strong>
               </li>
             </ul>
             <form className="card p-2">

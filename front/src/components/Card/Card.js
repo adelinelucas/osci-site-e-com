@@ -12,9 +12,9 @@ const Card = ({productInfos}) => {
     const productID = productInfos._id;
     const [favouriteCSS, setFavouriteCSS] = useState('bi bi-heart add-product-to-favorite')
 
-    // HANDLE FAVOURITE 
+    // HANDLE FAVOURITE
     const handleFavourite =(e) =>{
-        // renvoyer un object avec l'id produit 
+        // renvoyer un object avec l'id produit
         if(favouritesList.length === 0) {
             setFavouritesList([...favouritesList, productID])
             setPopInModalDisplay(true)
@@ -30,9 +30,9 @@ const Card = ({productInfos}) => {
                 setFavouritesList([...favouritesList, productID])
                 setPopInModalDisplay(true)
                 setPopInModalMessage({message:'Product added to your favourite !', icon:'bi bi-heart-fill'})
-                
+
             }
-        }        
+        }
     }
     // vérifier si le produit est dans la liste des favoris pour ajouter la couleur
     const checkProductAddInFavourite=() =>{
@@ -44,10 +44,13 @@ const Card = ({productInfos}) => {
     useEffect(()=>{
         checkProductAddInFavourite()
     }, [favouritesList])
-    
-    // 
 
-    // HANDLE ADD / REMOVE PRODUCT TO CART 
+
+    useEffect(()=>{
+    console.log('product info ligne 50 ', productInfos)
+  }, [])
+
+    // HANDLE ADD / REMOVE PRODUCT TO CART
         const handleAddProductToCart= () =>{
             if(productsList.length > 0){
                 // check if id product is in productsList array
@@ -58,11 +61,11 @@ const Card = ({productInfos}) => {
                     let productsListUpdated = productsList.map((product) =>{
                         if(product[0] === productID) {
                             product[4] ++;
-                            product[5] += productInfos.price
+                            product[5] += productInfos.price;
                         }
                         return product
                     })
-                    // je modifie mon context 
+                    // je modifie mon context
                     setProductsList(productsListUpdated)
                     setTotalProducts( totalProducts + productInfos.price)
                     setQuantityProducts(quantityProducts + 1)
@@ -75,8 +78,9 @@ const Card = ({productInfos}) => {
                     let price  = productInfos.price;
                     let quantity  = 1;
                     let totalPrice  = productInfos.price;
-                    setProductsList([...productsList, [id, title, resume, price, quantity, totalPrice]])
-    
+                    let image= productInfos.img;
+                    setProductsList([...productsList, [id, title, resume, price, quantity, totalPrice, image]])
+
                     // mettre à jour le total du panier
                     setTotalProducts( totalProducts + productInfos.price)
                     // mettre à jour la quantité total du panier
@@ -91,7 +95,8 @@ const Card = ({productInfos}) => {
                     let price  = productInfos.price;
                     let quantity  = 1;
                     let totalPrice  = productInfos.price;
-                    setProductsList([...productsList, [id, title, resume, price, quantity, totalPrice]])
+                    let image= productInfos.img;
+                    setProductsList([...productsList, [id, title, resume, price, quantity, totalPrice, image]])
 
                     // mettre à jour le total du panier
                     setTotalProducts( totalProducts + productInfos.price)
@@ -99,7 +104,7 @@ const Card = ({productInfos}) => {
                     setQuantityProducts(quantityProducts + 1)
             }
             setPopInModalDisplay(true)
-            setPopInModalMessage({message:'Product added to your cart !', icon:'bi bi-bag-heart-fill'})          
+            setPopInModalMessage({message:'Product added to your cart !', icon:'bi bi-bag-heart-fill'})
         }
 
         const handleRemoveProductToCart= () =>{
@@ -123,12 +128,12 @@ const Card = ({productInfos}) => {
             }
         }
     //
-    
+
     return (
         <article className="main__product__card card mb-md-5 mb-3 mt-3 border-0" style={{maxWidth: '540px'}} data-productid="product_id">
             <div className="row row-cols-2 g-0">
                 <div className="col-5 main__product__card__bg d-flex align-items-center h-75">
-                    <img src={productInfos.img} className="card-img-top" alt={productInfos.title + '-' + productInfos.resume} />                
+                    <img src={productInfos.img} className="card-img-top" alt={productInfos.title + '-' + productInfos.resume} />
                 </div>
                 <div className="col-7 main__product__card__infos">
                     <div className="card-body">
