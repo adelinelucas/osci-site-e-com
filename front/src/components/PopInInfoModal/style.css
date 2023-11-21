@@ -1,7 +1,7 @@
 #alert-favourite-message{
     width: 300px;
     height: 150px;
-    position: absolute;
+    position: fixed;
     bottom: 25px;
     right: 50px;
 }

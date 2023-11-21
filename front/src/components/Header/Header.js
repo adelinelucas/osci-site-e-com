@@ -22,7 +22,6 @@ const Header = () => {
 
     useEffect(()=>{
         quantityProducts > 0 ?  setProductsInCartCSS('bi bi-bag-fill duck-blue') : setProductsInCartCSS('bi bi-bag-fill');
-        console.log(quantityProducts)
     }, [quantityProducts])
     
     return (

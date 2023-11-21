@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './style.css';
 import {useCatalogueContext} from '../../contextes/CatalogueContext';
 import {useCartContext} from '../../contextes/CartContext';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Card = ({productInfos}) => {
     // import des contextes
@@ -12,8 +13,7 @@ const Card = ({productInfos}) => {
     const productID = productInfos._id;
     const [favouriteCSS, setFavouriteCSS] = useState('bi bi-heart add-product-to-favorite')
 
-
-    useEffect(()=>{console.log(productsList)}, [productsList])
+    // useEffect(()=>{console.log(productsList)}, [productsList])
     // HANDLE FAVOURITE 
     const handleFavourite =(e) =>{
         // renvoyer un object avec l'id produit 
@@ -36,6 +36,7 @@ const Card = ({productInfos}) => {
             }
         }        
     }
+
     // vérifier si le produit est dans la liste des favoris pour ajouter la couleur
     const checkProductAddInFavourite=() =>{
         favouritesList.map((favourite)=>{
@@ -77,14 +78,8 @@ const Card = ({productInfos}) => {
                     let price  = productInfos.price;
                     let quantity  = 1;
                     let totalPrice  = productInfos.price;
-                    setProductsList([...productsList, [{
-                        'id': id, 
-                        'title': title, 
-                        'resume': resume, 
-                        'price': price, 
-                        'quantity': quantity, 
-                        'totalPrice': totalPrice
-                }]])
+                    let image = productInfos.img;
+                    setProductsList([...productsList, [id, title, resume, price, quantity,totalPrice, image]])
     
                     // mettre à jour le total du panier
                     setTotalProducts( totalProducts + productInfos.price)
@@ -100,7 +95,9 @@ const Card = ({productInfos}) => {
                     let price  = productInfos.price;
                     let quantity  = 1;
                     let totalPrice  = productInfos.price;
-                    setProductsList([...productsList, [id, title, resume, price, quantity, totalPrice]])
+                    let image = productInfos.img;
+
+                    setProductsList([...productsList, [id, title, resume, price, quantity, totalPrice, image]])
 
                     // mettre à jour le total du panier
                     setTotalProducts( totalProducts + productInfos.price)
@@ -132,7 +129,7 @@ const Card = ({productInfos}) => {
             }
         }
     //
-    
+
     return (
         <article className="main__product__card card mb-md-5 mb-3 mt-3 border-0" style={{maxWidth: '540px'}} data-productid="product_id">
             <div className="row row-cols-2 g-0">
@@ -142,7 +139,7 @@ const Card = ({productInfos}) => {
                 <div className="col-7 main__product__card__infos">
                     <div className="card-body">
                         <h5 className="card-title fw-bolder"><span className="title">{productInfos.title}</span><span className="resume"> - {productInfos.resume}</span></h5>
-                        <p className="card-text">{productInfos.description.slice(0,350)}...</p>
+                        <p className="card-text">{productInfos.description.slice(0,150)}...</p>
                     </div>
                     <div className="main__card__prices-infos card-body row row-cols-2 justify-content-end p-0 ">
                         <p className="text-end w-auto"><span className="current-price text-decoration-line-through">{productInfos.oldPrice}</span>$</p>
@@ -172,7 +169,7 @@ const Card = ({productInfos}) => {
                     </div>
                 </div>
             </div>
-        </article>
+        </article>   
     );
 };
 
