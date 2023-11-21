@@ -59,7 +59,7 @@ const handlePromoCodeSubmit = (event) => {
               </li>
               <li className="list-group-item d-flex justify-content-between bg-light">
                 <div className="text-success">
-                  <h6 className="my-0">Welcome Promo code : "OCSI20"</h6>
+                  <h6 className="my-0"> Promo code : "OCSI20"</h6>
                 </div>
                 <span className="text-success">
                   -${(productsList.reduce((total, product) => total + product[3] * product[4], 0) * discount).toFixed(2)}
