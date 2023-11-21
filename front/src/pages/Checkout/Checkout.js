@@ -32,21 +32,23 @@ const handlePromoCodeSubmit = (event) => {
               <span className="badge badge-secondary badge-pill">3</span>
             </h4>
             <ul className="list-group mb-3 sticky-top">
-              <li className="list-group-item d-flex justify-content-between lh-condensed">
+              <li style={{padding:'5%'}} className="list-group-item d-flex justify-content-between lh-condensed">
                 <div>
                 {
                    productsList.length > 0 ?
                       productsList.map((product)=>{
                           return (
-                          <div>
-                            <br/>
+                            <div style={{ display: 'flex' }}>
                             <img className="image-checkout" src={product[6]} alt="ferdgrf" />
-                            <div>
-                            <h6 className="my-0">{product[1]}</h6>
-                            </div>
-                            <small className="text-muted">{product[2]}</small>
-                            <br/>
+                            <div style={{ marginLeft: '5%', marginBottom:'10%'}}>
+                              <h6 className="my-0">{product[1]}</h6>
+                              <small className="text-muted">{product[2]}</small>
+                              <br />
                               <small className="text-muted">{product[3]}$</small>
+                            </div>
+                            <div>
+                            <small style={{textAlign: 'center', marginBottom: '5%'}}className="text-muted"> {product[4]}</small>
+                            </div>
                           </div>
                           )
                       })
