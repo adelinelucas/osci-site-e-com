@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import './style.css';
 import {useCatalogueContext} from '../../contextes/CatalogueContext';
 import {useCartContext} from '../../contextes/CartContext';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Card = ({productInfos}) => {
     // import des contextes
     const {favouritesList,setFavouritesList, setPopInModalMessage, setPopInModalDisplay} = useCatalogueContext();
     const {productsList,setProductsList, setTotalProducts, setQuantityProducts, totalProducts, quantityProducts} = useCartContext();
-
+    // console.log(productInfos)
     //
     const productID = productInfos._id;
     const [favouriteCSS, setFavouriteCSS] = useState('bi bi-heart add-product-to-favorite')
@@ -34,6 +35,7 @@ const Card = ({productInfos}) => {
             }
         }
     }
+
     // vérifier si le produit est dans la liste des favoris pour ajouter la couleur
     const checkProductAddInFavourite=() =>{
         favouritesList.map((favourite)=>{
@@ -80,7 +82,6 @@ const Card = ({productInfos}) => {
                     let totalPrice  = productInfos.price;
                     let image= productInfos.img;
                     setProductsList([...productsList, [id, title, resume, price, quantity, totalPrice, image]])
-
                     // mettre à jour le total du panier
                     setTotalProducts( totalProducts + productInfos.price)
                     // mettre à jour la quantité total du panier
@@ -138,7 +139,7 @@ const Card = ({productInfos}) => {
                 <div className="col-7 main__product__card__infos">
                     <div className="card-body">
                         <h5 className="card-title fw-bolder"><span className="title">{productInfos.title}</span><span className="resume"> - {productInfos.resume}</span></h5>
-                        <p className="card-text">{productInfos.description.slice(0,350)}...</p>
+                        <p className="card-text">{productInfos.description.slice(0,150)}...</p>
                     </div>
                     <div className="main__card__prices-infos card-body row row-cols-2 justify-content-end p-0 ">
                         <p className="text-end w-auto"><span className="current-price text-decoration-line-through">{productInfos.oldPrice}</span>$</p>
@@ -168,7 +169,7 @@ const Card = ({productInfos}) => {
                     </div>
                 </div>
             </div>
-        </article>
+        </article>   
     );
 };
 

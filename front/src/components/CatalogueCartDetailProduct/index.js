@@ -26,7 +26,7 @@ const CatalogueCartDetailProduct = ({productInfos}) => {
         }
     }
 
-    const handleRemoveProduct = () =>{
+    const handleRemoveOneQtyProduct = () =>{
         if(productsList.length > 0){
             // check if id product is in productsList array
             let isProductInCart = productsList.filter((product)=>product[0] === productInfos[0])
@@ -46,13 +46,22 @@ const CatalogueCartDetailProduct = ({productInfos}) => {
             }
         }
     }
-    console.log(productInfos)
+
+    const handleRemoveProduct = () =>{
+        if(productsList.length > 0){
+            // si produit déja dans panier, changer la quantité et le prix total du produit
+            setProductsList(productsList.filter((productListEl) => productListEl[0] !== productInfos[0]))
+            setTotalProducts( totalProducts - productInfos[5])
+            setQuantityProducts(quantityProducts - productInfos[4])
+        }
+    }
+
     return (
         <div className="row mb-2 row-cols-1 row-underline product-details" >
         <div className="col-3 px-0">
             <div className="row row-cols-1">
                 <div className="pe-0">
-                    <img src="./images/products/advanced-snail-peptide.png" className="" alt="illustration of the COSRX product" width="50px"/>
+                    <img src={productInfos[6]} className="" alt="illustration of the COSRX product" width="50px"/>
                 </div>
             </div>
         </div>
@@ -69,7 +78,7 @@ const CatalogueCartDetailProduct = ({productInfos}) => {
                 <span id="btn-update-quantity">
                     {productInfos[4]}
                 </span>
-                <div className="remove-quantity"  onClick={handleRemoveProduct}>-</div>
+                <div className="remove-quantity"  onClick={handleRemoveOneQtyProduct}>-</div>
             </div> 
         </div>
         <div className="col-2 px-2 py-1">
@@ -77,7 +86,7 @@ const CatalogueCartDetailProduct = ({productInfos}) => {
                 <p><span>{productInfos[5]}</span>$</p>
             </div>
             <div className="row d-flex justify-content-end">
-                <button type="button">
+                <button type="button" onClick={handleRemoveProduct}>
                     <i className="bi bi-trash"></i>
                 </button>
             </div>

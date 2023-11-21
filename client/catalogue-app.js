@@ -322,7 +322,7 @@ const displayJS = (productsList) =>{
 }
 // GET DATA ON PAGE LOAD
 document.addEventListener('DOMContentLoaded', async()=>{
-    const url = 'http://localhost:3000/products';
+    const url = 'http://localhost:3001/products';
     /*
     errors products test
     const urlTestProducts = 'http://localhost:3004/products';

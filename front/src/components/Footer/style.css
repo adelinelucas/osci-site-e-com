@@ -6,7 +6,7 @@ footer {
 }
 
 .footer__socials {
-  width: fit-content;
+  /* width: fit-content; */
 }
 .footer__hero img {
   width: var(--logo-size-footer);

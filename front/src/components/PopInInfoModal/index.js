@@ -14,7 +14,7 @@ const PopInInfoModal = () => {
             setMessage(popInModalMessage.message)
             let timer = setTimeout(()=>{
                 setPopInModalDisplay(false)
-            }, 3000)
+            }, 1500)
 
             return ()=> clearTimeout(timer) 
         }
@@ -24,7 +24,6 @@ const PopInInfoModal = () => {
         
         <>
            {
-
                 popInModalDisplay && 
                 <div id="alert-favourite-message">
                     <div className="alert alert-dismissible fade show" role="alert">
