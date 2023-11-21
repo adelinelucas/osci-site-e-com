@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 import ProductModel from "../models/Products.js";
 import path from 'path';
-
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 /*
 Create a product
 */
@@ -28,10 +29,15 @@ Get all procducts
 export const getProducts = async(req,res) =>{
     // récupérer les images
     // const imagePath = path.join(__dirname, 'uploads', filename);
-    // console.log(dirname)
+    // const __dirname = dirname(fileURLToPath(import.meta.url));
+    // console.log(__dirname)
+
     try{
 
         const productsList = await ProductModel.find({})
+        productsList.map((product)=>{
+            product.img = process.env.BACK_ORIGIN + '/products/'+ product.img;
+        })
 
         if(productsList){
             res.status(200).json({message: productsList})
