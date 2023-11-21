@@ -14,7 +14,7 @@ const PopInInfoModal = () => {
             setMessage(popInModalMessage.message)
             let timer = setTimeout(()=>{
                 setPopInModalDisplay(false)
-            }, 3000)
+            }, 2000)
 
             return ()=> clearTimeout(timer) 
         }

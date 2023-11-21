@@ -7,11 +7,13 @@ const Card = ({productInfos}) => {
     // import des contextes
     const {favouritesList,setFavouritesList, setPopInModalMessage, setPopInModalDisplay} = useCatalogueContext();
     const {productsList,setProductsList, setTotalProducts, setQuantityProducts, totalProducts, quantityProducts} = useCartContext();
-
+    // console.log(productInfos)
     //
     const productID = productInfos._id;
     const [favouriteCSS, setFavouriteCSS] = useState('bi bi-heart add-product-to-favorite')
 
+
+    useEffect(()=>{console.log(productsList)}, [productsList])
     // HANDLE FAVOURITE 
     const handleFavourite =(e) =>{
         // renvoyer un object avec l'id produit 
@@ -75,7 +77,14 @@ const Card = ({productInfos}) => {
                     let price  = productInfos.price;
                     let quantity  = 1;
                     let totalPrice  = productInfos.price;
-                    setProductsList([...productsList, [id, title, resume, price, quantity, totalPrice]])
+                    setProductsList([...productsList, [{
+                        'id': id, 
+                        'title': title, 
+                        'resume': resume, 
+                        'price': price, 
+                        'quantity': quantity, 
+                        'totalPrice': totalPrice
+                }]])
     
                     // mettre à jour le total du panier
                     setTotalProducts( totalProducts + productInfos.price)

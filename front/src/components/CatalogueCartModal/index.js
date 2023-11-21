@@ -1,11 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './style.css';
-import {CartProvider, useCartContext} from '../../contextes/CartContext';
+import {useCartContext} from '../../contextes/CartContext';
 import CatalogueCartDetailProduct from '../CatalogueCartDetailProduct';
+import { NavLink,useLocation } from 'react-router-dom';
 
 
 const CatalogueCartModal = () => {
     const {totalProducts, productsList} = useCartContext();
+    const location = useLocation();
+
+    // fermeture de la modal cart si je change de page
+    useEffect(() => {
+       let closeModalBtn = document.getElementById('btn-close-cart-modale')
+       closeModalBtn.click();
+    
+    }, [location]);
+
 
     return (
         <div className="offcanvascontainer container">
@@ -67,17 +77,18 @@ const CatalogueCartModal = () => {
                     </div>
                 </div>
                 <div className="offproductorder__orderdetails row row-cols-1 justify-content-start my-4">
-                    <a href="./cardpage.html" className="link-order-details d-flex align-items-center">
+                    <NavLink to={'/panier'} className="link-order-details d-flex align-items-center">
                         See order details
                         <i className="bi bi-binoculars-fill"></i>
-
-                    </a>
+                    </NavLink>
                 </div>
                 <div className="row row-cols-1 row-cols-md-2 offproductorder__backetcart-actions justify-content-between flex-md-row-reverse align-items-center my-4">
                     <button type="button" className="btn text-light m-auto">
-                        <a href="./checkout.html">Valid my cart</a>
+                        <NavLink to={'/checkout'} className="link-order-details d-flex align-items-center">
+                            Valid my cart                        
+                        </NavLink>
                     </button>
-                    <button type="button" className="btn text-light m-auto" data-bs-dismiss="offcanvas" aria-label="Close">Back to my shopping</button>
+                    <button type="button" className="btn text-light m-auto" data-bs-dismiss="offcanvas" aria-label="Close" id="btn-close-cart-modale">Back to my shopping</button>
                 </div>
             </div>
         </div>
