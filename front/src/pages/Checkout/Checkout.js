@@ -6,9 +6,8 @@ import '../Checkout/checkout.css'
 const Checkout = () => {
 
   const [selectedShipping, setSelectedShipping] = useState(null);
-  const {productsList,quantityProducts} = useCartContext();
+  const {productsList} = useCartContext();
 
-  useEffect(()=>{console.log(productsList)},[productsList]);
     return (
       <div className="container">
         <div className="py-5 text-center">
@@ -28,7 +27,7 @@ const Checkout = () => {
                       productsList.map((product)=>{
                           return (<div>
                             <br/>
-                            <img src={product[6]} alt="ferdgrf" />
+                            <img className="image-checkout" src={product[6]} alt="ferdgrf" />
                             <h6 className="my-0">{product[1]}</h6>
                             <small className="text-muted">{product[2]}</small>
                             <br/>
