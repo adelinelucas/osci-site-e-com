@@ -1,4 +1,4 @@
-import {React, useEffect, useState} from 'react';
+import {React, useState} from 'react';
 import {useCartContext} from '../../contextes/CartContext';
 import '../Checkout/checkout.css'
 
@@ -7,6 +7,18 @@ const Checkout = () => {
 
   const [selectedShipping, setSelectedShipping] = useState(null);
   const {productsList} = useCartContext();
+
+  const [promoCode, setPromoCode] = useState('');
+  const [discount, setDiscount] = useState(0);
+
+const handlePromoCodeSubmit = (event) => {
+  event.preventDefault();
+  if (promoCode === 'OCSI20') {
+    setDiscount(0.2);
+  } else {
+    setDiscount(0);
+  }
+};
 
     return (
       <div className="container">
@@ -25,15 +37,18 @@ const Checkout = () => {
                 {
                    productsList.length > 0 ?
                       productsList.map((product)=>{
-                          return (<div>
+                          return (
+                          <div>
                             <br/>
                             <img className="image-checkout" src={product[6]} alt="ferdgrf" />
+                            <div>
                             <h6 className="my-0">{product[1]}</h6>
+                            </div>
                             <small className="text-muted">{product[2]}</small>
                             <br/>
-                            <small className="text-muted">{product[3]}$</small>
-                            <br/>
-                          </div>)
+                              <small className="text-muted">{product[3]}$</small>
+                          </div>
+                          )
                       })
                       :
                       <div>
@@ -44,25 +59,32 @@ const Checkout = () => {
               </li>
               <li className="list-group-item d-flex justify-content-between bg-light">
                 <div className="text-success">
-                  <h6 className="my-0">Promo code</h6>
-                  <small>WELCOME20</small>
+                  <h6 className="my-0">Welcome Promo code : "OCSI20"</h6>
                 </div>
-                <span className="text-success">-$5</span>
+                <span className="text-success">
+                  -${(productsList.reduce((total, product) => total + product[3] * product[4], 0) * discount).toFixed(2)}
+                </span>
               </li>
               <li className="list-group-item d-flex justify-content-between">
               <span>Total (USD)</span>
               <strong>
-              {productsList.reduce((total, product) => total + product[3] * product[4], 0)}$
+                {(productsList.reduce((total, product) => total + product[3] * product[4], 0) * (1 - discount)).toFixed(2)}$
               </strong>
               </li>
             </ul>
-            <form className="card p-2">
-              <div className="input-group">
-                <input type="text" className="form-control" placeholder="Promo code" />
-                <div className="input-group-append">
-                  <button type="submit" className="btn btn-secondary">Redeem</button>
-                </div>
-              </div>
+            <form className="card p-2" onSubmit={handlePromoCodeSubmit}>
+            <div className="input-group">
+            <input
+            type="text"
+            className="form-control"
+            placeholder="Promo code"
+            value={promoCode}
+            onChange={(e) => setPromoCode(e.target.value)}
+            />
+            <div className="input-group-append">
+            <button type="submit" className="btn btn-secondary">Redeem</button>
+            </div>
+            </div>
             </form>
           </div>
           <div className="col-md-8 order-md-1">
