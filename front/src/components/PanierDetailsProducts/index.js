@@ -23,8 +23,8 @@ const PanierDetailsProducts = ({ productInfos }) => {
     });
     let filtredProducts = NewProductsList.filter((product) => product);
     setProductsList(filtredProducts);
-    setQuantityProducts(quantityProducts - 1);
-    setTotalProducts(totalProducts - productInfos[3]);
+    setQuantityProducts(quantityProducts - productInfos[4]);
+    setTotalProducts(totalProducts - productInfos[5]);
   };
 
   const minusRow = () => {
