@@ -35,39 +35,32 @@ const Panier = () => {
   },[productsList])
   
   return (
-  
-          
-   
-   
-    <div id="panier">
+    <div className="container" id="panier">
       {
         productsList.length > 0 ? 
           <div>
             {productsList.map((product) => (
                 <PanierDetailsProducts productInfos={product} key={product[0]}/>
             ))}
-            <p>Quantité produit panier: {quantityProducts }</p>
-            <p>Total: {totalProducts } €</p>
-      <button
-        onClick={() => ({ id: 1, name: "Example Item", price: 19.99 })}
-      >
-        
-      </button>  
+            <div className="yass">
+              <p>Quantité : {quantityProducts }</p>
+              <p>Total : {totalProducts } €</p>
+            </div>
           </div>
           :
           <>
-            <h2>YOUR CART IS EMPTY.</h2>
-            <a class="btn btn-secondary btn-lg  " onClick={cliquer}>
+            <h2 className="yas">YOUR CART IS EMPTY.</h2>
+            <a className="btn btn-secondary btn-lg yes" onClick={cliquer}>
           Continue Shopping
             </a>
           </>   
       }
       
       <div id="shop">
-        <a id="chek" class="btn btn-primary btn-lg " onClick={clique}>
+        <a id="chek" className="btn btn-primary btn-lg " onClick={clique}>
           Home
         </a>
-        <a id="check" class="btn btn-primary btn-lg " onClick={cliqu}>
+        <a id="check" className="btn btn-primary btn-lg " onClick={cliqu}>
           Checkout 
         </a>
       </div>
