@@ -82,6 +82,9 @@ export const getAllProductOrderByAscendingPrice = async(req, res) =>{
     try{
 
         const productsListSorted = await ProductModel.find({}).sort('price')
+        productsListSorted.map((product)=>{
+            product.img = process.env.BACK_ORIGIN + '/products/'+ product.img;
+        })
 
         if(productsListSorted.length > 0){
             res.status(200).json({message: productsListSorted})
@@ -102,6 +105,10 @@ export const getAllProductOrderByDecreasingPrice = async(req, res) =>{
     try{
 
         const productsListSorted = await ProductModel.find({}).sort('-price')
+
+        productsListSorted.map((product)=>{
+            product.img = process.env.BACK_ORIGIN + '/products/'+ product.img;
+        })
 
         if(productsListSorted.length > 0){
             res.status(200).json({message: productsListSorted})
