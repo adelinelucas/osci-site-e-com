@@ -30,11 +30,13 @@ useEffect(() => {
 }, [currentImage]);
 
 return (
+<>
+  <div className="hero-motto">Your go to platform to find Korean cosmetics</div>
   <div className="image-slider">
     <button className="bouton-slider" onClick={prevImage}>&lt;</button>
     <img src={images[currentImage]} alt={`Image ${currentImage + 1}`} />
-    <button onClick={nextImage}>&gt;</button>
   </div>
+</>
 );
 };
 export default Home;
