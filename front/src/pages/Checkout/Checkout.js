@@ -45,7 +45,7 @@ const handlePromoCodeSubmit = (event) => {
 
     return (
       <div className="container">
-        <div className="py-5 text-center">
+        <div className="py-2 text-center">
           <h2>Checkout</h2>
         </div>
         <div className="row">
@@ -102,7 +102,7 @@ const handlePromoCodeSubmit = (event) => {
               value={promoCode}
               onChange={(e) => setPromoCode(e.target.value)}
             />
-            <div className="input-group-append">
+            <div className="input-group-append" style={{ position: 'sticky', top: 0 }}>
             <button style={{backgroundColor:"#086788"}} type="submit" className="btn btn-secondary">Redeem</button>
             </div>
             </div>
