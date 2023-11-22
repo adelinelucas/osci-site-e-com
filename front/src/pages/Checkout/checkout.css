@@ -144,9 +144,8 @@
 }
 
 .image-checkout {
-  width: 30%;
+  width: 20%;
   height: 30%;
-  object-fit: contain;
 }
 
 @media only screen and (max-width: 600px) {

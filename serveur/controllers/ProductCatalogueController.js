@@ -63,7 +63,7 @@ export const getProductById = async(req, res) =>{
         const product = await ProductModel.findById(_id)
 
         if(!product) return res.status(404).json({message: 'An error occured, the ID is not matching any product in database.'});
-        
+
         // const imagePath = path.join(__dirname, 'uploads', filename);
         // product.img = dirname + '/public/products/' + product.img
         product.img = path.join(process.env.ORIGIN, '/products/', product.img)
