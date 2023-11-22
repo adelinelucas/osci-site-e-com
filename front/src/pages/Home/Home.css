@@ -12,7 +12,7 @@
   object-fit: cover; /* Ajuste la taille de l'image pour couvrir la totalité du conteneur */
   position: absolute;
   height: 50%;
-  top: 452px;
+  top: 516px;
 }
 
 .bouton-slider {
