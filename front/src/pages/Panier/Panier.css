@@ -15,7 +15,7 @@
   height: 130px;
   margin-top: 100px;
   margin-bottom: 100px;
-  margin-left: 120px ;
+  margin-left: 120px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -33,10 +33,14 @@
 .yes {
   margin-left: 120px;
 }
-.yas{
-  margin-left: 180px;
+.yas {
+  font-size: 25px;
+  width: 100%;
+  position: relative;
+  top: 30%;
+  right: 2%;
 }
-.yass p{
+.yass p {
   text-align: end;
   font-weight: bolder;
 }
