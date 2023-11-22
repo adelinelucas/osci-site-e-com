@@ -61,16 +61,14 @@ const handlePromoCodeSubmit = (event) => {
                       return (
                         <div key={product[0]} style={{ display: 'flex' }}>
                           <img className="image-checkout" src={product[6]} alt="product image" />
-                          <div style={{ marginLeft: '5%', marginBottom: '10%' }}>
+                          <div style={{ marginLeft: '5%' }}>
                             <h6 className="my-0">{product[1]}</h6>
                             <small className="text-muted">{product[2]}</small>
                             <br />
                             <small className="text-muted">{product[3]}$</small>
                           </div>
-                          <div>
-                            <small style={{ textAlign: 'center', marginBottom: '5%' }} className="text-muted">
-                              {product[4]}
-                            </small>
+                          <div style={{ flexGrow: 1, textAlign: 'right' }}>
+                            <small className="quantity-display">{product[4]}</small>
                           </div>
                         </div>
                       );
