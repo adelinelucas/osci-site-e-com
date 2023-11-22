@@ -31,7 +31,7 @@ useEffect(() => {
 
 return (
 <>
-  <div className="hero-motto">Your go to platform to find Korean cosmetics</div>
+  <p className="submotto" style={{textAlign:"center"}}>"Beauty is the harmony of purpose and form, a timeless dance in life's eternal storm."</p>
   <div className="image-slider">
     <button className="bouton-slider" onClick={prevImage}>&lt;</button>
     <img src={images[currentImage]} alt={`Image ${currentImage + 1}`} />
