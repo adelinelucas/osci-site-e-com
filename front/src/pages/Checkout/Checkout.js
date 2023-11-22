@@ -53,7 +53,7 @@ const handlePromoCodeSubmit = (event) => {
             <h4 className="d-flex justify-content-between align-items-center mb-3">
               <span className="text-muted">Your cart</span>
             </h4>
-            <ul className="list-group mb-3">
+            <ul className="list-group">
               <li style={{padding:'5%'}} className="list-group-item d-flex justify-content-between lh-condensed">
                 <div>
                   {productsList.length > 0 ? (
