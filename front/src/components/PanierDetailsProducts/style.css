@@ -1,0 +1,68 @@
+.Container {
+  margin-left: 12%;
+  margin-bottom: 3%;
+  display: flex;
+  height: 325px;
+  width: 1000px;
+  flex-direction: row;
+  box-shadow: 1px 2px 9px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  margin-top: 5%;
+}
+
+.ImgContainer {
+  width: 33%;
+}
+
+.Img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.InfoContainer {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+}
+
+.TitreGros {
+  font-size: 25px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.Titre {
+  font-size: 20px;
+  padding-top: 10px;
+
+  text-align: center;
+
+  width: 100%;
+  font-weight: bold;
+}
+
+.DeleteRaw {
+  position: relative;
+  top: 45px;
+  font-size: 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 60px;
+}
+
+.ButtonProducts {
+  margin: 12px;
+  font-size: 25px;
+  border: 1px solid black;
+  border-radius: 7px;
+}
+
+.Total {
+  font-size: 25px;
+  width: 100%;
+  position: relative;
+  top: 30%;
+  text-align: end;
+}
